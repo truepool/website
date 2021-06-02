@@ -1,0 +1,27 @@
+@import "../variables";
+
+.section-about-us {
+  background-color: #252525;
+  padding: 160px 20% 160px;
+  color: #fffffffc;
+
+  .about-us-text {
+    padding: 19px 30px;
+    margin-bottom: 50px;
+    font-size: 1.1em;
+    border-left: 5px solid $color-green;
+  }
+
+  .for-other-inquiries {
+    text-align: center;
+    margin-top: 45px;
+    opacity: 0.6;
+
+    a,
+    a:visited,
+    a:hover,
+    a:active {
+      color: inherit;
+    }
+  }
+}
