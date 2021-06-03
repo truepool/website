@@ -23,7 +23,7 @@ main .main-column {
   align-items: center;
   flex: 1;
   box-sizing: border-box;
-  padding-bottom: 30px;
+  padding-bottom: 10px;
   justify-content: center;
 }
 main .intro-block {
@@ -176,21 +176,25 @@ body {
 }
 .action-form .form-body {
   display: flex;
-  align-items: stretch;
-  row-gap: 20px;
+  align-items: flex-start;
   flex-wrap: wrap;
 }
 .action-form .email-form {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   margin-right: 70px;
-  row-gap: 5px;
+  margin-bottom: 15px;
 }
 .action-form input {
   margin-right: 5px;
-  width: 165px;
+  width: 197px;
   flex-shrink: 0;
-  min-height: 38px;
+  min-height: 48px;
+  margin-bottom: 5px;
+}
+.action-form .button {
+  min-height: 48px;
 }
 
 .button {
@@ -204,6 +208,7 @@ body {
   padding: 10px 43px;
   cursor: pointer;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 .button:active, .button:hover, .button:visited {
   text-decoration: none;
@@ -227,6 +232,7 @@ input {
   padding: 0 1em;
   text-decoration: none;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .telegram-btn img {
