@@ -42,7 +42,6 @@
     display: flex;
     align-items: center;
     margin-bottom: 17px;
-    column-gap: 16px;
     flex-wrap: wrap;
   }
 
@@ -51,6 +50,7 @@
     height: 120px;
     border-radius: 60px;
     border: 1px solid #ffffff61;
+    margin-right: 16px;
   }
 
   .operator-name {

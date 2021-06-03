@@ -11,9 +11,9 @@ main .background-fade {
   height: 100%;
   background: rgba(48, 53, 70, 0.5);
   box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
-  box-sizing: border-box;
-  padding-bottom: 30px;
   flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 main .main-column {
   margin: 0 auto;
@@ -21,9 +21,13 @@ main .main-column {
   flex-direction: column;
   height: 100%;
   align-items: center;
+  flex: 1;
+  box-sizing: border-box;
+  padding-bottom: 30px;
+  justify-content: center;
 }
 main .intro-block {
-  margin-top: 29vh;
+  margin-top: 6vh;
 }
 main .lead {
   text-transform: uppercase;
@@ -50,8 +54,10 @@ main ul {
   list-style-type: square;
   margin-top: 32px;
   line-height: 1.9em;
-  padding-left: 0;
+  padding-left: 10px;
   font-size: 1.05em;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 main .action-form {
   margin-top: 10.5vh;
@@ -127,7 +133,6 @@ main .action-form {
   display: flex;
   align-items: center;
   margin-bottom: 17px;
-  column-gap: 16px;
   flex-wrap: wrap;
 }
 .section-operators .operator-photo {
@@ -135,6 +140,7 @@ main .action-form {
   height: 120px;
   border-radius: 60px;
   border: 1px solid #ffffff61;
+  margin-right: 16px;
 }
 .section-operators .operator-name {
   margin-top: 5px;
@@ -171,13 +177,13 @@ body {
 .action-form .form-body {
   display: flex;
   align-items: stretch;
-  column-gap: 70px;
-  row-gap: 15px;
+  row-gap: 20px;
   flex-wrap: wrap;
 }
 .action-form .email-form {
   display: flex;
   flex-wrap: wrap;
+  margin-right: 70px;
   row-gap: 5px;
 }
 .action-form input {

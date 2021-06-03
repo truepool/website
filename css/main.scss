@@ -24,14 +24,14 @@ body {
   .form-body {
     display: flex;
     align-items: stretch;
-    column-gap: 70px;
-    row-gap: 15px;
+    row-gap: 20px;
     flex-wrap: wrap;
   }
 
   .email-form {
     display: flex;
     flex-wrap: wrap;
+    margin-right: 70px;
     row-gap: 5px;
   }
 

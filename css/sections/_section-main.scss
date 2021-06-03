@@ -3,7 +3,6 @@
 main {
   min-height: 99.6vh;
   background-image: url("../img/pattern.svg");
-  //background-image: url("../img/cover.jpg");
   background-size: cover;
   background-position: center center;
   display: flex;
@@ -13,9 +12,9 @@ main {
     height: 100%;
     background: rgba(48, 53, 70, 0.5);
     box-shadow: inset 0 0 100px rgb(0 0 0 / 50%);
-    box-sizing: border-box;
-    padding-bottom: 30px;
     flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .main-column {
@@ -24,10 +23,14 @@ main {
     flex-direction: column;
     height: 100%;
     align-items: center;
+    flex: 1;
+    box-sizing: border-box;
+    padding-bottom: 30px;
+    justify-content: center;
   }
 
   .intro-block {
-    margin-top: 29vh;
+    margin-top: 6vh;
   }
 
   .lead {
@@ -57,8 +60,10 @@ main {
     list-style-type: square;
     margin-top: 32px;
     line-height: 1.9em;
-    padding-left: 0;
+    padding-left: 10px;
     font-size: 1.05em;
+    margin-left: 25px;
+    margin-right: 25px;
   }
 
   .action-form {
