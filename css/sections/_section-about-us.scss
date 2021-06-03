@@ -5,6 +5,11 @@
   padding: 160px 20% 160px;
   color: #fffffffc;
 
+  @media screen and (max-width: $breakpoint-sm) {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .about-us-text {
     padding: 19px 30px;
     margin-bottom: 50px;
