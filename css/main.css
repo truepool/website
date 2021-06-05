@@ -50,6 +50,18 @@ main .subheader .subheader-pill {
   background: #84bc56;
   padding: 4px 20px;
 }
+main .news {
+  max-width: 500px;
+  padding: 10px 10px 10px 18px;
+  background-color: #636363;
+  margin-top: 1vh;
+  position: relative;
+  line-height: 1.2em;
+  border-left: 4px solid #ebb012;
+}
+main .news .date {
+  opacity: 0.5;
+}
 main ul {
   list-style-type: square;
   margin-top: 32px;
