@@ -1,0 +1,48 @@
+@import "../variables";
+
+.section-news {
+  display: flex;
+  padding: 80px 12%;
+
+  .chart-column {
+    flex-basis: 60%;
+    margin-right: 30px;
+  }
+
+  .news-column {
+    flex-basis: 40%;
+
+    h2 {
+      margin-top: 0.7em;
+    }
+  }
+
+  .news-item {
+    max-width: 500px;
+    padding: 22px 12px 10px 19px;
+    background-color: #636363;
+    margin-top: 0.8em;
+    position: relative;
+    line-height: 1.2em;
+    border-left: 4px solid $color-yellow;
+
+    p {
+      margin-bottom: 0;
+      margin-top: 0.7em;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+
+    .date {
+      opacity: 0.5;
+      text-align: right;
+      margin-top: 5px;
+    }
+  }
+  
+  .dummy-chart {
+    width: 100%;
+  }
+}

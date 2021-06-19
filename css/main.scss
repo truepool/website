@@ -3,11 +3,14 @@
 @import 'sections/section-main';
 @import 'sections/section-about-us';
 @import 'sections/section-operators';
+@import 'sections/header';
+@import 'sections/section-article';
+@import 'sections/section-news';
 
 $control-bg: rgba(255, 255, 255, 0.05);
 
 body {
-  background-color: $color-gray;
+  background-color: $color-light-gray;
   color: white;
   font-family: 'Raleway', 'Helvetica', sans-serif;
 }
@@ -62,6 +65,7 @@ $action-control-height: 48px;
   cursor: pointer;
   white-space: nowrap;
   box-sizing: border-box;
+  transition: 0.25s border-color;
 
   &:active,
   &:hover,
@@ -71,11 +75,15 @@ $action-control-height: 48px;
 
   &:hover,
   &:focus {
-    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.3);
+    border-color: #ffffff61;
   }
 
   &.button-blue {
     background-color: $color-blue-dark;
+  }
+
+  &.button-green {
+    background-color: $color-green-dark;
   }
 }
 

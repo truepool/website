@@ -1,26 +1,35 @@
 @import "../variables";
 
 main {
-  min-height: 99.6vh;
-  background-image: url("../img/pattern.svg");
-  background-size: cover;
-  background-position: center center;
+  min-height: calc(100vh - #{$header-height} - 10px);
   display: flex;
   flex-direction: column;
+  position: relative;
+
+  .glow {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background: #27333d;
+    border-radius: 5px;
+    top: 50vh;
+    left: 50vw;
+    box-shadow: 1px 1px 120px 200px #3f94d01f;
+  }
 
   .background-fade {
     height: 100%;
-    background: rgba(48, 53, 70, 0.5);
-    box-shadow: inset 0 0 100px rgb(0 0 0 / 50%);
+    background: rgb(34 37 45 / 50%);
+    box-shadow: inset 0 0 120px rgb(0 0 0 / 50%);
     flex: 1;
     display: flex;
     flex-direction: column;
   }
 
   .main-column {
+    position: relative;
     margin: 0 auto;
     display: flex;
-    flex-direction: column;
     height: 100%;
     align-items: center;
     flex: 1;
@@ -33,10 +42,14 @@ main {
     margin-top: 6vh;
   }
 
-  .lead {
+  .lead-image {
+    width: 45vw;
+    margin-right: 50px;
+  }
+
+  .lead-text {
     text-transform: uppercase;
     font-size: 4em;
-    text-align: center;
     margin: 0;
 
     @media screen and (max-width: $breakpoint-sm) {
@@ -45,42 +58,46 @@ main {
   }
 
   .subheader {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
     .subheader-pill {
       display: inline-block;
-      background: $color-green;
+      background: $color-blue-dark;
       padding: 4px 20px;
-    }
-  }
-
-  .news {
-    max-width: 500px;
-    padding: 10px 10px 10px 18px;
-    background-color: #636363;
-    margin-top: 1vh;
-    position: relative;
-    line-height: 1.2em;
-    border-left: 4px solid #ebb012;
-
-    .date {
-      opacity: 0.5;
+      margin-left: 2px;
     }
   }
 
   ul {
     list-style-type: square;
-    margin-top: 32px;
-    line-height: 1.9em;
+    margin-top: 42px;
+    line-height: 1.4em;
     padding-left: 10px;
     font-size: 1.05em;
-    margin-left: 25px;
+    margin-left: 10px;
     margin-right: 25px;
+
+    li {
+      margin-bottom: 10px;
+    }
   }
 
-  .action-form {
-    margin-top: 10.5vh;
+  a {
+    text-decoration: none;
+    border-bottom: 1px dotted white;
+    color: white;
+  }
+
+  .action-buttons {
+    margin-top: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    a {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 }

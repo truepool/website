@@ -1,0 +1,56 @@
+@import "../variables";
+
+.section-article {
+  color: black;
+  background: white;
+  margin: 0 auto;
+  padding: 42px 12% 140px;
+  box-sizing: border-box;
+
+  p {
+    line-height: 1.4em;
+  }
+
+  h2 {
+    margin-top: 1.3em;
+  }
+
+  code {
+    display: block;
+    border-left: 3px solid $color-blue-dark;
+    padding: 4px 20px;
+    white-space: pre-line;
+  }
+
+  img {
+    border: 1px solid #0000003d;
+  }
+
+  ul {
+    list-style-type: square;
+  }
+
+  a {
+    color: $color-blue-dark;
+
+    &:visited {
+      color: inherit;
+    }
+  }
+
+  .category-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9em;
+  }
+
+  h1 {
+    margin-top: 1.5em;
+    margin-bottom: 0.7em;
+  }
+
+  .title {
+    margin-top: 7px;
+    font-size: 2.8em;
+  }
+}
