@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Truepool.io</title>
+    <link>http://truepool.io/</link>
+    <description>Recent content on Truepool.io</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 13 Jun 2021 17:26:48 +0300</lastBuildDate><atom:link href="http://truepool.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How to use Chia on TrueNAS</title>
+      <link>http://truepool.io/kb/how-to-use-chia-on-truenas/</link>
+      <pubDate>Sun, 13 Jun 2021 17:26:48 +0300</pubDate>
+      
+      <guid>http://truepool.io/kb/how-to-use-chia-on-truenas/</guid>
+      <description>The silverfish (Lepisma saccharinum) is a species of small, primitive, wingless insect in the order Zygentoma (formerly Thysanura).
+Its common name derives from the animal&amp;rsquo;s silvery light grey colour, combined with the fish-like appearance of its movements. The scientific name (L. saccharinum) indicates that the silverfish&amp;rsquo;s diet consists of carbohydrates such as sugar or starches.
+ Unordered list list item another item   Ordered list list item another item  Silverfish are able to digest cellulose by themselves, thanks to the cellulase that is produced by its midgut.</description>
+    </item>
+    
+    <item>
+      <title>Join Truepool</title>
+      <link>http://truepool.io/pages/join-truepool/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://truepool.io/pages/join-truepool/</guid>
+      <description>Why Truepool? How to join Truepool? </description>
+    </item>
+    
+  </channel>
+</rss>

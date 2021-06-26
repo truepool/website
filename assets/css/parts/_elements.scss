@@ -1,57 +1,8 @@
-@import 'vendor/_normalize.css';
-@import 'variables';
-@import 'sections/section-main';
-@import 'sections/section-about-us';
-@import 'sections/section-operators';
-@import 'sections/header';
-@import 'sections/section-article';
-@import 'sections/section-news';
+@import "../variables";
+
 
 $control-bg: rgba(255, 255, 255, 0.05);
-
-body {
-  background-color: $color-light-gray;
-  color: white;
-  font-family: 'Raleway', 'Helvetica', sans-serif;
-}
-
 $action-control-height: 48px;
-
-.action-form {
-  margin-left: 10px;
-  margin-right: 10px;
-
-  h2 {
-    text-transform: uppercase;
-    font-size: 1.1em;
-  }
-
-  .form-body {
-    display: flex;
-    align-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  .email-form {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    margin-right: 70px;
-    margin-bottom: 15px;
-  }
-
-  input {
-    margin-right: 5px;
-    width: 197px;
-    flex-shrink: 0;
-    min-height: $action-control-height;
-    margin-bottom: 5px;
-  }
-
-  .button {
-    min-height: $action-control-height;
-  }
-}
 
 .button {
   color: #ffffffde;
@@ -111,8 +62,43 @@ input {
 }
 
 a.arrow {
-  content: url('../img/arrow.png');
+  content: url('/img/arrow.png');
   display: inline-block;
 }
 
+.action-form {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  h2 {
+    text-transform: uppercase;
+    font-size: 1.1em;
+  }
+
+  .form-body {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .email-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-right: 70px;
+    margin-bottom: 15px;
+  }
+
+  input {
+    margin-right: 5px;
+    width: 197px;
+    flex-shrink: 0;
+    min-height: $action-control-height;
+    margin-bottom: 5px;
+  }
+
+  .button {
+    min-height: $action-control-height;
+  }
+}
 

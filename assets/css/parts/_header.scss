@@ -63,6 +63,10 @@ header {
       }
     }
   }
+}
 
-
+.test-warning {
+  text-align: center;
+  background-color: darken($color-yellow, 10%);
+  padding: 6px 0 5px;
 }

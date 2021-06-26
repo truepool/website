@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://truepool.io/kb/</loc>
+    <lastmod>2021-06-13T17:26:48+03:00</lastmod>
+    <priority>0</priority>
+  </url><url>
+    <loc>http://truepool.io/kb/how-to-use-chia-on-truenas/</loc>
+    <lastmod>2021-06-13T17:26:48+03:00</lastmod>
+  </url><url>
+    <loc>http://truepool.io/</loc>
+    <lastmod>2021-06-13T17:26:48+03:00</lastmod>
+  </url><url>
+    <loc>http://truepool.io/categories/</loc>
+  </url><url>
+    <loc>http://truepool.io/pages/join-truepool/</loc>
+  </url><url>
+    <loc>http://truepool.io/pages/</loc>
+  </url><url>
+    <loc>http://truepool.io/tags/</loc>
+  </url>
+</urlset>

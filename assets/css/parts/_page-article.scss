@@ -1,11 +1,11 @@
 @import "../variables";
 
-.section-article {
+.page-article {
   color: black;
   background: white;
-  margin: 0 auto;
   padding: 42px 12% 140px;
   box-sizing: border-box;
+  flex-grow: 1;
 
   p {
     line-height: 1.4em;
@@ -34,7 +34,7 @@
     color: $color-blue-dark;
 
     &:visited {
-      color: inherit;
+      color: darken($color-blue-dark, 20%);
     }
   }
 
@@ -42,6 +42,10 @@
     text-decoration: none;
     text-transform: uppercase;
     font-size: 0.9em;
+
+    &:visited {
+      color: $color-blue-dark;
+    }
   }
 
   h1 {
