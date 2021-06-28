@@ -2,7 +2,7 @@ import { config } from '../config';
 import { palette } from '../palette';
 import { PoolSize } from './pool-size.interface';
 import { debounce } from '../utils/debounce';
-import fileSize from 'fileSize';
+import filesize from 'filesize';
 import { format } from 'date-fns'
 
 // TB
@@ -46,7 +46,7 @@ async function loadData(): Promise<PoolSize[]> {
 
 function setUnderManagementString(lastPoolSize: number): void {
   const underManagementEl = document.getElementById('under-management') as HTMLElement;
-  underManagementEl.querySelector('a').textContent = fileSize(lastPoolSize);
+  underManagementEl.querySelector('a').textContent = filesize(lastPoolSize);
   underManagementEl.classList.add('ready');
 }
 
@@ -55,7 +55,7 @@ function setChart(poolSizes: PoolSize[]): void {
     const series = poolSizes.map(({ datetime, size}) => {
       const sizeInUnits = size / chartBaseUnit;
       const formattedDate = format(datetime, 'LLL, do')
-      const formattedSize = fileSize(size);
+      const formattedSize = filesize(size);
       return [
         datetime,
         sizeInUnits,
