@@ -7,9 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{ $sass := resources.Get "css/main.scss" }}
     {{ $style := $sass | resources.ToCSS | resources.Fingerprint }}
+    {{ $js := resources.Get "js/index.ts" | js.Build "main.js" }}
+    <script type="text/javascript" src="{{ $js.RelPermalink }}" defer></script>
     <link rel="stylesheet" href="{{ $style.Permalink }}" integrity="{{ $style.Data.Integrity }}">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap" rel="stylesheet">
+    <link
+        rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap"></noscript>
+    {{ block "head" . }}{{ end }}
     <title>{{ block "title" . }}{{ .Site.Title }}{{ with .Title }} - {{ . }}{{ end }}{{ end }}</title>
     {{ template "_internal/google_analytics.html" . }}
 </head>

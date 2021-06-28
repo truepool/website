@@ -8,9 +8,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     
-    <link rel="stylesheet" href="http://truepool.io/css/main.e66bcb7ea9158a1e3a352b52c068dea243035888447143f8f5e21544ac21e8f8.css" integrity="sha256-5mvLfqkVih46NStSwGjeokMDWIhEcUP49eIVRKwh6Pg=">
+    
+    <script type="text/javascript" src="/main.js" defer></script>
+    <link rel="stylesheet" href="http://truepool.io/css/main.f239c89c3360e52a3f4b9240fc8681ea2af9099af96151f30233c75bbffba60c.css" integrity="sha256-8jnInDNg5So/S5JA/IaB6ir5CZr5YVHzAjPHW7/7pgw=">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap" rel="stylesheet">
+    <link
+        rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap"
+        as="style"
+        onload="this.onload=null;this.rel='stylesheet'"
+    >
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap"></noscript>
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     <title>Truepool.io - Truepool.io</title>
     
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-818G1CXP19"></script>
@@ -27,7 +38,7 @@ if (!doNotTrack) {
 </head>
 <body>
 <div class="test-warning">
-    Truepool is running on testnet.
+    Truepool is running on testnet
 </div>
 
 <header>
@@ -44,11 +55,11 @@ if (!doNotTrack) {
 
 
 
-    <main>
+    <main class="page-main">
         <div class="glow"></div>
         <div class="background-fade">
             <div class="main-column">
-                <img src="img/farm-plot.png" alt="Farm plot graphic" class="lead-image">
+                <img src="img/farm-plot2.png" alt="Farm plot graphic" class="lead-image">
                 <div>
                     <div class="intro-block">
                         <h1 class="lead-text">Truepool.io</h1>
@@ -59,10 +70,23 @@ if (!doNotTrack) {
                             </span>
 
                         <ul>
-                            <li><a href="#stats">158 PB</a> under management.</li>
-                            <li>From <a href="#section-operators">makers of TrueNAS</a>,<br>
+                            <li id="under-management">
+                                <a
+                                    class="same-page-link"
+                                    href="#stats"
+                                    onclick="return smoothlyScrollTo('#stats');"
+                                >158 PB</a> under management.
+                            </li>
+                            <li>From
+                                <a
+                                    href="#section-operators"
+                                    class="same-page-link"
+                                    onclick="return smoothlyScrollTo('#section-operators');"
+                                >
+                                    makers of TrueNAS
+                                </a>,<br>
                                 world's most popular NAS operating system.</li>
-                            <li>A pool that <a href="">supports open source</a>.</li>
+                            <li>A pool that <a href="/pages/join-truepool/">supports open source</a>.</li>
                         </ul>
 
                         <div class="action-buttons">
@@ -76,9 +100,7 @@ if (!doNotTrack) {
     </main>
 
     <section class="section-news">
-        <div class="chart-column" id="stats">
-            <img src="img/dummy-chart.png" class="dummy-chart">
-        </div>
+        <div class="chart-column" id="stats"></div>
 
         <div class="news-column">
             <h2>Latest News:</h2>
@@ -104,7 +126,7 @@ if (!doNotTrack) {
         <div class="operators">
             <div class="operator">
                 <div class="operator-header">
-                    <img class="operator-photo" src="img/kris.jpeg">
+                    <img class="operator-photo" src="img/operators/kris.jpeg">
                     <div class="operator-name">Kris</div>
                 </div>
                 <ul class="operator-description">
@@ -114,7 +136,7 @@ if (!doNotTrack) {
             </div>
             <div class="operator">
                 <div class="operator-header">
-                    <img class="operator-photo" src="img/jeremy.png">
+                    <img class="operator-photo" src="img/operators/jeremy.png">
                     <div class="operator-name">Jeremy</div>
                 </div>
                 <ul class="operator-description">
@@ -124,7 +146,7 @@ if (!doNotTrack) {
             </div>
             <div class="operator">
                 <div class="operator-header">
-                    <img class="operator-photo" src="img/jaron.jpg">
+                    <img class="operator-photo" src="img/operators/jaron.jpg">
                     <div class="operator-name">Jaron</div>
                 </div>
                 <ul class="operator-description">
@@ -134,7 +156,7 @@ if (!doNotTrack) {
             </div>
             <div class="operator">
                 <div class="operator-header">
-                    <img class="operator-photo" src="img/william.png">
+                    <img class="operator-photo" src="img/operators/william.png">
                     <div class="operator-name">William</div>
                 </div>
                 <ul class="operator-description">
@@ -143,7 +165,7 @@ if (!doNotTrack) {
             </div>
             <div class="operator">
                 <div class="operator-header">
-                    <img class="operator-photo" src="img/evgeny.jpg">
+                    <img class="operator-photo" src="img/operators/evgeny.jpg">
                     <div class="operator-name">Evgeny</div>
                 </div>
                 <ul class="operator-description">
@@ -163,33 +185,34 @@ if (!doNotTrack) {
         </div>
 
         <div class="action-form">
-            <h2>Join mailing list:</h2>
+    <h2>Join Our Mailing List:</h2>
 
-            <div class="form-body">
-                <form class="email-form" method="post" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl" target="_blank">
-                    <div style="display: none;">
-                        <input type="hidden" name="meta_web_form_id" value="1263940463" />
-                        <input type="hidden" name="meta_split_id" value="" />
-                        <input type="hidden" name="listname" value="awlist6052315" />
-                        <input type="hidden" name="redirect" value="https://www.aweber.com/thankyou-coi.htm?m=text" id="redirect_f6f78f2ef9d8907006c554d40c1988e8" />
+    <div class="form-body">
+        <form class="email-form" method="post" accept-charset="UTF-8" action="https://www.aweber.com/scripts/addlead.pl" target="_blank">
+            <div style="display: none;">
+                <input type="hidden" name="meta_web_form_id" value="1263940463" />
+                <input type="hidden" name="meta_split_id" value="" />
+                <input type="hidden" name="listname" value="awlist6052315" />
+                <input type="hidden" name="redirect" value="https://www.aweber.com/thankyou-coi.htm?m=text" id="redirect_f6f78f2ef9d8907006c554d40c1988e8" />
 
-                        <input type="hidden" name="meta_adtracking" value="Trupool.io_form" />
-                        <input type="hidden" name="meta_message" value="1" />
-                        <input type="hidden" name="meta_required" value="email" />
+                <input type="hidden" name="meta_adtracking" value="Trupool.io_form" />
+                <input type="hidden" name="meta_message" value="1" />
+                <input type="hidden" name="meta_required" value="email" />
 
-                        <input type="hidden" name="meta_tooltip" value="" />
-                    </div>
-                    <input type="email" name="email" placeholder="Email">
-                    <button type="submit" class="button button-blue" name="submit">Join List</button>
-                    <div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=jExszJwsDCxszA==" alt="" /></div>
-                </form>
-
-                <a href="https://t.me/truepool_chia" class="button telegram-btn">
-                    <img src="img/telegram-white.png">
-                    Join Telegram
-                </a>
+                <input type="hidden" name="meta_tooltip" value="" />
             </div>
-        </div>
+            <input type="email" name="email" placeholder="Email">
+            <button type="submit" class="button button-blue" name="submit">Join List</button>
+            <div style="display: none;"><img src="https://forms.aweber.com/form/displays.htm?id=jExszJwsDCxszA==" alt="" /></div>
+        </form>
+
+        <a href="https://t.me/truepool_chia" class="button telegram-btn">
+            <img src="img/telegram-white.png">
+            Join Telegram
+        </a>
+    </div>
+</div>
+
 
         <div class="for-other-inquiries">
             For other inquiries, please reach us at <a href="mailto:operators@truepool.io">operators@truepool.io</a>.

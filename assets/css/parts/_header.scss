@@ -7,6 +7,13 @@ header {
   align-items: center;
   border-bottom: 1px solid #ffffff2e;
   position: relative;
+  flex-wrap: wrap;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: flex-start;
+  }
 
   .title {
     text-transform: uppercase;
@@ -16,6 +23,7 @@ header {
     color: white;
     display: flex;
     align-items: center;
+    margin-right: 20px;
 
     .logo {
       margin-right: 15px;
@@ -27,15 +35,39 @@ header {
     list-style-type: none;
     padding: 0;
     display: flex;
+    margin: 10px 0;
+    align-items: center;
+
+    @media screen and (max-width: $breakpoint-md) {
+      margin-bottom: 0;
+    }
+
+    li {
+      margin: 0 10px 0 20px;
+
+      @media screen and (max-width: $breakpoint-sm) {
+        margin-left: 10px;
+      }
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        @media screen and (max-width: $breakpoint-sm) {
+          margin-right: 0;
+        }
+      }
+    }
 
     a {
       color: white;
-      margin: 0 10px 0 20px;
       padding: 7px 2px;
       text-decoration: none;
       box-sizing: border-box;
       border-bottom: 1px solid transparent;
       transition: 0.25s border-color;
+      display: inline-block;
 
       &:visited {
         color: inherit;
@@ -56,6 +88,12 @@ header {
       transition: 0.5s border-color;
       margin-right: 0;
       margin-left: 18px;
+      white-space: nowrap;
+      display: inline-block;
+
+      @media screen and (max-width: $breakpoint-sm) {
+        margin-left: 0;
+      }
 
       &:hover,
       &:focus {
@@ -67,6 +105,7 @@ header {
 
 .test-warning {
   text-align: center;
-  background-color: darken($color-yellow, 10%);
+  background-color: $color-yellow;
+  color: black;
   padding: 6px 0 5px;
 }

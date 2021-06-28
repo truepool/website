@@ -72,7 +72,7 @@ a.arrow {
 
   h2 {
     text-transform: uppercase;
-    font-size: 1.1em;
+    font-size: 1em;
   }
 
   .form-body {
@@ -102,3 +102,31 @@ a.arrow {
   }
 }
 
+.robot {
+  img {
+    height: 230px;
+  }
+
+  &.variant2 {
+    img {
+      height: 210px;
+    }
+  }
+
+  &.align-left {
+    float: left;
+    margin: 10px 20px 10px 5px;
+  }
+
+  &.align-right {
+    float: right;
+    margin: 10px 5px 10px 20px;
+  }
+
+  &.align-center {
+    margin: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

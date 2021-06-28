@@ -41,3 +41,5 @@ Another Big Header
 ==================
 
 The essential oil of the Japanese cedar Cryptomeria japonica has been investigated as a repellent and insecticide against L. saccharinum, with promising results: filter paper impregnated with a concentration of 0.01 mg/cm3 of essential oil repelled 80% of silverfish, and an exposure to vapours of 0.16 mg/cm3 for 10 hours caused a 100% mortality rate.
+
+{{< robot align="center" variant="1" >}}

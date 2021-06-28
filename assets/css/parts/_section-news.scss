@@ -4,9 +4,19 @@
   display: flex;
   padding: 80px 12%;
 
+  @media screen and (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
   .chart-column {
     flex-basis: 60%;
     margin-right: 30px;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
   }
 
   .news-column {
@@ -41,8 +51,12 @@
       margin-top: 5px;
     }
   }
-  
-  .dummy-chart {
-    width: 100%;
+
+  #stats {
+    display: none;
+
+    &.ready {
+      display: block;
+    }
   }
 }

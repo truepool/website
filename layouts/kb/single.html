@@ -1,8 +1,14 @@
 {{ define "main" }}
-    <article class="page-article">
-        <a href="/kb/" class="category-link">Knowledge Base</a>
-        <h1 class="title">{{ .Title }}</h1>
+    <div class="page-article">
+        <article>
+            <a href="/kb/" class="category-link">Knowledge Base</a>
+            <h1 class="title">{{ .Title }}</h1>
 
-        {{ .Content }}
-    </article>
+            {{ .Content }}
+        </article>
+
+        <footer>
+            {{ partial "contact-form.html" . }}
+        </footer>
+    </div>
 {{ end }}

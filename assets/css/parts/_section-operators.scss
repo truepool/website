@@ -4,6 +4,11 @@
   background-color: $color-blue-dark;
   padding: 80px 12% 55px;
 
+  @media screen and (max-width: $breakpoint-sm) {
+    padding-top: 40px;
+    padding-bottom: 25px;
+  }
+
   > h1 {
     margin: 0;
     margin-bottom: 60px;
@@ -11,6 +16,10 @@
     font-size: 3em;
     font-weight: 500;
     font-family: 'Satisfy', cursive;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-bottom: 30px;
+    }
   }
 
   .operators {
@@ -35,6 +44,7 @@
 
     @media screen and (max-width: $breakpoint-sm) {
       width: 100%;
+      margin-bottom: 30px;
     }
   }
 
