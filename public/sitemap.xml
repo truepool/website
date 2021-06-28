@@ -2,25 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://truepool.io/kb/</loc>
+    <loc>/kb/</loc>
     <lastmod>2021-06-13T17:26:48+03:00</lastmod>
     <priority>0</priority>
   </url><url>
-    <loc>http://truepool.io/kb/how-to-use-chia-on-truenas/</loc>
+    <loc>/kb/how-to-use-chia-on-truenas/</loc>
     <lastmod>2021-06-13T17:26:48+03:00</lastmod>
   </url><url>
-    <loc>http://truepool.io/kb/another-article/</loc>
+    <loc>/kb/another-article/</loc>
     <lastmod>2021-06-13T17:26:48+03:00</lastmod>
   </url><url>
-    <loc>http://truepool.io/</loc>
+    <loc>/</loc>
     <lastmod>2021-06-13T17:26:48+03:00</lastmod>
   </url><url>
-    <loc>http://truepool.io/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>http://truepool.io/pages/join-truepool/</loc>
+    <loc>/pages/join-truepool/</loc>
   </url><url>
-    <loc>http://truepool.io/pages/</loc>
+    <loc>/pages/</loc>
   </url><url>
-    <loc>http://truepool.io/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>
