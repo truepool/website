@@ -6,14 +6,8 @@
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __markAsModule = (target) => __defProp(target, "__esModule", {value: true});
-  var __commonJS = (callback, module) => () => {
-    if (!module) {
-      module = {exports: {}};
-      callback(module.exports, module);
-    }
-    return module.exports;
-  };
-  var __exportStar = (target, module, desc) => {
+  var __commonJS = (cb, mod) => () => (mod || cb((mod = {exports: {}}).exports, mod), mod.exports);
+  var __reExport = (target, module, desc) => {
     if (module && typeof module === "object" || typeof module === "function") {
       for (let key of __getOwnPropNames(module))
         if (!__hasOwnProp.call(target, key) && key !== "default")
@@ -22,15 +16,11 @@
     return target;
   };
   var __toModule = (module) => {
-    return __exportStar(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
+    return __reExport(__markAsModule(__defProp(module != null ? __create(__getProtoOf(module)) : {}, "default", module && module.__esModule && "default" in module ? {get: () => module.default, enumerable: true} : {value: module, enumerable: true})), module);
   };
 
   // node_modules/filesize/lib/filesize.min.js
   var require_filesize_min = __commonJS((exports, module) => {
-    /*!
-     2020 Jason Mulligan <jason.mulligan@avoidwork.com>
-     @version 6.3.0
-    */
     !function(e, t) {
       typeof exports == "object" && typeof module != "undefined" ? module.exports = t() : typeof define == "function" && define.amd ? define(t) : (e = typeof globalThis != "undefined" ? globalThis : e || self).filesize = t();
     }(exports, function() {
@@ -63,13 +53,13 @@
     });
   });
 
-  // ns-hugo:/Users/undsoft/projects/truepool/v3/assets/js/config.ts
+  // ns-hugo:/home/kris/truepool/website/assets/js/config.ts
   var config = {
     baseUrl: "https://truepool.io/v1/",
     daysForChart: 120
   };
 
-  // ns-hugo:/Users/undsoft/projects/truepool/v3/assets/js/palette.ts
+  // ns-hugo:/home/kris/truepool/website/assets/js/palette.ts
   var palette = {
     chart: {
       series: "#ebb012",
@@ -77,7 +67,7 @@
     }
   };
 
-  // ns-hugo:/Users/undsoft/projects/truepool/v3/assets/js/utils/debounce.ts
+  // ns-hugo:/home/kris/truepool/website/assets/js/utils/debounce.ts
   function debounce(callback, time) {
     let interval;
     return (...args) => {
@@ -89,7 +79,7 @@
     };
   }
 
-  // ns-hugo:/Users/undsoft/projects/truepool/v3/assets/js/main-page/main-page.ts
+  // ns-hugo:/home/kris/truepool/website/assets/js/main-page/main-page.ts
   var import_filesize = __toModule(require_filesize_min());
 
   // node_modules/date-fns/esm/_lib/toInteger/index.js
@@ -1612,7 +1602,7 @@
     return input.match(escapedStringRegExp)[1].replace(doubleQuoteRegExp, "'");
   }
 
-  // ns-hugo:/Users/undsoft/projects/truepool/v3/assets/js/main-page/main-page.ts
+  // ns-hugo:/home/kris/truepool/website/assets/js/main-page/main-page.ts
   var chartBaseUnit = 1024 ** 4;
   async function loadMainPage() {
     if (!isMainPage()) {
@@ -1720,7 +1710,7 @@
     return poolSizes;
   }
 
-  // ns-hugo:/Users/undsoft/projects/truepool/v3/assets/js/page-utils/smoothly-scroll-to.ts
+  // ns-hugo:/home/kris/truepool/website/assets/js/page-utils/smoothly-scroll-to.ts
   function smoothlyScrollTo(targetSelector) {
     if (!window.hasOwnProperty("scrollTo")) {
       return true;
@@ -1740,3 +1730,7 @@
   loadMainPage();
   window.smoothlyScrollTo = smoothlyScrollTo;
 })();
+/*!
+ 2020 Jason Mulligan <jason.mulligan@avoidwork.com>
+ @version 6.3.0
+*/

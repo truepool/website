@@ -22,7 +22,7 @@ Following it's open-source ethos, Truepool strives to run and manage itself in t
 
 These instructions apply only to the pre-released version of the official Chia pooling protocol. As such, caution should be taken before throwing a lot of resources into plotting before the official release.
 
-The pre-release version of the Chia pooling protocol can be obtained by installing the latest Chia code from the [pools.testnet9](https://github.com/Chia-Network/chia-blockchain/tree/pools.testnet9) branch of [chia-blockchain](https://github.com/Chia-Network/chia-blockchain/).
+The pre-release version of the Chia pooling protocol can be obtained by installing the latest Chia code from the [main](https://github.com/Chia-Network/chia-blockchain/tree/main) branch of [chia-blockchain](https://github.com/Chia-Network/chia-blockchain/).
 
 
 ### Connection Information
