@@ -18,21 +18,37 @@ Following it's open-source ethos, Truepool strives to run and manage itself in t
 
 # How to join Truepool?
 
-Connection Information:
+#### * WARNING *
+
+These instructions apply only to the pre-released version of the official Chia pooling protocol. As such, caution should be taken before throwing a lot of resources into plotting before the official release.
+
+The pre-release version of the Chia pooling protocol can be obtained by installing the latest Chia code from the [pools.testnet9](https://github.com/Chia-Network/chia-blockchain/tree/pools.testnet9) branch of [chia-blockchain](https://github.com/Chia-Network/chia-blockchain/).
+
+
+### Connection Information
 
 | URL  | Network | Status |
 | ------------ | ------------ | ------------ |
-| http://pool.truepool.io:9002  | testnet  | LIVE |
-| http://pool.truepool.io:9001 | mainnet | Coming soon! |
+| http://pool.truepool.io | LIVE | ALPHA Testing |
 
-Joining Truepool is easy.
+### Joining HOWTO
 
-First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the official [Chia Faucet](https://faucet.chia.net/ "Chia Faucet") for mainnet, or the Chia [Testnet Faucet](http://chia-faucet.com/). With some Mojo in place, you can run the following from the command-line:
+First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the official [Chia Faucet](https://faucet.chia.net/ "Chia Faucet"). With some Mojo in place, you can run the following from the command-line:
 
 ```bash
-# chia plotnft create -u http://pool.truepool.io:9001
+chia plotnft create -u http://pool.truepool.io -s pool
 ```
 
-Confirm that the pool information shows up, and then enter "y" to continue.
+Review the pool information and press "y" to accept. Then wait for confirmation.
 
-Once confirmed, you can run ```# chia plotnft show``` to confirm your plotting address, which can be used to create new plots for use by Truepool.
+```bash
+chia plotnft show
+```
+You should see **pool.truepool.io** listed, along with:
+**P2 singleton address** (pool contract address for plotting): **xch.....**
+Copy this address and begin plotting with:
+```bash
+chia plots create -c <contract address from above> -f <your farmers key> [other options]
+```
+
+Congratulations! Plots should now be created using truepool as your preferred pooling partner and farming happening automatically. Welcome to the TruePool farmers family!
