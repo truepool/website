@@ -29,7 +29,7 @@ The pre-release version of the Chia pooling protocol can be obtained by installi
 
 | URL  | Network | Status |
 | ------------ | ------------ | ------------ |
-| http://pool.truepool.io | LIVE | ALPHA Testing |
+| https://pool.truepool.io | LIVE | ALPHA Testing |
 
 ### Joining HOWTO
 

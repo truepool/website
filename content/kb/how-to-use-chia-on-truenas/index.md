@@ -6,40 +6,30 @@ draft: false
 slug: how-to-use-chia-on-truenas
 ---
 
-{{< page-img "*silverfish*" "Those cupcakes are way overcooked!" >}}
+# How to use Chia on TrueNAS
 
-The silverfish (Lepisma saccharinum) is a species of small, primitive, wingless insect in the order Zygentoma (formerly Thysanura).  
-Its common name derives from the animal's silvery light grey colour, combined with the fish-like appearance of its movements. The scientific name (L. saccharinum) indicates that the silverfish's diet consists of carbohydrates such as sugar or starches.
+{{< robot align="right" variant="1" >}}
 
-*   Unordered
-*   list
-*   list item
-*   another item
+## TrueNAS SCALE 21.08
 
-1.  Ordered
-2.  list
-3.  list item
-4.  another item
 
-Silverfish are able to digest cellulose by themselves, thanks to the cellulase that is produced by its midgut.  
-They consume matter that contains polysaccharides, such as starches and dextrin in adhesives.  
-These include book bindings, carpet, clothing, coffee, dandruff, glue, hair, some paints, paper, photos, plaster, and sugar. Silverfish can also cause damage to tapestries.
+The preferred method of running Chia on TrueNAS is to use the containerized application on [TrueNAS SCALE 21.06](https://www.truenas.com/truenas-scale/) and later. 
 
-What do they eat?
------------------
+Chia is available as an app in the official TrueNAS SCALE Applications repository
 
-Other substances they may eat include cotton, dead insects, linen, silk, leftover crumbs, or even their own exuviae (moulted exoskeleton). During famine, a silverfish may even consume leather and synthetic fabrics. Silverfish can live for a year or more without eating if water is available.
+{{< page-img "*chia-truenas*" "SCALE Setup Process" >}}
 
-```
-rm -rf / shutdown now
-```
+Setup of Chia on TrueNAS scale is very straight-forward.
 
-Silverfish are considered [household pests](/), due to their consumption and destruction of property.  
-However, although they are responsible for the contamination of food and other types of damage, they do not transmit disease. Earwigs, house centipedes, and spiders such as the spitting spider Scytodes thoracica are known to be predators of silverfish.
+1. Navigate to the "Apps" section
+2. Locate Chia and click *install*
+3. Give the application a name, I.E. chia1
+4. Review the other pages, and click "Submit" when finished.
 
-Another Big Header
-==================
+To use Chia, you can click the installed App, and select the "Shell" option from the TrueNAS UI
 
-The essential oil of the Japanese cedar Cryptomeria japonica has been investigated as a repellent and insecticide against L. saccharinum, with promising results: filter paper impregnated with a concentration of 0.01 mg/cm3 of essential oil repelled 80% of silverfish, and an exposure to vapours of 0.16 mg/cm3 for 10 hours caused a 100% mortality rate.
+#### NOTES
 
-{{< robot align="center" variant="1" >}}
+You'll want to make sure you setup proper port forwarding for port 8444 so that your Chia node can be reached by other clients on the network.
+
+New users to Chia will want to get started reading some of the [official Chia wiki documentation](https://github.com/Chia-Network/chia-blockchain/wiki).

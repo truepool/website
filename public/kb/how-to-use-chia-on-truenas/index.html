@@ -57,37 +57,28 @@ if (!doNotTrack) {
             <a href="/kb/" class="category-link">Knowledge Base</a>
             <h1 class="title">How to use Chia on TrueNAS</h1>
 
-            
-<img src="/kb/how-to-use-chia-on-truenas/silverfish.jpg" alt="(.Get 1)" />
-
-<p>The silverfish (Lepisma saccharinum) is a species of small, primitive, wingless insect in the order Zygentoma (formerly Thysanura).<br>
-Its common name derives from the animal&rsquo;s silvery light grey colour, combined with the fish-like appearance of its movements. The scientific name (L. saccharinum) indicates that the silverfish&rsquo;s diet consists of carbohydrates such as sugar or starches.</p>
-<ul>
-<li>Unordered</li>
-<li>list</li>
-<li>list item</li>
-<li>another item</li>
-</ul>
-<ol>
-<li>Ordered</li>
-<li>list</li>
-<li>list item</li>
-<li>another item</li>
-</ol>
-<p>Silverfish are able to digest cellulose by themselves, thanks to the cellulase that is produced by its midgut.<br>
-They consume matter that contains polysaccharides, such as starches and dextrin in adhesives.<br>
-These include book bindings, carpet, clothing, coffee, dandruff, glue, hair, some paints, paper, photos, plaster, and sugar. Silverfish can also cause damage to tapestries.</p>
-<h2 id="what-do-they-eat">What do they eat?</h2>
-<p>Other substances they may eat include cotton, dead insects, linen, silk, leftover crumbs, or even their own exuviae (moulted exoskeleton). During famine, a silverfish may even consume leather and synthetic fabrics. Silverfish can live for a year or more without eating if water is available.</p>
-<pre><code>rm -rf / shutdown now
-</code></pre><p>Silverfish are considered <a href="/">household pests</a>, due to their consumption and destruction of property.<br>
-However, although they are responsible for the contamination of food and other types of damage, they do not transmit disease. Earwigs, house centipedes, and spiders such as the spitting spider Scytodes thoracica are known to be predators of silverfish.</p>
-<h1 id="another-big-header">Another Big Header</h1>
-<p>The essential oil of the Japanese cedar Cryptomeria japonica has been investigated as a repellent and insecticide against L. saccharinum, with promising results: filter paper impregnated with a concentration of 0.01 mg/cm3 of essential oil repelled 80% of silverfish, and an exposure to vapours of 0.16 mg/cm3 for 10 hours caused a 100% mortality rate.</p>
-<div class="robot align-center variant1">
+            <h1 id="how-to-use-chia-on-truenas">How to use Chia on TrueNAS</h1>
+<div class="robot align-right variant1">
     <img src="/img/robots/robot1.png" alt="Robot" />
 </div>
 
+<h2 id="truenas-scale-2108">TrueNAS SCALE 21.08</h2>
+<p>The preferred method of running Chia on TrueNAS is to use the containerized application on <a href="https://www.truenas.com/truenas-scale/">TrueNAS SCALE 21.06</a> and later.</p>
+<p>Chia is available as an app in the official TrueNAS SCALE Applications repository</p>
+
+<img src="/kb/how-to-use-chia-on-truenas/chia-truenas.gif" alt="(.Get 1)" />
+
+<p>Setup of Chia on TrueNAS scale is very straight-forward.</p>
+<ol>
+<li>Navigate to the &ldquo;Apps&rdquo; section</li>
+<li>Locate Chia and click <em>install</em></li>
+<li>Give the application a name, I.E. chia1</li>
+<li>Review the other pages, and click &ldquo;Submit&rdquo; when finished.</li>
+</ol>
+<p>To use Chia, you can click the installed App, and select the &ldquo;Shell&rdquo; option from the TrueNAS UI</p>
+<h4 id="notes">NOTES</h4>
+<p>You&rsquo;ll want to make sure you setup proper port forwarding for port 8444 so that your Chia node can be reached by other clients on the network.</p>
+<p>New users to Chia will want to get started reading some of the <a href="https://github.com/Chia-Network/chia-blockchain/wiki">official Chia wiki documentation</a>.</p>
 
         </article>
 
