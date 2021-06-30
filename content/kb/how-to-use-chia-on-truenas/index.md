@@ -8,7 +8,7 @@ slug: how-to-use-chia-on-truenas
 
 # How to use Chia on TrueNAS
 
-{{< robot align="right" variant="1" >}}
+{{< robot align="right" variant="2" >}}
 
 ## TrueNAS SCALE 21.08
 

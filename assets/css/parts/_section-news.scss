@@ -50,6 +50,16 @@
       text-align: right;
       margin-top: 5px;
     }
+
+    a {
+      color: white;
+
+      &:visited,
+      &:active,
+      &:focus {
+        color: white;
+      }
+    }
   }
 
   #stats {

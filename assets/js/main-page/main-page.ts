@@ -9,6 +9,7 @@ import { format } from 'date-fns'
 const chartBaseUnit = 1024 ** 4;
 
 export async function loadMainPage(): Promise<void> {
+  return;
   if (!isMainPage()) {
     return;
   }
