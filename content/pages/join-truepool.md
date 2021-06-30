@@ -29,14 +29,14 @@ The pre-release version of the Chia pooling protocol can be obtained by installi
 
 | URL  | Network | Status |
 | ------------ | ------------ | ------------ |
-| http://pool.truepool.io | LIVE | ALPHA Testing |
+| https://pool.truepool.io | LIVE | ALPHA Testing |
 
 ### Joining HOWTO
 
 First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the official [Chia Faucet](https://faucet.chia.net/ "Chia Faucet"). With some Mojo in place, you can run the following from the command-line:
 
 ```bash
-chia plotnft create -u http://pool.truepool.io -s pool
+chia plotnft create -u https://pool.truepool.io -s pool
 ```
 
 Review the pool information and press "y" to accept. Then wait for confirmation.
