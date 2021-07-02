@@ -12,7 +12,7 @@ aliases:
 
 Truepool is unique in that it is one of the only pools run by a team of experienced Crypto and Open Source storage experts, that actively contributes back to Open Source development.
 
-10% of all XCH operator fees are donated back to the [TrueNAS project](http://www.truenas.com "TrueNAS project"), to support its continuted growth and success as the world's #1 software defined storage system.
+25% of all XCH operator fees are donated back to the [TrueNAS project](http://www.truenas.com "TrueNAS project"), to support its continuted growth and success as the world's #1 software defined storage system.
 
 Following it's open-source ethos, Truepool strives to run and manage itself in the best spirit of open source collaboration, by providing [plugins](https://github.com/truenas/charts/tree/master/charts/chia) and other [helpful resources](https://github.com/kmoore134/iocage-plugin-chia) to prospective Chia farmers running TrueNAS CORE and SCALE.
 
