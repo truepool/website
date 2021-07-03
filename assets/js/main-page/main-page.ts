@@ -3,13 +3,12 @@ import { palette } from '../palette';
 import { PoolSize } from './pool-size.interface';
 import { debounce } from '../utils/debounce';
 import filesize from 'filesize';
-import { format } from 'date-fns'
+import { differenceInDays, format, parseISO } from 'date-fns'
 
 // TB
 const chartBaseUnit = 1024 ** 4;
 
 export async function loadMainPage(): Promise<void> {
-  return;
   if (!isMainPage()) {
     return;
   }
@@ -20,7 +19,7 @@ export async function loadMainPage(): Promise<void> {
     return;
   }
 
-  setUnderManagementString(poolSizes[poolSizes.length - 1].size);
+  setUnderManagementString(poolSizes[0].size);
   setChart(poolSizes);
 }
 
@@ -29,16 +28,27 @@ function isMainPage(): boolean {
 }
 
 async function loadData(): Promise<PoolSize[]> {
-  return new Promise(resolve => resolve(generateFakeData(config.daysForChart)));
   try {
-    const response = await window.fetch(`${config.baseUrl}/pool/size?days=${config.daysForChart}`);
+    const daysForChart = pickDaysForChart();
+    const response = await window.fetch(`${config.baseUrl}/pool/size?days=${daysForChart}`);
 
     if (!response.ok) {
-      console.error(response.statusText);
+      console.error(response);
       return [];
     }
 
-    return response.json();
+    const parsedResponse = await response.json();
+    if (!Array.isArray(parsedResponse)) {
+      console.log('Unexpected response', parsedResponse);
+      return [];
+    }
+
+    return parsedResponse.map((size) => {
+      return {
+        ...size,
+        datetime: parseISO(size.datetime),
+      };
+    })
   } catch (e) {
     console.log(e);
     return [];
@@ -117,15 +127,7 @@ function setChart(poolSizes: PoolSize[]): void {
   google.charts.setOnLoadCallback(drawChart);
 }
 
-function generateFakeData(days: number): PoolSize[] {
-  const poolSizes: PoolSize[] = [];
-  for (let i = days; i--; i >= 0) {
-    // 20% random size
-    const datetime = new Date();
-    datetime.setDate(-i);
-    const size = Math.round(((days - i) * 0.8 + (days - i) * 0.2 * Math.random()) * chartBaseUnit);
-    poolSizes.push({ datetime, size });
-  }
-
-  return poolSizes;
+function pickDaysForChart(): number {
+  const daysSinceStart = differenceInDays(new Date(), config.startingDay);
+  return Math.min(daysSinceStart, config.daysForChart);
 }
