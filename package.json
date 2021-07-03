@@ -10,7 +10,8 @@
   },
   "homepage": "https://github.com/truepool/website#readme",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "start": "HUGO_ENV=development&& hugo server"
   },
   "dependencies": {
     "@types/google.visualization": "0.0.66",

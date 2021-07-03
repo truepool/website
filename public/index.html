@@ -7,10 +7,16 @@
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
+
     
     
-    <script type="text/javascript" src="/main.js" defer></script>
-    <link rel="stylesheet" href="/css/main.37c3b71c2b120fc04da0e81c7b53dabaa4d528e6301e0c307db9d5dff695dd6c.css" integrity="sha256-N8O3HCsSD8BNoOgce1PauqTVKOYwHgwwfbnV3/aV3Ww=">
+
+    
+        
+        
+    
+    <script type="text/javascript" src="/main.min.js" defer></script>
+    <link rel="stylesheet" href="/css/main.min.59c94709ace67429abf2c9585a12f1499d76bb7c49865ae1ad80eb9a1dcc36df.css" integrity="sha256-WclHCazmdCmr8slYWhLxSZ12u3xJhlrhrYDrmh3MNt8=">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         rel="preload"
@@ -19,6 +25,18 @@
         onload="this.onload=null;this.rel='stylesheet'"
     >
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600&family=Satisfy&display=swap"></noscript>
+
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
+    <link rel="manifest" href="/img/icons/site.webmanifest">
+    <link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/img/icons/browserconfig.xml">
+    <meta name="theme-color" content="#1f1f1f">
+
     
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -43,8 +61,7 @@ if (!doNotTrack) {
 
 <header>
     <a class="title" href="/">
-        <img src="img/leaf.png" class="logo">
-        Truepool.io
+        <img src="img/logo-with-text.png" class="logo">
     </a>
     <ul class="menu">
         <li><a href="/">About Truepool</a></li>
@@ -80,13 +97,19 @@ if (!doNotTrack) {
                             </li>
                             <li>From
                                 <a
-                                    href="#section-operators"
                                     class="same-page-link"
+                                    href="#section-operators"
+                                    onclick="return smoothlyScrollTo('#section-operators');"
+                                >makers</a> of
+                                <a
+                                    class="truenas-logo"
+                                    href="#section-operators"
                                     onclick="return smoothlyScrollTo('#section-operators');"
                                 >
-                                    makers of TrueNAS
-                                </a>,<br>
-                                world's most popular NAS operating system.</li>
+                                    <img src="/img/truenas-logo.png" />
+                                </a>
+                                <br>
+                                <span class="worlds-most-popular-nas">world's most popular NAS operating system.</span></li>
                             <li>A pool that <a href="/pages/join-truepool/">supports open source</a>.</li>
                         </ul>
 
@@ -217,7 +240,9 @@ if (!doNotTrack) {
 
         <div class="for-other-inquiries">
             For other inquiries, please reach us at <a href="mailto:operators@truepool.io">operators@truepool.io</a>.<br>
-            Barak Moore &mdash; artist for TruePool and creator of the TrueNas Stencil pack.
+            <br>
+            TrueNAS is a registered trademark of iXsystems Inc, used with permission. <br>
+            Barak Moore &mdash; artist for TruePool and creator of the TrueNAS Stencil pack.
         </div>
     </section>
 

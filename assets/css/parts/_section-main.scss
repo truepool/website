@@ -102,6 +102,35 @@ main {
     }
   }
 
+  .truenas-logo {
+    text-decoration: none;
+    border-bottom: none;
+
+    img {
+      height: 30px;
+      margin-left: 5px;
+      vertical-align: middle;
+      position: relative;
+      bottom: 4px;
+
+      @media screen and (max-width: $breakpoint-sm) {
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .worlds-most-popular-nas {
+    font-size: 0.95em;
+    margin-left: 12px;
+    display: inline-block;
+    margin-top: 5px;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-left: 0;
+    }
+  }
+
   a {
     text-decoration: none;
     color: white;

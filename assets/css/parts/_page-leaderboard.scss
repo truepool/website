@@ -1,0 +1,23 @@
+.page-leaderboard {
+  #leaderboard {
+    width: 100%;
+
+    &.ready {
+      .loading {
+        display: none;
+      }
+    }
+
+    .loading td {
+      padding: 12px 10px;
+    }
+
+    .no-points {
+      opacity: 0.6;
+    }
+
+    .launcher-id {
+      word-break: break-all;
+    }
+  }
+}
