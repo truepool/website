@@ -44,6 +44,9 @@ function setLeaderboard(farmers: Farmer[]): void {
 
   farmers.forEach((farmer) => {
     const trClass = farmer.points <= 0 ? 'no-points' : '';
-    tbody.innerHTML += `<tr class="${trClass}"><td>${farmer.points}</td><td>${farmer.launcher_id}</td></tr>`
+    tbody.innerHTML += `<tr class="${trClass}">
+      <td>${farmer.points}</td>
+      <td class="launcher-id">${farmer.launcher_id}</td>
+    </tr>`
   });
 }
