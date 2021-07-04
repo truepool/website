@@ -24,6 +24,15 @@ These instructions apply only to the pre-released version of the official Chia p
 
 The pre-release version of the Chia pooling protocol can be obtained by installing the latest Chia code from the [main](https://github.com/Chia-Network/chia-blockchain/tree/main) branch of [chia-blockchain](https://github.com/Chia-Network/chia-blockchain/).
 
+Note: Building the latest image for docker is easy as well:
+
+```
+git clone https://github.com/chia-network/chia-docker
+cd chia-docker
+docker build --network host --build-arg BRANCH="main" -t chia-main .
+```
+After successful build, the **chia-main:latest** image can be used.
+
 
 ### Connection Information
 
