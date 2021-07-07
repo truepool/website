@@ -39,10 +39,10 @@ You can view and build from source on our [GitHub repository](https://github.com
 
 Once the container is running the commands used most often will be:
 
-chia - The main Chia program
-chia_plot - The MadMax Plotter
-plotman - The tool for enabling plotman monitoring / plotting
-/farmr - Location for the farmr chia monitoring bot/service.
+- chia - The main Chia program
+- chia_plot - The MadMax Plotter
+- plotman - The tool for enabling plotman monitoring / plotting
+- /farmr - Location for the farmr chia monitoring bot/service.
 
 ## Runtime options
 
