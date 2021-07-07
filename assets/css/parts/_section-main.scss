@@ -43,8 +43,6 @@ main {
   }
 
   .intro-block {
-    margin-top: 6vh;
-
     @media screen and (max-width: $breakpoint-sm) {
       margin-top: 20px;
     }
@@ -82,7 +80,7 @@ main {
 
   ul {
     list-style-type: square;
-    margin-top: 42px;
+    margin-top: 44px;
     line-height: 1.4em;
     padding-left: 10px;
     font-size: 1.05em;
@@ -165,7 +163,7 @@ main {
   }
 
   .action-buttons {
-    margin-top: 72px;
+    margin-top: 61px;
     display: flex;
     flex-direction: row;
     align-items: center;
