@@ -21,5 +21,7 @@
     <loc>/pages/</loc>
   </url><url>
     <loc>/tags/</loc>
+  </url><url>
+    <loc>/pages/truepool-docker-image/</loc>
   </url>
 </urlset>

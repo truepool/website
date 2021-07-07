@@ -1,6 +1,5 @@
 ---
 title: "TruePool Docker Image"
-date: 2021-07-13T17:26:48+03:00
 category: TrueNAS
 draft: false
 slug: truepool-docker-image
