@@ -131,6 +131,29 @@ main {
     }
   }
 
+  .join-truepool {
+    margin-right: 22px;
+  }
+
+  .telegram-icon {
+    border-bottom: none;
+    margin-right: 18px;
+    margin-top: 2px;
+
+    img {
+      height: 30px;
+    }
+  }
+
+  .discord-icon {
+    border-bottom: none;
+    margin-top: 2px;
+
+    img {
+      height: 30px;
+    }
+  }
+
   a {
     text-decoration: none;
     color: white;
@@ -144,20 +167,12 @@ main {
   .action-buttons {
     margin-top: 72px;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
 
     @media screen and (max-width: $breakpoint-sm) {
       margin-top: 30px;
       margin-bottom: 30px;
-    }
-
-    a {
-      margin-bottom: 10px;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {{ define "main" }}
-    <article class="page-list">
+    <div class="page-list">
         <h1 class="title">Knowledge Base</h1>
         {{ range .Pages.GroupByParam "category" }}
             <h2 class="category-name">{{ .Key }}</h2>
@@ -7,5 +7,5 @@
                 <a href="{{ .RelPermalink }}" class="article-link">{{ .Title }}</a>
             {{ end }}
         {{ end }}
-    </article>
+    </div>
 {{ end }}
