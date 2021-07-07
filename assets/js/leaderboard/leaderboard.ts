@@ -4,6 +4,10 @@ import { PoolSize } from '../main-page/pool-size.interface';
 import { Farmer } from './farmer.interface';
 
 export async function loadLeaderboard(): Promise<void> {
+  if (!isLeaderboard()) {
+    return;
+  }
+
   let farmers = await loadData();
 
   if (!farmers.length) {

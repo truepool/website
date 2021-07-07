@@ -86,6 +86,11 @@ if (!doNotTrack) {
 <h4 id="-warning-">* WARNING *</h4>
 <p>These instructions apply only to the pre-released version of the official Chia pooling protocol. As such, caution should be taken before throwing a lot of resources into plotting before the official release.</p>
 <p>The pre-release version of the Chia pooling protocol can be obtained by installing the latest Chia code from the <a href="https://github.com/Chia-Network/chia-blockchain/tree/main">main</a> branch of <a href="https://github.com/Chia-Network/chia-blockchain/">chia-blockchain</a>.</p>
+<p>Note: Building the latest image for docker is easy as well:</p>
+<pre><code>git clone https://github.com/chia-network/chia-docker
+cd chia-docker
+docker build --network host --build-arg BRANCH=&quot;main&quot; -t chia-main .
+</code></pre><p>After successful build, the <strong>chia-main:latest</strong> image can be used.</p>
 <h3 id="connection-information">Connection Information</h3>
 <table>
 <thead>
