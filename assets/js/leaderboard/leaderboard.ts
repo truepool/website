@@ -46,9 +46,10 @@ function setLeaderboard(farmers: Farmer[]): void {
 
   const tbody = leaderboardTable.querySelector('tbody');
 
-  farmers.forEach((farmer) => {
+  farmers.forEach((farmer, i) => {
     const trClass = farmer.points <= 0 ? 'no-points' : '';
     tbody.innerHTML += `<tr class="${trClass}">
+      <td>#${i+1}</td>
       <td>${farmer.points}</td>
       <td class="launcher-id">${farmer.launcher_id}</td>
     </tr>`
