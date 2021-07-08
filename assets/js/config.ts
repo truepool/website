@@ -5,7 +5,7 @@ const config = {
 };
 
 // TODO: Do something better
-if (window.location.href !== 'truepool.io') {
+if (window.location.host !== 'truepool.io' && window.location.host !== 'www.truepool.io') {
   config.baseUrl = 'https://dev.truepool.io/v1'
 }
 
