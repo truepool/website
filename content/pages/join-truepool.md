@@ -14,31 +14,19 @@ Truepool is unique in that it is one of the only pools run by a team of experien
 
 25% of all XCH operator fees are donated back to the [TrueNAS project](http://www.truenas.com "TrueNAS project"), to support its continuted growth and success as the world's #1 software defined storage system.
 
-Following it's open-source ethos, Truepool strives to run and manage itself in the best spirit of open source collaboration, by providing [plugins](https://github.com/truenas/charts/tree/master/charts/chia) and other [helpful resources](https://github.com/kmoore134/iocage-plugin-chia) to prospective Chia farmers running TrueNAS CORE and SCALE.
+Following it's open-source ethos, Truepool strives to run and manage itself in the best spirit of open source collaboration, by providing [docker images](https://www.truepool.io/kb/truepool-docker-image/) and other [helpful resources](https://github.com/kmoore134/iocage-plugin-chia) to prospective Chia farmers running TrueNAS CORE and SCALE.
 
 # How to join Truepool?
 
-#### * WARNING *
+TruePool can be joined now by using the connection instructions below on any official Chia client running version 1.2.0 and later.
 
-These instructions apply only to the pre-released version of the official Chia pooling protocol. As such, caution should be taken before throwing a lot of resources into plotting before the official release.
-
-The pre-release version of the Chia pooling protocol can be obtained by installing the latest Chia code from the [main](https://github.com/Chia-Network/chia-blockchain/tree/main) branch of [chia-blockchain](https://github.com/Chia-Network/chia-blockchain/).
-
-Note: Building the latest image for docker is easy as well:
-
-```
-git clone https://github.com/chia-network/chia-docker
-cd chia-docker
-docker build --network host --build-arg BRANCH="main" -t chia-main .
-```
-After successful build, the **chia-main:latest** image can be used.
-
+As a further service to our community and TrueNAS users, we also publish a [TruePool docker image](https://www.truepool.io/kb/truepool-docker-image/), that includes not only the latest Chia farmer, but also tools such as MadMax Plotter, PlotMan and Farmr.net agents. 
 
 ### Connection Information
 
 | URL  | Network | Status |
 | ------------ | ------------ | ------------ |
-| https://pool.truepool.io | LIVE | ALPHA Testing |
+| https://pool.truepool.io | mainnet | Online |
 
 ### Joining HOWTO
 
