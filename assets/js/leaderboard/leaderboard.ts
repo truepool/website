@@ -26,7 +26,7 @@ function isLeaderboard(): boolean {
 
 async function loadData(): Promise<Farmer[]> {
   try {
-    const response = await window.fetch(`${config.baseUrl}/pool/farmer`);
+    const response = await window.fetch(`${config.baseUrl}/pool/farmer/`);
 
     if (!response.ok) {
       console.error(response);
