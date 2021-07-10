@@ -1,0 +1,11 @@
+<div *ngIf="isLoading; else loaded" class="loading">
+  Loading...
+</div>
+<ng-template #loaded>
+  <div *ngIf="error; else content" class="error">
+    {{ error }}
+  </div>
+  <ng-template #content>
+    <ng-content></ng-content>
+  </ng-template>
+</ng-template>

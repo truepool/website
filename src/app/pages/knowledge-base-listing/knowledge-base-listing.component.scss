@@ -1,0 +1,28 @@
+@import "../../../assets/css/mixins";
+
+:host {
+  @include page();
+}
+
+.category-name {
+  margin-top: 2em;
+}
+
+.title {
+  margin-top: 7px;
+  font-size: 2.8em;
+}
+
+a {
+  display: block;
+  color: $color-blue-dark;
+  margin-bottom: 20px;
+
+  &:visited {
+    color: $color-blue-dark;
+  }
+}
+
+.article-link {
+  font-size: 1.25em;
+}

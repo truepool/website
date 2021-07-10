@@ -1,0 +1,12 @@
+@import "../../../../assets/css/variables";
+
+.search-form {
+  display: flex;
+}
+
+.search-input {
+  border: 1px solid $color-gray-dark;
+  width: 600px;
+  flex-shrink: 1;
+  margin-right: 10px;
+}

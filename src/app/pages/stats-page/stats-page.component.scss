@@ -1,0 +1,70 @@
+@import "../../../assets/css/mixins";
+@import "../../../assets/css/variables";
+
+:host {
+  @include page();
+}
+
+.pool-size-chart-container {
+  height: 34vh;
+}
+
+.big-numbers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-top: 28px;
+  margin-bottom: 20px;
+}
+
+.break {
+  height: 1px;
+  flex-basis: 100%;
+  visibility: hidden;
+  display: block;
+}
+
+.big-number {
+  display: flex;
+  flex-direction: column;
+  width: 285px;
+  background-color: $color-blue-dark;
+  text-align: center;
+  padding: 32px 10px;
+  box-sizing: border-box;
+  color: white;
+  margin-bottom: 20px;
+  justify-content: center;
+
+
+  .big-number-value {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+
+    &.longer-value {
+      font-size: 2.4rem;
+      line-height: 3rem;
+    }
+
+    &.shorter-value {
+      font-size: 3.5rem;
+      line-height: 3rem;
+    }
+  }
+
+  .big-number-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+.pool-space-header {
+  margin-bottom: 0;
+}
+
+.stats-table {
+  td {
+    word-break: break-all;
+  }
+}

@@ -1,0 +1,57 @@
+<h2>Search for a farmer:</h2>
+<form class="search-form" (submit)="onSearchSubmitted($event)">
+  <input class="search-input" placeholder="Launcher ID" [formControl]="searchControl"/>
+
+  <button [disabled]="!searchControl.value" class="button button-blue">Search</button>
+</form>
+
+<app-content-loader
+  *appLet="state$ | async as state"
+  [isLoading]="state.isSearching"
+  [error]="state.error"
+>
+  <div *ngIf="state.result" class="search-results">
+    <h4>Farmer</h4>
+    <table class="details-view details-view-blue table-striped">
+      <tr>
+        <th>Display Name</th>
+        <td>{{ state.result.farmer.display_name || 'Not set' }}</td>
+      </tr>
+      <tr>
+        <th>Points</th>
+        <td>
+          {{ state.result.farmer.points | number }}
+          ({{ state.result.farmer.points_percentage / 100 | percent }})
+        </td>
+      </tr>
+      <tr>
+        <th>Difficulty</th>
+        <td>{{ state.result.farmer.difficulty | number }}</td>
+      </tr>
+    </table>
+
+    <h4>Payouts</h4>
+
+    <ng-container *ngIf="!state.result.payouts?.length; else payoutsTable">
+      This farmer has no payouts.
+    </ng-container>
+    <ng-template #payoutsTable>
+      <table>
+        <thead>
+          <tr>
+            <!-- TODO: Date -->
+            <th>Amount</th>
+            <th>Transaction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payout of state.result.payouts">
+            <!-- TODO: Date -->
+            <td>{{ payout.amount | xch }}</td>
+            <td>{{ payout.transaction }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </div>
+</app-content-loader>

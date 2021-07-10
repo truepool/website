@@ -1,0 +1,13 @@
+<div class="page-content">
+  <h1 class="page-title">Knowledge Base</h1>
+
+  <div *ngFor="let category of (groupedContentDirectory | keyvalue)" class="category">
+    <h2 class="category-name">{{ category.key }}</h2>
+
+    <a
+      *ngFor="let article of category.value"
+      [routerLink]="'/' + article.url"
+      class="article-link"
+    >{{ article.title }}</a>
+  </div>
+</div>

@@ -1,0 +1,99 @@
+<div *appLet="statsState$ | async as statsState" class="page-content">
+  <div class="page-title">Stats</div>
+
+  <app-content-loader [isLoading]="statsState.isLoading" [error]="statsState.error">
+    <div *ngIf="statsState.stats as stats" class="big-numbers">
+      <div class="big-number">
+        <div class="big-number-value shorter-value">{{ stats.poolMembers | number }}</div>
+        <div class="big-number-title">Pool Members</div>
+      </div>
+      <div class="big-number">
+        <div class="big-number-value longer-value">{{ stats.lastReward | date }}</div>
+        <div class="big-number-title">Last Reward</div>
+      </div>
+      <div class="big-number">
+        <div class="big-number-value">{{ stats.blockHeight | number }}</div>
+        <div class="big-number-title">Block Height</div>
+      </div>
+      <div class="break"></div>
+      <div class="big-number">
+        <div class="big-number-value">{{ stats.blockchainTotalSpace | filesize }}</div>
+        <div class="big-number-title">Total Network Space</div>
+      </div>
+      <div class="big-number">
+        <div class="big-number-value">{{ stats.poolCapacityBytes | filesize }}</div>
+        <div class="big-number-title">Truepool Space</div>
+      </div>
+    </div>
+  </app-content-loader>
+
+
+  <app-content-loader
+    *appLet="poolSizesState$ | async as poolSizesState"
+    [isLoading]="poolSizesState.isLoading"
+    [error]="poolSizesState.error"
+  >
+    <div *ngIf="poolSizesState.sizes.length" class="pool-size-chart-container">
+      <h2 class="pool-space-header">Pool Space</h2>
+      <app-pool-size-chart [sizes]="poolSizesState.sizes" [theme]="PoolSizeChartTheme.Light"></app-pool-size-chart>
+    </div>
+  </app-content-loader>
+
+  <!-- TODO: Separate component -->
+  <!-- TODO: Pagination -->
+  <h2>Coins Won</h2>
+  <app-content-loader
+    *appLet="coinRecordsState$ | async as coinRecordsState"
+    [isLoading]="coinRecordsState.isLoading"
+    [error]="coinRecordsState.error"
+  >
+    <ng-container *ngIf="!coinRecordsState.coinRecords?.length; else coinRecordsTable">
+      No coins won.
+    </ng-container>
+    <ng-template #coinRecordsTable>
+      <table class="stats-table">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Block Index</th>
+          <th>Farmed By</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let record of coinRecordsState.coinRecords">
+          <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
+          <td>{{ record.confirmed_block_index }}</td>
+          <td>{{ record.farmed_by }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </app-content-loader>
+
+  <h2>Payouts</h2>
+  <app-content-loader
+    *appLet="payoutsState$ | async as payoutsState"
+    [isLoading]="payoutsState.isLoading"
+    [error]="payoutsState.error"
+  >
+    <ng-container *ngIf="!payoutsState.payouts?.length; else payoutsTable">
+      No payouts.
+    </ng-container>
+    <ng-template #payoutsTable>
+      <table class="stats-table">
+        <thead>
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let payout of payoutsState.payouts">
+          <td>{{ payout.datetime | date: 'short' }}</td>
+          <td>{{ payout.amount | xch }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-template>
+  </app-content-loader>
+</div>

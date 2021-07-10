@@ -1,0 +1,42 @@
+@import "variables";
+
+@mixin page {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  .page-content {
+    color: black;
+    background: white;
+    padding: 42px 12% 140px;
+    box-sizing: border-box;
+    flex-grow: 1;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-bottom: 40px;
+    }
+  }
+}
+
+@mixin common-article-styles {
+  img {
+    border: 1px solid $color-gray-dark;
+    max-width: 100%;
+  }
+
+  img[src$="robot1.png"] {
+    border: none;
+    height: 230px;
+    float: right;
+    margin: 10px 5px 10px 20px;
+  }
+
+  img[src$="robot2.png"] {
+    border: none;
+    height: 210px;
+    float: right;
+    margin: 10px 5px 10px 20px;
+  }
+}
