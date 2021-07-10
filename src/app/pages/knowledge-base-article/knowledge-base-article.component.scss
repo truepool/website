@@ -1,0 +1,19 @@
+@import "../../../assets/css/mixins";
+
+:host {
+  @include page();
+}
+
+.category-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.9em;
+
+  &:visited {
+    color: $color-blue-dark;
+  }
+}
+
+article ::ng-deep {
+  @include common-article-styles();
+}

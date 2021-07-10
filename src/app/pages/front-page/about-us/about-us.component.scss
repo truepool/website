@@ -1,0 +1,27 @@
+@import "../../../../assets/css/variables";
+
+.about-us-text {
+  padding: 19px 30px;
+  margin-bottom: 50px;
+  font-size: 1.1em;
+  border-left: 5px solid $color-green;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.for-other-inquiries {
+  text-align: center;
+  margin-top: 45px;
+  opacity: 0.6;
+  line-height: 2em;
+
+  a,
+  a:visited,
+  a:hover,
+  a:active {
+    color: inherit;
+  }
+}
