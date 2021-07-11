@@ -1,0 +1,57 @@
+<main class="page-main">
+  <div class="glow"></div>
+  <div class="background-fade">
+    <div class="main-column">
+      <img src="./assets/img/farm-plot2.png" alt="Farm plot graphic" class="lead-image">
+      <div>
+        <div class="intro-block">
+          <h1 class="lead-text">Truepool.io</h1>
+          <span class="subheader">
+              <span class="subheader-pill">
+                The Chia pool
+              </span>
+            </span>
+
+          <ul class="reasons">
+            <li *ngIf="latestPoolSize$ | async as latestPoolSize">
+              <a
+                class="same-page-link"
+                href="#stats"
+                appSmoothlyScrollTo="#stats"
+              >{{ latestPoolSize | filesize }}</a> under management.
+            </li>
+            <li>From
+              <a
+                class="same-page-link"
+                href="#section-operators"
+                appSmoothlyScrollTo="#section-operators"
+              >makers</a> of
+              <a
+                class="truenas-logo"
+                href="#section-operators"
+                appSmoothlyScrollTo="#section-operators"
+              >
+                <img src="./assets/img/truenas-logo.png"/>
+              </a>
+              <br>
+              <span class="worlds-most-popular-nas">world's most popular NAS operating system.</span></li>
+            <li>Only 1% Operators Fee &mdash; with 25% of that fee supporting the TrueNAS project.</li>
+            <li>A pool that <a routerLink="/pages/join-truepool/">supports open source</a>.</li>
+          </ul>
+
+          <div class="action-buttons">
+            <a routerLink="/pages/join-truepool" class="button button-green join-truepool">Join Truepool</a>
+
+            <a href="https://t.me/truepool_chia" target="_blank" class="telegram-icon">
+              <img src="./assets/img/telegram-white.png">
+            </a>
+
+            <a href="https://discord.com/invite/hWwAfGFyBz" target="_blank" class="discord-icon">
+              <img src="./assets/img/discord.png">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

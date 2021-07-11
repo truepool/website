@@ -1,0 +1,41 @@
+@import "../../../assets/css/variables";
+
+.section-news {
+  display: flex;
+  padding: 80px 12%;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .chart-column {
+    flex-basis: 60%;
+    margin-right: 50px;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.section-about-us {
+  background-color: $color-black-light;
+  padding: 160px 20% 160px;
+  color: #fffffffc;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    padding: 50px 20px;
+  }
+}
+
+.section-operators {
+  background-color: $color-blue-dark;
+  padding: 80px 12% 55px;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    padding-top: 40px;
+    padding-bottom: 25px;
+  }
+}

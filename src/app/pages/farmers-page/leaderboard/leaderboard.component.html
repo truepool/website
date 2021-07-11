@@ -1,0 +1,31 @@
+<ng-container *appLet="state$ | async as state">
+  <app-content-loader [isLoading]="state.isLoading" [error]="state.error">
+    <table class="leaderboard">
+      <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Points</th>
+        <th>%</th>
+        <th>ID</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngIf="!state.topFarmers.length; else farmers">
+        <td colspan="4">No records.</td>
+      </tr>
+
+      <ng-template #farmers>
+        <tr
+          *ngFor="let farmer of state.topFarmers; let i = index;"
+          [class.no-points]="!farmer.points"
+        >
+          <td># {{ i + 1 }}</td>
+          <td>{{ farmer.points | number }}</td>
+          <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
+          <td class="launcher-id">{{ farmer.display_name || farmer.launcher_id }}</td>
+        </tr>
+      </ng-template>
+      </tbody>
+    </table>
+  </app-content-loader>
+</ng-container>
