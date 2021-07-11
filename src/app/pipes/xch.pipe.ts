@@ -11,7 +11,7 @@ export class XchPipe implements PipeTransform {
 
   transform(value: number): string {
     const xch = value / 10 ** 12;
-    const formattedXch = this.numberPipe.transform(xch, '1.0-4');
+    const formattedXch = this.numberPipe.transform(xch, '1.0-12');
 
     return `${formattedXch} XCH`
   }
