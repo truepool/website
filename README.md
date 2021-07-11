@@ -9,12 +9,17 @@
                                            _|                                
 ```
 
-## Installing
-- Install Hugo
+## Setup
+- Have node setup, for example with https://github.com/nvm-sh/nvm.
 - `npm i`
+- `npm run start`
 
-## Building
+Website will be available at http://localhost
 
-You can serve locally by running `npm run start`.
+## Contributing
 
-Automatic build will be made in before commit hook. To build manually you can run `hugo`. 
+Pages can be added in markdown format.
+To do this: 
+1. Go to `src/content/kb` and create a new markdown file.
+2. Open `src/content/content-directory.ts` and add your page there. Url is responsible for both the address page will be available at and the name of the markdown file.
+
