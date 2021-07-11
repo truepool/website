@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  background-color: #f7f7f7;
+  padding: 11px 21px;
+  border-radius: 6px;
+  width: fit-content;
+  padding-right: 40px;
+}
+
+img {
+  width: 48px;
+  height: 48px;
+  margin-right: 9px;
+}
+
+.prompt {
+  line-height: 1.4rem;
+  margin-top: 3px;
+}

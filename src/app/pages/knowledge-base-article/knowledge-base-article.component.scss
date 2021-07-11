@@ -2,6 +2,14 @@
 
 :host {
   @include page();
+
+  .page-content {
+    padding-bottom: 110px;
+
+    @media screen and (max-width: $breakpoint-sm) {
+      padding-bottom: 58px;
+    }
+  }
 }
 
 .category-link {
@@ -16,4 +24,8 @@
 
 article ::ng-deep {
   @include common-article-styles();
+}
+
+.prompt {
+  margin-top: 45px;
 }

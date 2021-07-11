@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ContentLoaderComponent } from './components/content-loader/content-loader.component';
+import { ContributionPromptComponent } from './components/contribution-prompt/contribution-prompt.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PoolSizeChartComponent } from './components/pool-size-chart/pool-size-chart.component';
@@ -53,6 +54,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     LeaderboardComponent,
     FarmerSearchComponent,
     FooterComponent,
+    ContributionPromptComponent,
 
     // Pages
     StatsPageComponent,
