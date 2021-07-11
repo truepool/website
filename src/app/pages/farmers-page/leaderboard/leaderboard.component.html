@@ -21,7 +21,7 @@
         >
           <td># {{ i + 1 }}</td>
           <td>{{ farmer.points | number }}</td>
-          <td>{{ farmer.points_percentage / 100 | percent }}</td>
+          <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
           <td class="launcher-id">{{ farmer.display_name || farmer.launcher_id }}</td>
         </tr>
       </ng-template>

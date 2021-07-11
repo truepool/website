@@ -21,7 +21,7 @@
         <th>Points</th>
         <td>
           {{ state.result.farmer.points | number }}
-          ({{ state.result.farmer.points_percentage / 100 | percent }})
+          ({{ state.result.farmer.points_percentage / 100 | percent: '1.0-4 }})
         </td>
       </tr>
       <tr>
