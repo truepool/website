@@ -57,7 +57,9 @@ header {
       }
 
       &.first-mobile-link {
-        margin-left: 0;
+        @media screen and (max-width: $breakpoint-sm) {
+          margin-left: 0;
+        }
       }
 
       &:last-child {
