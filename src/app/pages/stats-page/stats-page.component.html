@@ -24,6 +24,10 @@
         <div class="big-number-value">{{ stats.poolCapacityBytes | filesize }}</div>
         <div class="big-number-title">Truepool Space</div>
       </div>
+      <div class="big-number">
+        <div class="big-number-value">{{ stats.poolCapacityBytes / stats.blockchainTotalSpace | percent: '1.0-5' }}</div>
+        <div class="big-number-title">Truepool Network Share</div>
+      </div>
     </div>
   </app-content-loader>
 
