@@ -10,6 +10,8 @@ import { LeaderboardStore } from './leaderboard.store';
 export class LeaderboardComponent implements OnInit {
   state$ = this.store.state$;
 
+  readonly maxItemsShown = this.store.leaderboardItems;
+
   constructor(private store: LeaderboardStore) {}
 
   ngOnInit(): void {
