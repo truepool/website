@@ -43,6 +43,9 @@ export class SetNameComponent implements OnInit {
 
   onFormSubmitted(event: Event): void {
     const formValue = this.setNameForm.value;
+    if (!formValue.email) {
+      delete formValue['email'];
+    }
 
     this.setNameStore.setName(formValue);
     event.preventDefault();

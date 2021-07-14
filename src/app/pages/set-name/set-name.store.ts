@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, forkJoin, Observable } from 'rxjs';
 import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { Farmer } from '../../interfaces/farmer.interface';
 import { LoginParams } from '../../interfaces/login-params.interface';
 import { FarmerService } from '../../services/api/farmer.service';
 import { UserService } from '../../services/api/user.service';
@@ -18,12 +19,14 @@ export interface SetNameState {
   status: SetNameStatus;
   error: string;
   launcherId: string;
+  farmer: Farmer;
 }
 
 const initialState: SetNameState = {
   status: null,
   error: null,
   launcherId: null,
+  farmer: null,
 };
 
 @Injectable({ providedIn: 'root' })
@@ -37,6 +40,7 @@ export class SetNameStore extends ComponentStore<SetNameState> {
 
   readonly selectStatus$ = this.select((state) => state.status);
   readonly error$ = this.select((state) => state.error);
+  readonly currentFarmer$ = this.select((state) => state.farmer);
 
   readonly login = this.effect((credentials$: Observable<LoginParams>) => {
     return credentials$.pipe(
@@ -48,9 +52,13 @@ export class SetNameStore extends ComponentStore<SetNameState> {
         });
       }),
       switchMap((credentials) => {
-        return this.userService.login(credentials).pipe(
-          tap((page) => {
+        return forkJoin([
+          this.userService.login(credentials),
+          this.farmerService.getFarmer(credentials.launcher_id),
+        ]).pipe(
+          tap(([_, farmer]) => {
             this.patchState({
+              farmer,
               status: SetNameStatus.LoggedIn,
             });
           }),
@@ -69,7 +77,7 @@ export class SetNameStore extends ComponentStore<SetNameState> {
     )
   });
 
-  readonly setName = this.effect((nameInfo$: Observable<{ display_name: string, email: string }>) => {
+  readonly setName = this.effect((nameInfo$: Observable<{ display_name: string, email?: string }>) => {
     return nameInfo$.pipe(
       tap(() => {
         this.patchState({
@@ -87,7 +95,7 @@ export class SetNameStore extends ComponentStore<SetNameState> {
           catchError(() => {
             // TODO: Parse actual error and show it.
             this.patchState({
-              error: 'Error when seting name. Please try again or contact us for support.',
+              error: 'Error when setting name. Please try again or contact us for support.',
               status: SetNameStatus.Error,
             });
 
