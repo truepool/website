@@ -1,11 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { LoginParams } from '../../interfaces/login-params.interface';
 import { setNameAnimations } from './set-name-animations';
 import { SetNameStatus, SetNameStore } from './set-name.store';
 
+@UntilDestroy()
 @Component({
   templateUrl: 'set-name.component.html',
   styleUrls: ['./set-name.component.scss'],
@@ -37,6 +40,15 @@ export class SetNameComponent implements OnInit {
       this.router.navigate(['/404']);
       return;
     }
+
+    this.setNameStore.currentFarmer$.pipe(
+      untilDestroyed(this)
+    ).subscribe((farmer) => {
+      this.setNameForm.patchValue({
+        email: farmer?.email,
+        display_name: farmer?.display_name,
+      })
+    });
 
     this.setNameStore.login(queryParams as LoginParams);
   }
