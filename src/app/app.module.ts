@@ -3,6 +3,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -33,6 +34,7 @@ import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/kn
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
 import { LeaderboardStore } from './pages/farmers-page/leaderboard/leaderboard.store';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { XchPipe } from './pipes/xch.pipe';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
@@ -64,6 +66,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     KnowledgeBaseArticleComponent,
     KnowledgeBaseListingComponent,
     NotFoundPageComponent,
+    SetNameComponent,
 
     // Directives
     SmoothlyScrollToDirective,
@@ -86,6 +89,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     NgxFilesizeModule,
     ReactiveFormsModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
+    BrowserAnimationsModule,
   ],
   providers: [
     FileSizePipe,

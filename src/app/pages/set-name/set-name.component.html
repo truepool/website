@@ -1,0 +1,51 @@
+<div *appLet="status$ | async as status" class="set-name-block">
+  <div class="robot-column">
+    <div class="robot state-{{ status }}">
+      <div class="robot-shadow" [@robotShadow]="status">
+        <img src="assets/img/robots/robot1-shadow.png" alt="Robot" />
+      </div>
+      <div class="robot-real" [@robotReal]="status">
+        <img src="assets/img/robots/robot1.png" alt="Robot" />
+      </div>
+      <div class="scanning-line" [@scanningLine]="status"></div>
+    </div>
+  </div>
+  <div class="form-column" [ngSwitch]="status">
+    <div *ngSwitchCase="SetNameStatus.Error" class="status-error">
+      {{ error$ | async }}
+    </div>
+    <div *ngSwitchCase="SetNameStatus.LoggingIn" class="status-text">
+      Logging in...
+    </div>
+    <form
+      *ngSwitchCase="SetNameStatus.LoggedIn"
+      class="name-form"
+      [formGroup]="setNameForm"
+      (submit)="onFormSubmitted($event)"
+    >
+      <p>This form allows to associate a name of your choice with your launcher ID:</p>
+
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="display_name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email (optional)</label>
+        <input id="email" formControlName="email">
+      </div>
+
+      <button
+        type="submit"
+        class="button button-green"
+        [disabled]="setNameForm.invalid"
+      >Save</button>
+    </form>
+    <div *ngSwitchCase="SetNameStatus.SettingName" class="status-text">
+      Setting name...
+    </div>
+    <div *ngSwitchCase="SetNameStatus.NameSet" class="success-message">
+      <p>Your name has been set successfully.</p>
+      <p><a routerLink="/farmers">Open leaderboard.</a></p>
+    </div>
+  </div>
+</div>

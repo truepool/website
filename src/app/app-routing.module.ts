@@ -6,6 +6,7 @@ import { FrontPageComponent } from './pages/front-page/front-page.component';
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'kb/:id',
     component: KnowledgeBaseArticleComponent,
+  },
+  {
+    path: 'set-name',
+    component: SetNameComponent,
   },
   {
     path: 'pages/:id',

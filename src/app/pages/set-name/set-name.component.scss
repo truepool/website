@@ -1,0 +1,140 @@
+@import "../../../assets/css/variables";
+
+:host {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  color: black;
+  align-items: center;
+  box-sizing: border-box;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+}
+
+.set-name-block {
+  display: flex;
+  min-height: 360px;
+  background-color: white;
+  border-radius: 10px;
+  align-items: center;
+  margin-bottom: 20vh;
+  width: 724px;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    width: auto;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+}
+
+.robot-column {
+  margin-left: 57px;
+  margin-right: 22px;
+  margin-top: 8px;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    margin-top: 28px;
+  }
+}
+
+$robot-container-width: 230px;
+
+.robot {
+  position: relative;
+  width: $robot-container-width;
+  height: 277px;
+
+  .robot-shadow,
+  .robot-real {
+    position: absolute;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    height: 0;
+    top: 0;
+
+    img {
+      width: $robot-container-width - 8px;
+      position: absolute;
+    }
+  }
+
+  .scanning-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba($color-green-dark, 0.85);
+    box-shadow: 0 0 10px 3px $color-green-dark;
+    opacity: 0;
+  }
+
+  &.state-setting-name,
+  &.state-name-set {
+    .scanning-line {
+      opacity: 1;
+    }
+
+    .robot-shadow {
+      bottom: 9px;
+      top: auto;
+
+      img {
+        bottom: 0;
+      }
+    }
+  }
+}
+
+.form-column {
+  margin: 20px;
+}
+
+.status-error {
+  border-left: 4px solid $color-red-light;
+  padding: 7px 12px 4px;
+}
+
+.status-text {
+  font-size: 1.15rem;
+  line-height: 1.15rem;
+  margin-left: 5px;
+}
+
+.name-form {
+  label {
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  input {
+    border: 1px solid $color-gray-dark;
+    padding: 8px 17px;
+    min-width: 300px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+}
+
+.success-message {
+  border-left: 4px solid $color-green-dark;
+  padding: 6px 17px 4px;
+  margin-left: 5px;
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}

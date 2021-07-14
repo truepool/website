@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { delay } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { CoinRecord, CoinRecordQueryParams } from '../../interfaces/coin-record.interface';
 import { Farmer, FarmersQueryParams } from '../../interfaces/farmer.interface';
@@ -15,6 +16,10 @@ export class FarmerService {
   }
 
   getFarmer(launcherId: string): Observable<Farmer> {
-    return this.http.get<Farmer>(`${environment.apiRoot}/farmer/${launcherId}`);
+    return this.http.get<Farmer>(`${environment.apiRoot}/farmer/${launcherId}/`);
+  }
+
+  updateFarmer(launcherId: string, patch: Partial<Farmer>): Observable<void> {
+    return this.http.put<void>(`${environment.apiRoot}/farmer/${launcherId}/`, patch);
   }
 }
