@@ -16,6 +16,12 @@ Once you look up your launcher ID follow these steps:
 2. Open the link returned in your browser
 3. Set the *friendly name* you wish to use and submit. 
 
+### From the Chia UI:
+
+1. Under Plots -> 3 dot menu -> View pool login link 
+2. Open the link returned in your browser
+3. Set the *friendly name* you wish to use and submit. 
+
 Please keep the name clean and friendly or it may be removed.  
 No foul language, insults, or similar!
 
