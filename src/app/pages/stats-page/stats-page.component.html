@@ -12,8 +12,8 @@
         <div class="big-number-title">Last Reward</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value">{{ stats.blockHeight | number }}</div>
-        <div class="big-number-title">Block Height</div>
+        <div class="big-number-value even-longer-value">{{ getTimeToWin(stats.poolCapacityBytes, stats.blockchainTotalSpace) }}</div>
+        <div class="big-number-title">Estimated Time To Win</div>
       </div>
       <div class="break"></div>
       <div class="big-number">
