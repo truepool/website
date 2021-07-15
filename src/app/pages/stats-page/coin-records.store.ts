@@ -3,9 +3,7 @@ import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
 import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { CoinRecord } from '../../interfaces/coin-record.interface';
-import { PoolStats } from '../../interfaces/pool-stats.interface';
 import { CoinRecordService } from '../../services/api/coin-record.service';
-import { PoolService } from '../../services/api/pool.service';
 
 export interface CoinRecordsState {
   isLoading: boolean;
