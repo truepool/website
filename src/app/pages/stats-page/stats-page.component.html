@@ -1,31 +1,31 @@
-<div *appLet="statsState$ | async as statsState" class="page-content">
+<div *appLet="infoState$ | async as infoState" class="page-content">
   <div class="page-title">Stats</div>
 
-  <app-content-loader [isLoading]="statsState.isLoading" [error]="statsState.error">
-    <div *ngIf="statsState.stats as stats" class="big-numbers">
+  <app-content-loader [isLoading]="infoState.isLoading" [error]="infoState.error">
+    <div *ngIf="infoState.info as info" class="big-numbers">
       <div class="big-number">
-        <div class="big-number-value shorter-value">{{ stats.poolMembers | number }}</div>
+        <div class="big-number-value shorter-value">{{ info.total_farmers | number }}</div>
         <div class="big-number-title">Pool Members</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value longer-value">{{ stats.lastReward | date }}</div>
+        <div class="big-number-value longer-value">{{ info.reward_last_date | date }}</div>
         <div class="big-number-title">Last Reward</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value even-longer-value">{{ getTimeToWin(stats.poolCapacityBytes, stats.blockchainTotalSpace) }}</div>
+        <div class="big-number-value even-longer-value">{{ format_minutes(info.minutes_to_win) }}</div>
         <div class="big-number-title">Estimated Time To Win</div>
       </div>
       <div class="break"></div>
       <div class="big-number">
-        <div class="big-number-value">{{ stats.blockchainTotalSpace | filesize }}</div>
+        <div class="big-number-value">{{ info.blockchain_totalspace | filesize }}</div>
         <div class="big-number-title">Total Network Space</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value">{{ stats.poolCapacityBytes | filesize }}</div>
+        <div class="big-number-value">{{ info.total_size | filesize }}</div>
         <div class="big-number-title">Truepool Space</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value">{{ stats.poolCapacityBytes / stats.blockchainTotalSpace | percent: '1.0-5' }}</div>
+        <div class="big-number-value">{{ info.total_size / info.blockchain_totalspace | percent: '1.0-5' }}</div>
         <div class="big-number-title">Truepool Network Share</div>
       </div>
     </div>

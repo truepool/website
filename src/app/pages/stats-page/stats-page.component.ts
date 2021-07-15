@@ -8,7 +8,7 @@ import { PoolSizeState } from '../../stores/pool-sizes/pool-sizes.reducer';
 import { selectPoolSizes, selectPoolSizesState } from '../../stores/pool-sizes/pool-sizes.selectors';
 import { CoinRecordsStore } from './coin-records.store';
 import { PayoutsStore } from './payouts.store';
-import { StatsStore } from './stats.store';
+import { InfoStore } from './info.store';
 
 @Component({
   templateUrl: 'stats-page.component.html',
@@ -17,7 +17,7 @@ import { StatsStore } from './stats.store';
 })
 export class StatsPageComponent implements OnInit {
   poolSizesState$ = this.mainStore.select(selectPoolSizesState);
-  statsState$ = this.statsStore.state$;
+  infoState$ = this.infoStore.state$;
   coinRecordsState$ = this.coinRecordsStore.state$;
   payoutsState$ = this.payoutsStore.state$;
 
@@ -25,14 +25,14 @@ export class StatsPageComponent implements OnInit {
 
   constructor(
     private mainStore: Store<PoolSizeState>,
-    private statsStore: StatsStore,
+    private infoStore: InfoStore,
     private coinRecordsStore: CoinRecordsStore,
     private payoutsStore: PayoutsStore,
   ) {}
 
   ngOnInit(): void {
     this.mainStore.dispatch(statsPageEntered());
-    this.statsStore.loadStats();
+    this.infoStore.loadInfo();
     this.coinRecordsStore.loadCoinRecords();
     this.payoutsStore.loadPayouts();
   }
@@ -42,12 +42,7 @@ export class StatsPageComponent implements OnInit {
       return Math.floor(count) + " " + str_unit + str_s;
   }
   
-  static format_unit(minutes: number,
-              unit: string,
-              count: number,
-              unit_minutes: number,
-              next_unit: string,
-              next_unit_minutes: number): string {
+  static format_unit(minutes: number, unit: string, count: number, unit_minutes: number, next_unit: string, next_unit_minutes: number): string {
       let formatted = StatsPageComponent.format_unit_string(unit, count);
       let minutes_left = minutes % unit_minutes;
       if ( minutes_left >= next_unit_minutes) {
@@ -81,13 +76,5 @@ export class StatsPageComponent implements OnInit {
       if (minutes > 0) { return StatsPageComponent.format_unit_string("minute", minutes); }
   
       return "Unknown";
-  }
-
-  getTimeToWin(poolCapacityBytes: number, blockchainTotalSpace: number): number | string {
-    /* Currently using a static block timing that, at the time of writing, matches output from chia
-        The shorter our expected time to win gets the less block timing accuraccy will matter */
-    let static_block_timing = 0.339;
-    let minutes = static_block_timing / (poolCapacityBytes / blockchainTotalSpace);
-    return this.format_minutes(minutes);
   }
 }
