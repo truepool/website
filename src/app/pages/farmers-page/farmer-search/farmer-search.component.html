@@ -10,43 +10,48 @@
   [isLoading]="state.isSearching"
   [error]="state.error"
 >
-  <div *ngIf="state.result" class="search-results">
-    <h4>Farmer</h4>
+  <div *ngFor="let result of state.results" class="search-result">
+    <h4>
+      <ng-container *ngIf="result.farmer.display_name; else noName">{{ result.farmer.display_name }}</ng-container>
+      <ng-template #noName>
+        Unnamed farmer <a class="set-name-link" routerLink="/kb/set-friendly-leaderboard-name">Learn how to set a name &#10142;</a>
+      </ng-template>
+    </h4>
     <table class="details-view details-view-blue table-striped">
       <tr>
-        <th>Display Name</th>
-        <td>{{ state.result.farmer.display_name || 'Not set' }}</td>
+        <th>Launcher ID</th>
+        <td>{{ result.farmer.launcher_id }}</td>
       </tr>
       <tr>
         <th>Points</th>
         <td>
-          {{ state.result.farmer.points | number }}
-          ({{ state.result.farmer.points_percentage / 100 | percent: '1.0-4' }})
+          {{ result.farmer.points | number }}
+          ({{ result.farmer.points_percentage / 100 | percent: '1.0-4' }})
         </td>
       </tr>
       <tr>
         <th>Difficulty</th>
-        <td>{{ state.result.farmer.difficulty | number }}</td>
+        <td>{{ result.farmer.difficulty | number }}</td>
       </tr>
     </table>
 
-    <h4>Payouts</h4>
+    <h5>Payouts</h5>
 
-    <ng-container *ngIf="!state.result.payouts?.length; else payoutsTable">
+    <ng-container *ngIf="!result.payouts?.length; else payoutsTable">
       This farmer has no payouts.
     </ng-container>
     <ng-template #payoutsTable>
       <table>
         <thead>
           <tr>
-            <!-- TODO: Date -->
+            <th>Date</th>
             <th>Amount</th>
             <th>Transaction</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let payout of state.result.payouts">
-            <!-- TODO: Date -->
+          <tr *ngFor="let payout of result.payouts">
+            <td>{{ payout.payout.datetime | date: 'short' }}</td>
             <td>{{ payout.amount | xch }}</td>
             <td>{{ payout.transaction }}</td>
           </tr>

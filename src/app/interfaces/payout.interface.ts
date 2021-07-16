@@ -13,7 +13,7 @@ export interface PayoutAddress {
   amount: number;
   transaction: string;
   confirmed_height: number;
-  payout: string;
+  payout: Payout;
   farmer: string;
 }
 

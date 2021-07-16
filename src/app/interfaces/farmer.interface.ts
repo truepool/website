@@ -12,6 +12,7 @@ export interface Farmer {
 }
 
 export type FarmersQueryParams = {
+  search?: string;
   difficulty?: number;
   launcher_id?: number;
   ordering?: string;

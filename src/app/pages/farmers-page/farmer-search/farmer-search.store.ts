@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Farmer } from '../../../interfaces/farmer.interface';
 import { PayoutAddress } from '../../../interfaces/payout.interface';
 import { FarmerService } from '../../../services/api/farmer.service';
@@ -11,20 +11,22 @@ import { PayoutService } from '../../../services/api/payout.service';
 export interface FarmerSearchState {
   isSearching: boolean;
   error: string;
-  result: {
+  results: {
     farmer: Farmer;
-    payouts: PayoutAddress[];
-  } | null,
+    payouts?: PayoutAddress[];
+  }[] | null,
 }
 
 const initialState: FarmerSearchState = {
   isSearching: false,
   error: null,
-  result: null,
+  results: null,
 };
 
 @Injectable({ providedIn: 'root' })
 export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
+  readonly maxSearchResults = 5;
+
   constructor(
     private farmerService: FarmerService,
     private payoutService: PayoutService,
@@ -32,33 +34,31 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
     super(initialState);
   }
 
-  readonly searchFarmer = this.effect((launcherIds$: Observable<string>) => {
-    return launcherIds$.pipe(
+  readonly searchFarmer = this.effect((queries$: Observable<string>) => {
+    return queries$.pipe(
       tap(() => {
         this.setState({
           ...initialState,
           isSearching: true,
         });
       }),
-      switchMap((launcherId) => {
-        return forkJoin([
-          this.farmerService.getFarmer(launcherId),
-          this.payoutService.getPayoutAddresses({ farmer: launcherId }),
-        ]).pipe(
-          tap(([farmer, payoutsPage]) => {
-            this.patchState({
-              result: {
-                farmer,
-                payouts: payoutsPage.results,
-              },
-              isSearching: false,
-            });
+      switchMap((query) => {
+        return this.farmerService.getFarmers({ search: query, limit: this.maxSearchResults }).pipe(
+
+          switchMap((farmers) => {
+            const payoutRequests = farmers.results.map((farmer) => {
+              return this.payoutService.getPayoutAddresses({ farmer: farmer.launcher_id }).pipe(
+                map((payouts) => ({ farmer, payouts: payouts.results })),
+              );
+            })
+
+            return forkJoin(payoutRequests);
           }),
-          catchError((response: HttpErrorResponse) => {
+          tap((results) => {
+            this.patchState({ results, isSearching: false });
+          }),
+          catchError(() => {
             let error = 'Error when searching for a farmer.';
-            if (response.status === 404) {
-              error = 'Farmer not found.';
-            }
 
             // TODO: Parse actual error and show it.
             this.patchState({
