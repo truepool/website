@@ -24,7 +24,7 @@ export class MinutesPipe implements PipeTransform {
 
     durationMinutes(minutes: number): string {
         if (minutes == 0){
-            return "Now";
+            return "Any time now";
         }
 
         let hourMinutes = 60;
