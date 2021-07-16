@@ -4,9 +4,7 @@ import { parseISO } from 'date-fns';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { Farmer, FarmersQueryParams } from '../../interfaces/farmer.interface';
 import { PoolSize } from '../../interfaces/pool-size.interface';
-import { PoolStats } from '../../interfaces/pool-stats.interface';
 
 @Injectable({ providedIn: 'root' })
 export class PoolService {
@@ -23,9 +21,5 @@ export class PoolService {
         } as PoolSize));
       })
     )
-  }
-
-  getStats(): Observable<PoolStats> {
-    return this.http.get<PoolStats>(`${environment.apiRoot}/stats`);
   }
 }
