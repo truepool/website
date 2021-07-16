@@ -8,16 +8,16 @@ export class MinutesPipe implements PipeTransform {
         return this.durationMinutes(minutes);
     }
 
-    formatUnitString(str_unit: string, count: number): string  {
-        let str_s = (count>1?"s":"");
-        return Math.floor(count) + " " + str_unit + str_s;
+    formatUnitString(strUnit: string, count: number): string  {
+        let strS = (count>1?"s":"");
+        return Math.floor(count) + " " + strUnit + strS;
     }
 
-    formatUnit(minutes: number, unit: string, count: number, unit_minutes: number, next_unit: string, next_unit_minutes: number): string {
+    formatUnit(minutes: number, unit: string, count: number, unitMinutes: number, nextUnit: string, nextUnitMinutes: number): string {
         let formatted = this.formatUnitString(unit, count);
-        let minutes_left = minutes % unit_minutes;
-        if ( minutes_left >= next_unit_minutes) {
-            formatted = formatted +  " and " + this.formatUnitString(next_unit, (minutes_left / next_unit_minutes));
+        let minutesLeft = minutes % unitMinutes;
+        if ( minutesLeft >= nextUnitMinutes) {
+            formatted = formatted +  ", " + this.formatUnitString(nextUnit, (minutesLeft / nextUnitMinutes));
         }
         return formatted;
     }
@@ -27,23 +27,23 @@ export class MinutesPipe implements PipeTransform {
             return "Now";
         }
 
-        let hour_minutes = 60;
-        let day_minutes = 24 * hour_minutes;
-        let week_minutes = 7 * day_minutes;
-        let months_minutes = 43800;
-        let year_minutes = 12 * months_minutes;
+        let hourMinutes = 60;
+        let dayMinutes = 24 * hourMinutes;
+        let weekMinutes = 7 * dayMinutes;
+        let monthMinutes = 43800;
+        let yearMinutes = 12 * monthMinutes;
 
-        let years = Math.floor(minutes / year_minutes);
-        let months = Math.floor(minutes / months_minutes);
-        let weeks = Math.floor(minutes / week_minutes);
-        let days = Math.floor(minutes / day_minutes);
-        let hours = Math.floor(minutes / hour_minutes);
+        let years = Math.floor(minutes / yearMinutes);
+        let months = Math.floor(minutes / monthMinutes);
+        let weeks = Math.floor(minutes / weekMinutes);
+        let days = Math.floor(minutes / dayMinutes);
+        let hours = Math.floor(minutes / hourMinutes);
 
-        if (years > 0) { return this.formatUnit(minutes, "year", years, year_minutes, "month", months_minutes); }
-        if (months > 0) { return this.formatUnit(minutes, "month", months, months_minutes, "week", week_minutes); }
-        if (weeks > 0) { return this.formatUnit(minutes, "week", weeks, week_minutes, "day", day_minutes); }
-        if (days > 0) { return this.formatUnit(minutes, "day", days, day_minutes, "hour", hour_minutes); }
-        if (hours > 0) { return this.formatUnit(minutes, "hour", hours, hour_minutes, "minute", 1); }
+        if (years > 0) { return this.formatUnit(minutes, "year", years, yearMinutes, "month", monthMinutes); }
+        if (months > 0) { return this.formatUnit(minutes, "month", months, monthMinutes, "week", weekMinutes); }
+        if (weeks > 0) { return this.formatUnit(minutes, "week", weeks, weekMinutes, "day", dayMinutes); }
+        if (days > 0) { return this.formatUnit(minutes, "day", days, dayMinutes, "hour", hourMinutes); }
+        if (hours > 0) { return this.formatUnit(minutes, "hour", hours, hourMinutes, "minute", 1); }
         if (minutes > 0) { return this.formatUnitString("minute", minutes); }
 
         return "Unknown";

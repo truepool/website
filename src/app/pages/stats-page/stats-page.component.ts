@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { PoolSizeChartTheme } from '../../components/pool-size-chart/pool-size-chart-theme.enum';
 import { statsPageEntered } from '../../stores/pool-sizes/pool-sizes.actions';
 import { PoolSizeState } from '../../stores/pool-sizes/pool-sizes.reducer';
-import { selectPoolSizes, selectPoolSizesState } from '../../stores/pool-sizes/pool-sizes.selectors';
+import { selectPoolSizesState } from '../../stores/pool-sizes/pool-sizes.selectors';
 import { CoinRecordsStore } from './coin-records.store';
 import { PayoutsStore } from './payouts.store';
 import { InfoStore } from './info.store';
