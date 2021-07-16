@@ -13,11 +13,11 @@ export const contentDirectory: ContentItem[] = [
     url: 'kb/truepool-docker-image',
   },
   {
-    category: 'TrueNAS',
+    category: 'Website',
     title: 'How to Set Leaderboard Name',
     url: 'kb/set-friendly-leaderboard-name',
   },
-  
+
 
   // Other pages
   {
