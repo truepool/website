@@ -1,3 +1,5 @@
+@import "../../../../assets/css/variables";
+
 .leaderboard {
   width: 100%;
 
@@ -10,8 +12,12 @@
   }
 }
 
-.limited-message {
-  font-style: italic;
-  margin-top: 12px;
-  font-size: 0.9rem;
+.pager-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+
+  @media screen and (max-width: $breakpoint-sm) {
+    justify-content: center;
+  }
 }

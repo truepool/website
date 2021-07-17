@@ -1,33 +1,42 @@
 <ng-container *appLet="state$ | async as state">
   <app-content-loader [isLoading]="state.isLoading" [error]="state.error">
-    <table class="leaderboard">
-      <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Points</th>
-        <th>Overall points share</th>
-        <th>Launcher ID</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngIf="!state.topFarmers.length; else farmers">
-        <td colspan="4">No records.</td>
-      </tr>
-
-      <ng-template #farmers>
-        <tr
-          *ngFor="let farmer of state.topFarmers; let i = index;"
-          [class.no-points]="!farmer.points"
-        >
-          <td># {{ i + 1 }}</td>
-          <td>{{ farmer.points | number }}</td>
-          <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
-          <td class="launcher-id">{{ farmer.display_name || farmer.launcher_id }}</td>
+    <ng-container *ngIf="state.topFarmers?.results">
+      <table class="leaderboard">
+        <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Points</th>
+          <th>Overall points share</th>
+          <th>Launcher ID</th>
         </tr>
-      </ng-template>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+        <tr *ngIf="!state.topFarmers.results.length; else farmers">
+          <td colspan="4">No records.</td>
+        </tr>
 
-    <div class="limited-message">Leaderboard is limited to top {{ maxItemsShown }} farmers.</div>
+        <ng-template #farmers>
+          <tr
+            *ngFor="let farmer of state.topFarmers.results; let i = index;"
+            [class.no-points]="!farmer.points"
+          >
+            <td># {{ state.currentPage * pageSize + i + 1 }}</td>
+            <td>{{ farmer.points | number }}</td>
+            <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
+            <td class="launcher-id">{{ farmer.display_name || farmer.launcher_id }}</td>
+          </tr>
+        </ng-template>
+        </tbody>
+      </table>
+
+      <div class="pager-container">
+        <app-pager
+          [currentPage]="state.currentPage"
+          [pageSize]="pageSize"
+          [totalItems]="state.topFarmers.count"
+          (pageChange)="onPageChanged($event)"
+        ></app-pager>
+      </div>
+    </ng-container>
   </app-content-loader>
 </ng-container>

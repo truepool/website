@@ -9,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe, NgxFilesizeModule } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
+import { PagerComponent } from 'src/app/components/pager/pager.component';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -58,6 +59,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     FarmerSearchComponent,
     FooterComponent,
     ContributionPromptComponent,
+    PagerComponent,
 
     // Pages
     StatsPageComponent,
