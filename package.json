@@ -6,10 +6,14 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "prepare": "husky install",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix"
   },
   "private": true,
   "dependencies": {
+    "@angular-eslint/builder": "~12.3.1",
     "@angular/animations": "~12.1.1",
     "@angular/common": "~12.1.1",
     "@angular/compiler": "~12.1.1",
@@ -25,12 +29,17 @@
     "@ngrx/store-devtools": "^12.2.0",
     "@types/google.visualization": "^0.0.67",
     "@types/lodash": "^4.14.171",
+    "@typescript-eslint/eslint-plugin": "~4.28.3",
     "date-fns": "^2.22.1",
+    "eslint": "~7.31.0",
+    "eslint-config-airbnb-typescript": "~12.3.1",
+    "eslint-plugin-import": "~2.23.4",
     "lodash": "^4.17.21",
     "ngx-filesize": "^2.0.16",
     "ngx-markdown": "^12.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
+    "typescript-eslint": "0.0.1-alpha.0",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
@@ -38,6 +47,10 @@
     "@angular/cli": "~12.1.1",
     "@angular/compiler-cli": "~12.1.1",
     "@types/node": "^12.11.1",
+    "husky": "^7.0.0",
     "typescript": "~4.3.2"
+  },
+  "lint-staged": {
+    "*.{ts,html}": "eslint --cache --fix"
   }
 }
