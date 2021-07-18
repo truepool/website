@@ -13,4 +13,4 @@ export const selectPoolSizes = createSelector(
 export const selectLatestPoolSize = createSelector(
   selectPoolSizes,
   (sizes) => sizes[0]?.size,
-)
+);

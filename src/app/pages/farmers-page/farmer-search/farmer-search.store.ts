@@ -1,8 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { catchError, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import {
+  catchError, map, switchMap, takeUntil, tap,
+} from 'rxjs/operators';
 import { Farmer } from '../../../interfaces/farmer.interface';
 import { PayoutAddress } from '../../../interfaces/payout.interface';
 import { FarmerService } from '../../../services/api/farmer.service';
@@ -50,7 +51,7 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
               return this.payoutService.getPayoutAddresses({ farmer: farmer.launcher_id }).pipe(
                 map((payouts) => ({ farmer, payouts: payouts.results })),
               );
-            })
+            });
 
             return forkJoin(payoutRequests);
           }),
@@ -58,7 +59,7 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
             this.patchState({ results, isSearching: false });
           }),
           catchError(() => {
-            let error = 'Error when searching for a farmer.';
+            const error = 'Error when searching for a farmer.';
 
             // TODO: Parse actual error and show it.
             this.patchState({

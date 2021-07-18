@@ -6,7 +6,7 @@ import {
   Input,
   OnChanges,
   Output,
-  SimpleChanges, ViewChild
+  SimpleChanges, ViewChild,
 } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
@@ -22,7 +22,7 @@ export class PagerComponent implements OnChanges {
   @Input() currentPage = 0;
   @Output() pageChange = new EventEmitter<number>();
 
-  @ViewChild("currentPageInput") currentPageInput: ElementRef<HTMLInputElement>;
+  @ViewChild('currentPageInput') currentPageInput: ElementRef<HTMLInputElement>;
 
   isEditingCurrentPage = false;
 

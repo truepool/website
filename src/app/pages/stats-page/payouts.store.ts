@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
-import { Payout, PayoutAddress } from '../../interfaces/payout.interface';
+import {
+  catchError, switchMap, takeUntil, tap,
+} from 'rxjs/operators';
+import { Payout } from '../../interfaces/payout.interface';
 import { PayoutService } from '../../services/api/payout.service';
 
 export interface PayoutsState {

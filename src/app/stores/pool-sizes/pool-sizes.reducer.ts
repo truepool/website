@@ -12,7 +12,7 @@ const initialState: PoolSizeState = {
   isLoading: false,
   sizes: [],
   error: null,
-}
+};
 
 const reducer = createReducer<PoolSizeState>(
   initialState,
@@ -20,7 +20,7 @@ const reducer = createReducer<PoolSizeState>(
   on(
     poolSizeActions.frontPageEntered,
     poolSizeActions.statsPageEntered,
-    () => ({ ...initialState, isLoading: true })
+    () => ({ ...initialState, isLoading: true }),
   ),
   on(poolSizeActions.poolSizesLoaded, (state, { sizes }) => {
     return {

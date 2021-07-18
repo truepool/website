@@ -18,7 +18,7 @@ export class FarmerSearchComponent {
   ) {}
 
   onSearchSubmitted(event: Event): void {
-    const launcherId: string = this.searchControl.value;
+    const launcherId = this.searchControl.value as string;
 
     this.store.searchFarmer(launcherId);
 

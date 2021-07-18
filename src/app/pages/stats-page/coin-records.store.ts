@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
+import {
+  catchError, switchMap, takeUntil, tap,
+} from 'rxjs/operators';
 import { CoinRecord } from '../../interfaces/coin-record.interface';
 import { CoinRecordService } from '../../services/api/coin-record.service';
 

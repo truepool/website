@@ -17,7 +17,7 @@ export class FrontPageComponent implements OnInit {
   poolSizes$: Observable<PoolSize[]> = this.store.select(selectPoolSizes);
 
   constructor(
-    private store: Store<PoolSizeState>
+    private store: Store<PoolSizeState>,
   ) {}
 
   ngOnInit(): void {

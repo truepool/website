@@ -33,12 +33,11 @@ import { NewsComponent } from './pages/front-page/news/news.component';
 import { OperatorsComponent } from './pages/front-page/operators/operators.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
-import { LeaderboardStore } from './pages/farmers-page/leaderboard/leaderboard.store';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { XchPipe } from './pipes/xch.pipe';
-import { MinutesPipe } from './pipes/minutes.pipe'
+import { MinutesPipe } from './pipes/minutes.pipe';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
@@ -99,6 +98,6 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     FileSizePipe,
     DecimalPipe,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

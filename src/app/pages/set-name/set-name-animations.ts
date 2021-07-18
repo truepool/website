@@ -1,4 +1,6 @@
-import { animate, query, stagger, state, style, transition, trigger } from '@angular/animations';
+import {
+  animate, state, style, transition, trigger,
+} from '@angular/animations';
 import { SetNameStatus } from './set-name.store';
 
 const timing = '2s ease-in';

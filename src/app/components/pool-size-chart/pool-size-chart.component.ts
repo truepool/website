@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild,
+} from '@angular/core';
 import { format } from 'date-fns';
 import { debounce } from 'lodash';
 import { FileSizePipe } from 'ngx-filesize';
@@ -34,14 +36,14 @@ export class PoolSizeChartComponent implements OnInit {
 
   private setupChart(): void {
     const drawChart = () => {
-      const series = this.sizes.map(({ datetime, size}) => {
+      const series = this.sizes.map(({ datetime, size }) => {
         const sizeInUnits = size / this.chartBaseUnit;
-        const formattedDate = format(datetime, 'LLL, do')
-        const formattedSize = this.filesize.transform(size);
+        const formattedDate = format(datetime, 'LLL, do');
+        const formattedSize = this.filesize.transform(size) as string;
         return [
           datetime,
           sizeInUnits,
-          `${formattedDate} – ${formattedSize}`
+          `${formattedDate} – ${formattedSize}`,
         ];
       });
       const dataTable = google.visualization.arrayToDataTable([
@@ -87,13 +89,13 @@ export class PoolSizeChartComponent implements OnInit {
           },
           minorGridlines: {
             count: 0,
-          }
+          },
         },
         pointSize: 3,
       });
     };
 
-    google.charts.load('current', { packages: ['corechart'] });
+    void google.charts.load('current', { packages: ['corechart'] });
     window.onresize = debounce(() => drawChart(), 500);
     google.charts.setOnLoadCallback(drawChart);
   }

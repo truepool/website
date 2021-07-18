@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, Observable } from 'rxjs';
-import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
+import {
+  catchError, switchMap, takeUntil, tap,
+} from 'rxjs/operators';
 import { PaginatedResponse } from 'src/app/interfaces/paginated-response.interface';
 import { Farmer } from '../../../interfaces/farmer.interface';
 import { FarmerService } from '../../../services/api/farmer.service';
@@ -45,9 +47,9 @@ export class LeaderboardStore extends ComponentStore<LeaderboardState> {
           offset: page * this.leaderboardPageSize,
           ordering: '-points',
         }).pipe(
-          tap((page) => {
+          tap((farmers) => {
             this.patchState({
-              topFarmers: page,
+              topFarmers: farmers,
               isLoading: false,
             });
           }),

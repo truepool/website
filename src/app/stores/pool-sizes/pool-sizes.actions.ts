@@ -6,5 +6,3 @@ export const statsPageEntered = createAction('[Pool Size] Stats Page Entered');
 
 export const poolSizesLoaded = createAction('[Pool Size] Loaded', props<{ sizes: PoolSize[] }>());
 export const poolSizesNotLoaded = createAction('[Pool Size] Not Loaded', props<{ error: string }>());
-
-

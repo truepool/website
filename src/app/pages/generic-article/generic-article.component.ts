@@ -24,11 +24,11 @@ export class GenericArticleComponent implements OnInit {
 
   // TODO: Job for resolver
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'] as string;
+    const id = this.activatedRoute.snapshot.params.id as string;
     const article = contentDirectory.find((item) => item.url === `${this.pagePrefix}${id}`);
 
     if (!article) {
-      this.router.navigate(['/404']);
+      void this.router.navigate(['/404']);
       return;
     }
 
