@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { EMPTY, Observable } from 'rxjs';
+import { EMPTY, forkJoin, Observable } from 'rxjs';
 import {
-  catchError, switchMap, takeUntil, tap,
+  catchError, map, switchMap, takeUntil, tap,
 } from 'rxjs/operators';
+import { FarmerService } from 'src/app/services/api/farmer.service';
 import { CoinRecord } from '../../interfaces/coin-record.interface';
 import { CoinRecordService } from '../../services/api/coin-record.service';
 
@@ -23,6 +24,7 @@ const initialState: CoinRecordsState = {
 export class CoinRecordsStore extends ComponentStore<CoinRecordsState> {
   constructor(
     private coinRecordsService: CoinRecordService,
+    private farmerService: FarmerService,
   ) {
     super(initialState);
   }
@@ -37,9 +39,22 @@ export class CoinRecordsStore extends ComponentStore<CoinRecordsState> {
       }),
       switchMap(() => {
         return this.coinRecordsService.getCoinRecords({}).pipe(
-          tap((page) => {
+          switchMap((page) => {
+            // TODO: Temporary, until backend introduces name to coinrecords.
+            const getFarmerNames = page.results.map((coinRecord) => {
+              return this.farmerService.getFarmer(coinRecord.farmed_by).pipe(
+                map((farmer) => ({
+                  ...coinRecord,
+                  display_name: farmer.display_name,
+                })),
+              );
+            });
+
+            return forkJoin(getFarmerNames);
+          }),
+          tap((coinRecords) => {
             this.patchState({
-              coinRecords: page.results,
+              coinRecords,
               isLoading: false,
             });
           }),

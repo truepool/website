@@ -67,7 +67,7 @@
         <tr *ngFor="let record of coinRecordsState.coinRecords">
           <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
           <td>{{ record.confirmed_block_index }}</td>
-          <td>{{ record.farmed_by }}</td>
+          <td>{{ record.display_name || record.farmed_by }}</td>
         </tr>
         </tbody>
       </table>
