@@ -31,9 +31,9 @@ To use Chia, you can click the installed App, and select the "Shell" option from
 
 TIP - You can also access the Shell via SSH using the following:
 
-View container namespaces: ```k3s kubectl get namespaces.```
-View pods by namespace: ```k3s kubectl get -n <NAMESPACE> pods.```
-Access container shell: ```k3s kubectl exec -n <NAMESPACE> --stdin --tty <POD> -- /bin/bash.```
+1. View container namespaces: ```k3s kubectl get namespaces.```
+2. View pods by namespace: ```k3s kubectl get -n <NAMESPACE> pods.```
+3. Access container shell: ```k3s kubectl exec -n <NAMESPACE> --stdin --tty <POD> -- /bin/bash.```
 
 ## Installing Chia on TrueNAS CORE/Enterprise
 
