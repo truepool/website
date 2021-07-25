@@ -16,15 +16,24 @@
         </tr>
 
         <ng-template #farmers>
-          <tr
-            *ngFor="let farmer of state.topFarmers.results; let i = index;"
-            [class.no-points]="!farmer.points"
-          >
-            <td># {{ state.currentPage * pageSize + i + 1 }}</td>
-            <td>{{ farmer.points | number }}</td>
-            <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
-            <td class="launcher-id">{{ farmer.display_name || farmer.launcher_id }}</td>
-          </tr>
+          <ng-container *ngFor="let farmer of state.topFarmers.results; let i = index;">
+            <tr [class.no-points]="!farmer.points">
+              <td># {{ state.currentPage * pageSize + i + 1 }}</td>
+              <td>{{ farmer.points | number }}</td>
+              <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
+              <td class="launcher-id">
+                <a (click)="onFarmerNameClicked(farmer.launcher_id)" class="details-link">
+                  {{ farmer.display_name || farmer.launcher_id }}
+                </a>
+              </td>
+            </tr>
+
+            <tr *ngIf="farmer.launcher_id === showDetailsForLauncherId">
+              <td colspan="4" class="farmer-details">
+                <app-farmer-search-results [query]="showDetailsForLauncherId"></app-farmer-search-results>
+              </td>
+            </tr>
+          </ng-container>
         </ng-template>
         </tbody>
       </table>

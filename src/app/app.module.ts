@@ -10,6 +10,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe, NgxFilesizeModule } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
 import { PagerComponent } from 'src/app/components/pager/pager.component';
+import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/farmer-search.component';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -24,7 +25,7 @@ import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
 import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
-import { FarmerSearchComponent } from './pages/farmers-page/farmer-search/farmer-search.component';
+import { FarmerSearchPromptComponent } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { LeaderboardComponent } from './pages/farmers-page/leaderboard/leaderboard.component';
 import { AboutUsComponent } from './pages/front-page/about-us/about-us.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
@@ -55,7 +56,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     LeadSectionComponent,
     ContentLoaderComponent,
     LeaderboardComponent,
-    FarmerSearchComponent,
+    FarmerSearchPromptComponent,
     FooterComponent,
     ContributionPromptComponent,
     PagerComponent,
@@ -77,6 +78,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     // Pipes
     XchPipe,
     MinutesPipe,
+    FarmerSearchComponent,
   ],
   imports: [
     BrowserModule,

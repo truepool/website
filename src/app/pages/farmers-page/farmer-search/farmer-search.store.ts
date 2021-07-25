@@ -4,22 +4,25 @@ import { EMPTY, forkJoin, Observable } from 'rxjs';
 import {
   catchError, map, switchMap, takeUntil, tap,
 } from 'rxjs/operators';
-import { Farmer } from '../../../interfaces/farmer.interface';
-import { PayoutAddress } from '../../../interfaces/payout.interface';
-import { FarmerService } from '../../../services/api/farmer.service';
-import { PayoutService } from '../../../services/api/payout.service';
+import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';
+import { Farmer } from 'src/app/interfaces/farmer.interface';
+import { PayoutAddress } from 'src/app/interfaces/payout.interface';
+import { FarmerPartialService } from 'src/app/services/api/farmer-partial.service';
+import { FarmerService } from 'src/app/services/api/farmer.service';
+import { PayoutService } from 'src/app/services/api/payout.service';
 
 export interface FarmerSearchState {
-  isSearching: boolean;
+  isLoading: boolean;
   error: string;
   results: {
     farmer: Farmer;
     payouts?: PayoutAddress[];
+    partials?: FarmerPartial[];
   }[] | null,
 }
 
 const initialState: FarmerSearchState = {
-  isSearching: false,
+  isLoading: false,
   error: null,
   results: null,
 };
@@ -27,10 +30,12 @@ const initialState: FarmerSearchState = {
 @Injectable({ providedIn: 'root' })
 export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
   readonly maxSearchResults = 5;
+  readonly farmerPartialResults = 15;
 
   constructor(
     private farmerService: FarmerService,
     private payoutService: PayoutService,
+    private farmerPartialService: FarmerPartialService,
   ) {
     super(initialState);
   }
@@ -40,23 +45,33 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
       tap(() => {
         this.setState({
           ...initialState,
-          isSearching: true,
+          isLoading: true,
         });
       }),
       switchMap((query) => {
         return this.farmerService.getFarmers({ search: query, limit: this.maxSearchResults }).pipe(
-
+          // Load payouts
           switchMap((farmers) => {
             const payoutRequests = farmers.results.map((farmer) => {
-              return this.payoutService.getPayoutAddresses({ farmer: farmer.launcher_id }).pipe(
-                map((payouts) => ({ farmer, payouts: payouts.results })),
+              return forkJoin([
+                this.payoutService.getPayoutAddresses({ farmer: farmer.launcher_id }),
+                this.farmerPartialService.getPartials({
+                  launcher_id: farmer.launcher_id,
+                  limit: this.farmerPartialResults,
+                }),
+              ]).pipe(
+                map(([payouts, partials]) => ({
+                  farmer,
+                  payouts: payouts.results,
+                  partials: partials.results,
+                })),
               );
             });
 
             return forkJoin(payoutRequests);
           }),
           tap((results) => {
-            this.patchState({ results, isSearching: false });
+            this.patchState({ results, isLoading: false });
           }),
           catchError(() => {
             const error = 'Error when searching for a farmer.';
@@ -64,7 +79,7 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
             // TODO: Parse actual error and show it.
             this.patchState({
               error,
-              isSearching: false,
+              isLoading: false,
             });
 
             return EMPTY;

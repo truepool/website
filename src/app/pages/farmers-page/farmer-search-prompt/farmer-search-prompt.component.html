@@ -1,0 +1,8 @@
+<h2>Search for a farmer:</h2>
+<form class="search-form" (submit)="onSearchSubmitted($event)">
+  <input class="search-input" placeholder="Name or launcher ID" [formControl]="searchControl"/>
+
+  <button [disabled]="!searchControl.value" class="button button-blue">Search</button>
+</form>
+
+<app-farmer-search-results *ngIf="showSearch" [query]="searchControl.value"></app-farmer-search-results>
