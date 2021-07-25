@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';
 import { FarmerSearchStore } from 'src/app/pages/farmers-page/farmer-search/farmer-search.store';
 
 @Component({
@@ -19,4 +20,8 @@ export class FarmerSearchComponent {
   }
 
   constructor(private store: FarmerSearchStore) {}
+
+  filterErrors(partials: FarmerPartial[]): FarmerPartial[] {
+    return partials.filter((partial) => partial.error);
+  }
 }

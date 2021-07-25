@@ -52,28 +52,37 @@
       </table>
     </ng-template>
 
-    <h5>Last partials</h5>
+    <h5>Partials Last 24h</h5>
 
-    <ng-container *ngIf="!result.partials?.length; else partialsTable">
+    <ng-container *ngIf="!result.partials?.length; else partialsInfo">
       This farmer has no partials.
     </ng-container>
-    <ng-template #partialsTable>
-      <table>
-        <thead>
-        <tr>
-          <th>Date</th>
-          <th>Difficulty</th>
-          <th>Error</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let partial of result.partials">
-          <td>{{ partial.timestamp * 1000 | date: 'M/d/yy, h:mm:ss a' }}</td>
-          <td>{{ partial.difficulty | number }}</td>
-          <td>{{ partial.error || '-' }} </td>
-        </tr>
-        </tbody>
-      </table>
+    <ng-template #partialsInfo>
+      <app-partials-chart [partials]="result.partials"></app-partials-chart>
+
+      <ng-container *appLet="filterErrors(result.partials) as errors">
+        <h4>Errors</h4>
+        <ng-container *ngIf="!errors.length; else errorTable">
+          No errors last 24 hours.
+        </ng-container>
+
+        <ng-template #errorTable>
+          <table>
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Error</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let partial of errors">
+              <td>{{ partial.timestamp * 1000 | date: 'M/d/yy, h:mm:ss a' }}</td>
+              <td>{{ partial.error || '-' }} </td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ng-container>
     </ng-template>
   </div>
 </app-content-loader>

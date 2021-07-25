@@ -11,6 +11,7 @@ import { FileSizePipe, NgxFilesizeModule } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
 import { PagerComponent } from 'src/app/components/pager/pager.component';
 import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/farmer-search.component';
+import { PartialsChartComponent } from 'src/app/pages/farmers-page/partials-chart/partials-chart.component';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -60,6 +61,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     FooterComponent,
     ContributionPromptComponent,
     PagerComponent,
+    PartialsChartComponent,
 
     // Pages
     StatsPageComponent,

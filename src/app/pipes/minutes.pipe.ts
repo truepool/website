@@ -8,8 +8,7 @@ export class MinutesPipe implements PipeTransform {
   }
 
   formatUnitString(strUnit: string, count: number): string {
-    const strS = (count > 1 ? 's' : '');
-    return `${Math.floor(count)} ${strUnit}${strS}`;
+    return `${Math.floor(count)}${strUnit}`;
   }
 
   formatUnit(
@@ -23,7 +22,7 @@ export class MinutesPipe implements PipeTransform {
     let formatted = this.formatUnitString(unit, count);
     const minutesLeft = minutes % unitMinutes;
     if (minutesLeft >= nextUnitMinutes) {
-      formatted = `${formatted}, ${this.formatUnitString(nextUnit, (minutesLeft / nextUnitMinutes))}`;
+      formatted = `${formatted} ${this.formatUnitString(nextUnit, (minutesLeft / nextUnitMinutes))}`;
     }
     return formatted;
   }
@@ -45,12 +44,12 @@ export class MinutesPipe implements PipeTransform {
     const days = Math.floor(minutes / dayMinutes);
     const hours = Math.floor(minutes / hourMinutes);
 
-    if (years > 0) { return this.formatUnit(minutes, 'year', years, yearMinutes, 'month', monthMinutes); }
-    if (months > 0) { return this.formatUnit(minutes, 'month', months, monthMinutes, 'week', weekMinutes); }
-    if (weeks > 0) { return this.formatUnit(minutes, 'week', weeks, weekMinutes, 'day', dayMinutes); }
-    if (days > 0) { return this.formatUnit(minutes, 'day', days, dayMinutes, 'hour', hourMinutes); }
-    if (hours > 0) { return this.formatUnit(minutes, 'hour', hours, hourMinutes, 'minute', 1); }
-    if (minutes > 0) { return this.formatUnitString('minute', minutes); }
+    if (years > 0) { return this.formatUnit(minutes, 'y', years, yearMinutes, 'm', monthMinutes); }
+    if (months > 0) { return this.formatUnit(minutes, 'm', months, monthMinutes, 'w', weekMinutes); }
+    if (weeks > 0) { return this.formatUnit(minutes, 'w', weeks, weekMinutes, 'd', dayMinutes); }
+    if (days > 0) { return this.formatUnit(minutes, 'd', days, dayMinutes, 'h', hourMinutes); }
+    if (hours > 0) { return this.formatUnit(minutes, 'h', hours, hourMinutes, 'm', 1); }
+    if (minutes > 0) { return this.formatUnitString('m', minutes); }
 
     return 'Unknown';
   }

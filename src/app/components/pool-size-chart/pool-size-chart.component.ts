@@ -38,7 +38,7 @@ export class PoolSizeChartComponent implements OnInit {
     const drawChart = () => {
       const series = this.sizes.map(({ datetime, size }) => {
         const sizeInUnits = size / this.chartBaseUnit;
-        const formattedDate = format(datetime, 'LLL, do');
+        const formattedDate = format(datetime, 'LLL, do h:mm aaa');
         const formattedSize = this.filesize.transform(size) as string;
         return [
           datetime,

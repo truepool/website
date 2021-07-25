@@ -7,6 +7,7 @@
           <th>Rank</th>
           <th>Points</th>
           <th>Overall points share</th>
+          <th class="estimated-size-column">Estimated Size</th>
           <th>Launcher ID</th>
         </tr>
         </thead>
@@ -21,6 +22,7 @@
               <td># {{ state.currentPage * pageSize + i + 1 }}</td>
               <td>{{ farmer.points | number }}</td>
               <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
+              <td class="estimated-size-column">{{ farmer.farm_estimated_size | filesize }}</td>
               <td class="launcher-id">
                 <a (click)="onFarmerNameClicked(farmer.launcher_id)" class="details-link">
                   {{ farmer.display_name || farmer.launcher_id }}
@@ -29,7 +31,7 @@
             </tr>
 
             <tr *ngIf="farmer.launcher_id === showDetailsForLauncherId">
-              <td colspan="4" class="farmer-details">
+              <td colspan="5" class="farmer-details">
                 <app-farmer-search-results [query]="showDetailsForLauncherId"></app-farmer-search-results>
               </td>
             </tr>

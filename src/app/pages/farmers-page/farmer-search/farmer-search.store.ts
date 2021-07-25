@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
+import { subHours } from 'date-fns';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
 import {
   catchError, map, switchMap, takeUntil, tap,
@@ -30,7 +31,7 @@ const initialState: FarmerSearchState = {
 @Injectable({ providedIn: 'root' })
 export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
   readonly maxSearchResults = 5;
-  readonly farmerPartialResults = 15;
+  readonly partialsForLastHours = 24;
 
   constructor(
     private farmerService: FarmerService,
@@ -52,18 +53,23 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
         return this.farmerService.getFarmers({ search: query, limit: this.maxSearchResults }).pipe(
           // Load payouts
           switchMap((farmers) => {
+            const startTimestamp = Math.floor(subHours(new Date(), this.partialsForLastHours).getTime() / 1000);
             const payoutRequests = farmers.results.map((farmer) => {
               return forkJoin([
                 this.payoutService.getPayoutAddresses({ farmer: farmer.launcher_id }),
                 this.farmerPartialService.getPartials({
                   launcher_id: farmer.launcher_id,
-                  limit: this.farmerPartialResults,
-                }),
+                  limit: 500, // Assumes that we will not get more than 500 partials a day.
+                }).pipe(
+                  map((page) => {
+                    return page.results.filter((partial) => partial.timestamp >= startTimestamp);
+                  }),
+                ),
               ]).pipe(
                 map(([payouts, partials]) => ({
                   farmer,
+                  partials,
                   payouts: payouts.results,
-                  partials: partials.results,
                 })),
               );
             });

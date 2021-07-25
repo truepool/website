@@ -9,6 +9,7 @@ export interface CoinRecord {
   amount: number;
   farmed_by: string;
   payout: string;
+  farmer_display_name: string;
 }
 
 export type CoinRecordQueryParams = {

@@ -12,14 +12,10 @@
         <div class="big-number-title">Last Reward</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value even-longer-value">{{ info.minutes_to_win | minutes }}</div>
-        <div class="big-number-title">Estimated Time To Win</div>
-      </div>
-      <div class="break"></div>
-      <div class="big-number">
         <div class="big-number-value">{{ info.blockchain_totalspace | filesize }}</div>
         <div class="big-number-title">Total Network Space</div>
       </div>
+      <div class="break"></div>
       <div class="big-number">
         <div class="big-number-value">{{ info.total_size | filesize }}</div>
         <div class="big-number-title">Truepool Space</div>
@@ -27,6 +23,19 @@
       <div class="big-number">
         <div class="big-number-value">{{ info.total_size / info.blockchain_totalspace | percent: '1.0-5' }}</div>
         <div class="big-number-title">Truepool Network Share</div>
+      </div>
+      <div class="big-number">
+        <div class="big-number-value">{{ growthLast24h$ | async | filesize }}</div>
+        <div class="big-number-title">Added Last 24h</div>
+      </div>
+      <div class="break"></div>
+      <div class="big-number">
+        <div class="big-number-value">{{ info.minutes_to_win | minutes }}</div>
+        <div class="big-number-title">Estimated Time To Win</div>
+      </div>
+      <div class="big-number">
+        <div class="big-number-value">{{ info.seconds_since_last_win / 60 | minutes }}</div>
+        <div class="big-number-title">Time Since Last Win</div>
       </div>
     </div>
   </app-content-loader>
@@ -39,7 +48,7 @@
   >
     <div *ngIf="poolSizesState.sizes.length" class="pool-size-chart-container">
       <h2 class="pool-space-header">Pool Space</h2>
-      <app-pool-size-chart [sizes]="poolSizesState.sizes" [theme]="PoolSizeChartTheme.Light"></app-pool-size-chart>
+      <app-pool-size-chart [sizes]="somePoolSizes$ | async" [theme]="PoolSizeChartTheme.Light"></app-pool-size-chart>
     </div>
   </app-content-loader>
 
@@ -67,7 +76,7 @@
         <tr *ngFor="let record of coinRecordsState.coinRecords">
           <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
           <td>{{ record.confirmed_block_index }}</td>
-          <td>{{ record.display_name || record.farmed_by }}</td>
+          <td>{{ record.farmer_display_name || record.farmed_by }}</td>
         </tr>
         </tbody>
       </table>
