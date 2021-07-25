@@ -33,6 +33,7 @@
 }
 
 .estimated-size-column {
+  display: none; // TODO:
   @media screen and (max-width: $breakpoint-sm) {
     display: none;
   }
