@@ -24,6 +24,8 @@ export class StatsPageComponent implements OnInit {
   payoutsState$ = this.payoutsStore.state$;
   growthLast24h$ = this.mainStore.select(selectGrowthLast24h);
   somePoolSizes$ = this.mainStore.select(selectSomePoolSizes);
+  
+  showDetailsForPayoutId: string = null
 
   readonly PoolSizeChartTheme = PoolSizeChartTheme;
 
@@ -39,5 +41,14 @@ export class StatsPageComponent implements OnInit {
     this.infoStore.loadInfo();
     this.coinRecordsStore.loadCoinRecords();
     this.payoutsStore.loadPayouts();
+  }
+
+  onPayoutClicked(payoutId: string): void {
+    if (this.showDetailsForPayoutId === payoutId) {
+      this.showDetailsForPayoutId = null;
+      return;
+    }
+
+    this.showDetailsForPayoutId = payoutId;
   }
 }

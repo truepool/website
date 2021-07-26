@@ -22,3 +22,7 @@ export type PayoutAddressQueryParams = {
   puzzle_hash?: string;
   farmer?: string;
 } & PaginatedQueryParams;
+
+export type PayoutQueryParams = {
+  id: string
+}

@@ -16,4 +16,8 @@ export class PayoutService {
   getPayoutAddresses(params: PayoutAddressQueryParams): Observable<PaginatedResponse<PayoutAddress>> {
     return this.http.get<PaginatedResponse<PayoutAddress>>(`${environment.apiRoot}/payout_address/`, { params });
   }
+
+  getPayout(payoutId: string): Observable<Payout> {
+    return this.http.get<Payout>(`${environment.apiRoot}/payout/${payoutId}`);
+  }
 }
