@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { subHours } from 'date-fns';
-import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { catchError, map, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { EMPTY, Observable } from 'rxjs';
+import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { Payout } from 'src/app/interfaces/payout.interface';
 import { PayoutService } from 'src/app/services/api/payout.service';
 
@@ -20,9 +19,6 @@ const initialState: PayoutSearchState = {
 
 @Injectable({ providedIn: 'root' })
 export class PayoutSearchStore extends ComponentStore<PayoutSearchState> {
-  readonly maxSearchResults = 5;
-  readonly partialsForLastHours = 24;
-
   constructor(private payoutService: PayoutService) {
     super(initialState);
   }
