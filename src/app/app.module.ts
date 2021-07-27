@@ -10,10 +10,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe, NgxFilesizeModule } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
 import { PagerComponent } from 'src/app/components/pager/pager.component';
+import { FarmerSearchPromptComponent } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/farmer-search.component';
 import { PartialsChartComponent } from 'src/app/pages/farmers-page/partials-chart/partials-chart.component';
 import { environment } from '../environments/environment';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
@@ -24,26 +24,26 @@ import { HeaderComponent } from './components/header/header.component';
 import { PoolSizeChartComponent } from './components/pool-size-chart/pool-size-chart.component';
 import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
-import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
-import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
-import { FarmerSearchPromptComponent } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
+import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
 import { LeaderboardComponent } from './pages/farmers-page/leaderboard/leaderboard.component';
 import { AboutUsComponent } from './pages/front-page/about-us/about-us.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
 import { LeadSectionComponent } from './pages/front-page/lead-section/lead-section.component';
 import { NewsComponent } from './pages/front-page/news/news.component';
 import { OperatorsComponent } from './pages/front-page/operators/operators.component';
+import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
+import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
-import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { PayoutPageComponent } from './pages/payout-page/payout-page.component';
+import { PayoutSearchComponent } from './pages/payout-page/payout-search/payout-search.component';
 import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
-import { XchPipe } from './pipes/xch.pipe';
 import { MinutesPipe } from './pipes/minutes.pipe';
+import { XchPipe } from './pipes/xch.pipe';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
-import { PayoutSearchComponent } from './pages/stats-page/payout-search/payout-search.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +74,7 @@ import { PayoutSearchComponent } from './pages/stats-page/payout-search/payout-s
     KnowledgeBaseListingComponent,
     NotFoundPageComponent,
     SetNameComponent,
+    PayoutPageComponent,
 
     // Directives
     SmoothlyScrollToDirective,

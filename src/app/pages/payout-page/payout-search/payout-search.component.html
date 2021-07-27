@@ -1,0 +1,44 @@
+<div class="page-content">
+    <div class="page-title">Payout</div>
+    <app-content-loader
+        *appLet="state$ | async as state"
+        [isLoading]="state.isLoading"
+        [error]="state.error"
+    >
+        <ng-container *ngIf="state.payout">
+            <p>{{ state.payout.id }}</p>
+        </ng-container>
+        <ng-container *ngIf="state.coinRecords">
+            <ng-container *ngFor="let coin of state.coinRecords">
+                <p>{{ coin | json }}</p>
+            </ng-container>
+        </ng-container>
+        <ng-container *ngIf="state.addresses">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Farmer</th>
+                        <th>Amount</th>
+                        <th>Height</th>
+                        <th>Transaction</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngIf="!state.addresses?.length; else payoutAddresses">
+                        <td colspan="4">No records.</td>
+                    </tr>
+                    <ng-template #payoutAddresses>
+                        <ng-container *ngFor="let address of state.addresses; let i = index;">
+                            <tr>
+                                <td>{{ address.farmer }}</td>
+                                <td>{{ address.amount }}</td>
+                                <td>{{ address.confirmed_height }}</td>
+                                <td>{{ address.transaction }}</td>
+                            </tr>
+                        </ng-container>
+                    </ng-template>
+                </tbody>
+            </table>
+        </ng-container>
+    </app-content-loader>
+</div>
