@@ -1,1 +1,9 @@
-{{ state$ | async | json }}
+<app-content-loader
+  *appLet="state$ | async as state"
+  [isLoading]="state.isLoading"
+  [error]="state.error"
+>
+  <div *ngIf="state.result as result" class="search-result">
+    {{ result | json }}
+  </div>
+</app-content-loader>

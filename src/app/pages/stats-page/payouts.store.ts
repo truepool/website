@@ -38,6 +38,7 @@ export class PayoutsStore extends ComponentStore<PayoutsState> {
       switchMap(() => {
         return this.payoutService.getPayouts({}).pipe(
           tap((page) => {
+            console.log({ page })
             this.patchState({
               payouts: page.results,
               isLoading: false,

@@ -102,11 +102,11 @@
         </thead>
         <tbody>
           <ng-container *ngFor="let payout of payoutsState.payouts">
-            <tr (click)="onPayoutClicked(payout.url)">
+            <tr (click)="onPayoutClicked(payout.id)">
               <td>{{ payout.datetime | date: 'short' }}</td>
               <td>{{ payout.amount | xch }}</td>
             </tr>
-            <tr *ngIf="payout.url === showDetailsForPayoutId">
+            <tr *ngIf="payout.id === showDetailsForPayoutId">
               <td colspan="5" class="farmer-details">
                 <app-payout-search-results [query]="showDetailsForPayoutId"></app-payout-search-results>
               </td>

@@ -10,8 +10,8 @@ import { PayoutSearchStore } from './payout-search.store';
 export class PayoutSearchComponent {
   state$ = this.store.state$;
 
-  @Input() set query(value: string) {
-    this.store.searchPayout(value);
+  @Input() set query(payoutId: number) {
+    this.store.searchPayout(payoutId);
   }
 
   constructor(private store: PayoutSearchStore) {}

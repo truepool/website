@@ -1,6 +1,7 @@
 import { PaginatedQueryParams } from './paginated-response.interface';
 
 export interface Payout {
+  id: number;
   url: string;
   datetime: string;
   amount: number;

@@ -25,7 +25,7 @@ export class StatsPageComponent implements OnInit {
   growthLast24h$ = this.mainStore.select(selectGrowthLast24h);
   somePoolSizes$ = this.mainStore.select(selectSomePoolSizes);
   
-  showDetailsForPayoutId: string = null
+  showDetailsForPayoutId: number = null
 
   readonly PoolSizeChartTheme = PoolSizeChartTheme;
 
@@ -43,7 +43,7 @@ export class StatsPageComponent implements OnInit {
     this.payoutsStore.loadPayouts();
   }
 
-  onPayoutClicked(payoutId: string): void {
+  onPayoutClicked(payoutId: number): void {
     if (this.showDetailsForPayoutId === payoutId) {
       this.showDetailsForPayoutId = null;
       return;
