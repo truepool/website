@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MarkdownService } from 'ngx-markdown';
 import { contentDirectory } from '../../../content/content-directory';
 import { ContentItem } from '../../interfaces/content-item.interface';
 
@@ -16,6 +17,7 @@ export class GenericArticleComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private markdownService: MarkdownService,
   ) {}
 
   get markdownSrc(): string {
@@ -33,5 +35,13 @@ export class GenericArticleComponent implements OnInit {
     }
 
     this.article = article;
+
+    // TODO: Add the same support to kb article
+    this.markdownService.renderer.heading = (text: string, level: number) => {
+      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      return `<h${level}>`
+        + `<a name="${escapedText}" class="anchor" href="#${escapedText}">`
+        + `</a>${text}</h${level}>`;
+    }
   }
 }
