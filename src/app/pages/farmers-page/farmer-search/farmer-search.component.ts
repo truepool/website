@@ -1,27 +1,27 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { FarmerSearchStore } from './farmer-search.store';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';
+import { FarmerSearchStore } from 'src/app/pages/farmers-page/farmer-search/farmer-search.store';
 
 @Component({
-  selector: 'app-farmer-search',
+  selector: 'app-farmer-search-results',
   templateUrl: 'farmer-search.component.html',
   styleUrls: ['./farmer-search.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [FarmerSearchStore],
 })
 export class FarmerSearchComponent {
   state$ = this.store.state$;
 
-  searchControl = new FormControl();
+  /**
+   * Launcher id or search query.
+   */
+  @Input() set query(value: string) {
+    this.store.searchFarmer(value);
+  }
 
-  constructor(
-    private store: FarmerSearchStore,
-  ) {}
+  constructor(private store: FarmerSearchStore) {}
 
-  onSearchSubmitted(event: Event): void {
-    const launcherId: string = this.searchControl.value;
-
-    this.store.searchFarmer(launcherId);
-
-    event.preventDefault();
+  filterErrors(partials: FarmerPartial[]): FarmerPartial[] {
+    return partials.filter((partial) => partial.error);
   }
 }

@@ -10,11 +10,27 @@ import { LeaderboardStore } from './leaderboard.store';
 export class LeaderboardComponent implements OnInit {
   state$ = this.store.state$;
 
-  readonly maxItemsShown = this.store.leaderboardItems;
+  showDetailsForLauncherId: string = null;
+
+  readonly pageSize = this.store.leaderboardPageSize;
 
   constructor(private store: LeaderboardStore) {}
 
   ngOnInit(): void {
-    this.store.loadFarmers();
+    this.store.loadFarmers(0);
+  }
+
+  onPageChanged(page: number): void {
+    this.store.loadFarmers(page);
+    this.showDetailsForLauncherId = null;
+  }
+
+  onFarmerNameClicked(launcherId: string): void {
+    if (this.showDetailsForLauncherId === launcherId) {
+      this.showDetailsForLauncherId = null;
+      return;
+    }
+
+    this.showDetailsForLauncherId = launcherId;
   }
 }

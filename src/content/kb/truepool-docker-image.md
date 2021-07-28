@@ -12,6 +12,7 @@ The image includes the following:
 - [MadMax Plotter](https://github.com/madMAx43v3r/chia-plotter)
 - [Farmr Client](https://github.com/joaquimguimaraes/farmr)
 - [Plotman](https://github.com/ericaltendorf/plotman)
+- [BladeBit](https://github.com/harold-b/bladebit/)
 
 ## How do I get it?
 
@@ -32,6 +33,7 @@ Once the container is running the commands used most often will be:
 
 - chia - The main Chia program
 - chia_plot - The MadMax Plotter
+- bladebit - The BladeBit RAM Plotter
 - plotman - The tool for enabling plotman monitoring / plotting
 - /farmr - Location for the farmr chia monitoring bot/service.
 
@@ -47,5 +49,5 @@ Apart from the usual chia-docker options, this container adds the following:
 -e farmr="harvester"
 ```
 
-Specifying these options will auto-start the farmr bot at container initialization. You will want to manually run `cd /farmr && ./farmer.sh` one time first to configure and obtain your farmr.net login token.
+Specifying these options will auto-start the farmr bot at container initialization. You can view your farmr.net ID by running ```tail /farmr/log.txt``` inside the running container. 
 

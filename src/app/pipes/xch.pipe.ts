@@ -2,7 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'xch'
+  name: 'xch',
 })
 export class XchPipe implements PipeTransform {
   constructor(
@@ -13,6 +13,6 @@ export class XchPipe implements PipeTransform {
     const xch = value / 10 ** 12;
     const formattedXch = this.numberPipe.transform(xch, '1.0-12');
 
-    return `${formattedXch} XCH`
+    return `${formattedXch} XCH`;
   }
 }

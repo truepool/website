@@ -40,12 +40,12 @@ const routes: Routes = [
     path: 'pages/:id',
     component: GenericArticleComponent,
   },
-  {path: '404', component: NotFoundPageComponent},
-  {path: '**', redirectTo: '/404'}
+  { path: '404', component: NotFoundPageComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule { }

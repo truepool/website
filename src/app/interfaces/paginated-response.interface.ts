@@ -8,4 +8,4 @@ export interface PaginatedResponse<T> {
 export type PaginatedQueryParams = {
   limit?: number;
   offset?: number;
-}
+};

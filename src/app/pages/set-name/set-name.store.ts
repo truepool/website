@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { EMPTY, forkJoin, Observable } from 'rxjs';
-import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
+import {
+  catchError, switchMap, takeUntil, tap,
+} from 'rxjs/operators';
 import { Farmer } from '../../interfaces/farmer.interface';
 import { LoginParams } from '../../interfaces/login-params.interface';
 import { FarmerService } from '../../services/api/farmer.service';
@@ -74,7 +76,7 @@ export class SetNameStore extends ComponentStore<SetNameState> {
           takeUntil(this.destroy$),
         );
       }),
-    )
+    );
   });
 
   readonly setName = this.effect((nameInfo$: Observable<{ display_name: string, email?: string }>) => {

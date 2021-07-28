@@ -1,13 +1,6 @@
-<h2>Search for a farmer:</h2>
-<form class="search-form" (submit)="onSearchSubmitted($event)">
-  <input class="search-input" placeholder="Launcher ID" [formControl]="searchControl"/>
-
-  <button [disabled]="!searchControl.value" class="button button-blue">Search</button>
-</form>
-
 <app-content-loader
   *appLet="state$ | async as state"
-  [isLoading]="state.isSearching"
+  [isLoading]="state.isLoading"
   [error]="state.error"
 >
   <div *ngFor="let result of state.results" class="search-result">
@@ -35,7 +28,7 @@
       </tr>
     </table>
 
-    <h5>Payouts</h5>
+    <h5>Last payouts</h5>
 
     <ng-container *ngIf="!result.payouts?.length; else payoutsTable">
       This farmer has no payouts.
@@ -43,20 +36,53 @@
     <ng-template #payoutsTable>
       <table>
         <thead>
-          <tr>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Transaction</th>
-          </tr>
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Transaction</th>
+        </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let payout of result.payouts">
-            <td>{{ payout.payout.datetime | date: 'short' }}</td>
-            <td>{{ payout.amount | xch }}</td>
-            <td>{{ payout.transaction }}</td>
-          </tr>
+        <tr *ngFor="let payout of result.payouts">
+          <td>{{ payout.payout.datetime | date: 'short' }}</td>
+          <td>{{ payout.amount | xch }}</td>
+          <td>{{ payout.transaction }}</td>
+        </tr>
         </tbody>
       </table>
+    </ng-template>
+
+    <h5>Partials Last 24h</h5>
+
+    <ng-container *ngIf="!result.partials?.length; else partialsInfo">
+      This farmer has no partials.
+    </ng-container>
+    <ng-template #partialsInfo>
+      <app-partials-chart [partials]="result.partials"></app-partials-chart>
+
+      <ng-container *appLet="filterErrors(result.partials) as errors">
+        <h4>Errors</h4>
+        <ng-container *ngIf="!errors.length; else errorTable">
+          No errors last 24 hours.
+        </ng-container>
+
+        <ng-template #errorTable>
+          <table>
+            <thead>
+            <tr>
+              <th>Date</th>
+              <th>Error</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let partial of errors">
+              <td>{{ partial.timestamp * 1000 | date: 'M/d/yy, h:mm:ss a' }}</td>
+              <td>{{ partial.error || '-' }} </td>
+            </tr>
+            </tbody>
+          </table>
+        </ng-template>
+      </ng-container>
     </ng-template>
   </div>
 </app-content-loader>

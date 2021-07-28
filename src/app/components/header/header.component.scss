@@ -69,12 +69,6 @@ header {
       }
     }
 
-    .about-us-link {
-      @media screen and (max-width: $breakpoint-sm) {
-        display: none;
-      }
-    }
-
     a {
       color: white;
       padding: 7px 2px;

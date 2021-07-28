@@ -1,6 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -9,6 +9,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe, NgxFilesizeModule } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
+import { PagerComponent } from 'src/app/components/pager/pager.component';
+import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/farmer-search.component';
+import { PartialsChartComponent } from 'src/app/pages/farmers-page/partials-chart/partials-chart.component';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -23,7 +26,7 @@ import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
 import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
-import { FarmerSearchComponent } from './pages/farmers-page/farmer-search/farmer-search.component';
+import { FarmerSearchPromptComponent } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { LeaderboardComponent } from './pages/farmers-page/leaderboard/leaderboard.component';
 import { AboutUsComponent } from './pages/front-page/about-us/about-us.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
@@ -32,12 +35,11 @@ import { NewsComponent } from './pages/front-page/news/news.component';
 import { OperatorsComponent } from './pages/front-page/operators/operators.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
-import { LeaderboardStore } from './pages/farmers-page/leaderboard/leaderboard.store';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { XchPipe } from './pipes/xch.pipe';
-import { MinutesPipe } from './pipes/minutes.pipe'
+import { MinutesPipe } from './pipes/minutes.pipe';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
@@ -55,9 +57,11 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     LeadSectionComponent,
     ContentLoaderComponent,
     LeaderboardComponent,
-    FarmerSearchComponent,
+    FarmerSearchPromptComponent,
     FooterComponent,
     ContributionPromptComponent,
+    PagerComponent,
+    PartialsChartComponent,
 
     // Pages
     StatsPageComponent,
@@ -76,6 +80,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     // Pipes
     XchPipe,
     MinutesPipe,
+    FarmerSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,13 +95,16 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     }),
     NgxFilesizeModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE,
+    }),
     BrowserAnimationsModule,
   ],
   providers: [
     FileSizePipe,
     DecimalPipe,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

@@ -19,7 +19,7 @@ export class PoolService {
           ...size,
           datetime: parseISO(size.datetime as string),
         } as PoolSize));
-      })
-    )
+      }),
+    );
   }
 }

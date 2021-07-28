@@ -3,7 +3,11 @@ import { Store } from '@ngrx/store';
 import { PoolSizeChartTheme } from '../../components/pool-size-chart/pool-size-chart-theme.enum';
 import { statsPageEntered } from '../../stores/pool-sizes/pool-sizes.actions';
 import { PoolSizeState } from '../../stores/pool-sizes/pool-sizes.reducer';
-import { selectPoolSizesState } from '../../stores/pool-sizes/pool-sizes.selectors';
+import {
+  selectGrowthLast24h,
+  selectPoolSizesState,
+  selectSomePoolSizes
+} from '../../stores/pool-sizes/pool-sizes.selectors';
 import { CoinRecordsStore } from './coin-records.store';
 import { PayoutsStore } from './payouts.store';
 import { InfoStore } from './info.store';
@@ -18,6 +22,8 @@ export class StatsPageComponent implements OnInit {
   infoState$ = this.infoStore.state$;
   coinRecordsState$ = this.coinRecordsStore.state$;
   payoutsState$ = this.payoutsStore.state$;
+  growthLast24h$ = this.mainStore.select(selectGrowthLast24h);
+  somePoolSizes$ = this.mainStore.select(selectSomePoolSizes);
 
   readonly PoolSizeChartTheme = PoolSizeChartTheme;
 

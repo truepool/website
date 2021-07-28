@@ -18,10 +18,13 @@ export const contentDirectory: ContentItem[] = [
     url: 'kb/set-friendly-leaderboard-name',
   },
 
-
   // Other pages
   {
     title: 'Join Truepool',
-    url: 'pages/join-truepool'
+    url: 'pages/join-truepool',
+  },
+  {
+    title: 'News',
+    url: 'pages/news',
   },
 ];

@@ -14,6 +14,6 @@ export class LeadSectionComponent {
   latestPoolSize$: Observable<number> = this.store.select(selectLatestPoolSize);
 
   constructor(
-    private store: Store<PoolSizeState>
+    private store: Store<PoolSizeState>,
   ) {}
 }

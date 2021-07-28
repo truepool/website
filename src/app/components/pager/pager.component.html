@@ -1,0 +1,31 @@
+<div
+  class="previous-page"
+  [class.disabled]="currentPage <= 0"
+  (click)="onPreviousPagePressed()"
+>&lt;</div>
+<div class="page-number">
+  <div
+    *ngIf="!isEditingCurrentPage"
+    class="current-page-link"
+    (click)="onCurrentPageLinkPressed()"
+  >{{ currentPage + 1 }}</div>
+
+  <input
+    *ngIf="isEditingCurrentPage"
+    #currentPageInput
+    class="page-input"
+    [class.has-error]="currentPageControl.invalid"
+    [formControl]="currentPageControl"
+    type="number"
+    min="1"
+    [max]="totalPages"
+    (focusout)="onPageControlFocusLost()"
+    (keydown.enter)="onEnterPressed()"
+  >
+  / {{ totalPages }}
+</div>
+<div
+  class="next-page"
+  [class.disabled]="currentPage >= totalPages - 1"
+  (click)="onNextPagePressed()"
+>&gt;</div>

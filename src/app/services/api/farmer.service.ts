@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { CoinRecord, CoinRecordQueryParams } from '../../interfaces/coin-record.interface';
 import { Farmer, FarmersQueryParams } from '../../interfaces/farmer.interface';
 import { PaginatedResponse } from '../../interfaces/paginated-response.interface';
 
