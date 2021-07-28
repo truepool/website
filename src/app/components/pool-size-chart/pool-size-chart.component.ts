@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { format } from 'date-fns';
 import { debounce } from 'lodash';
 import { FileSizePipe } from 'ngx-filesize';
@@ -12,11 +12,13 @@ import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
   styleUrls: ['./pool-size-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PoolSizeChartComponent implements OnInit {
+export class PoolSizeChartComponent implements OnInit, OnChanges {
   @Input() sizes: PoolSize[];
   @Input() theme: PoolSizeChartTheme = PoolSizeChartTheme.Dark;
-
+  @Input() config: any;
   @ViewChild('chart') chartElement: ElementRef;
+  @ViewChild('linearScaleButton') linearScaleButtonElement: ElementRef;
+  @ViewChild('logScaleButton') logScaleButtonElement: ElementRef;
 
   readonly chartBaseUnit = 1024 ** 4; // TB
 
@@ -29,10 +31,66 @@ export class PoolSizeChartComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.setupChart();
+    this.config = {
+      curveType: 'function',
+      legend: 'none',
+      backgroundColor: 'transparent',
+      colors: [this.palette.series],
+      chartArea: {
+        width: '90%',
+        height: '80%',
+        right: 0,
+        left: 90,
+      },
+      hAxis: {
+        viewWindowMode: 'maximized',
+        textStyle: {
+          color: this.palette.text,
+        },
+        gridlines: {
+          color: this.palette.gridlines,
+          count: 1,
+        },
+        minorGridlines: {
+          color: this.palette.gridlines,
+          count: 0,
+        },
+      },
+      vAxis: {
+        logScale: false,
+        viewWindowMode: 'maximized',
+        format: '#.#TB',
+        textStyle: {
+          color: this.palette.text,
+        },
+        gridlines: {
+          color: this.palette.gridlines,
+        },
+        minorGridlines: {
+          count: 0,
+        }
+      },
+      pointSize: 3,
+    };
+    
+    this.setupChart(this.config);
   }
 
-  private setupChart(): void {
+  ngOnChanges(changes : any) {
+    if ( changes.config != undefined ) {
+      this.config = changes.config.currentValue;
+      this.setupChart(this.config);
+    }
+  }
+
+  setLogScale(logScale: Boolean): void {
+    this.config.vAxis.logScale = logScale;
+    this.setupChart(this.config);
+    this.linearScaleButtonElement.nativeElement.disabled = !logScale;
+    this.logScaleButtonElement.nativeElement.disabled = logScale;
+  }
+
+  private setupChart(config: any): void {
     const drawChart = () => {
       const series = this.sizes.map(({ datetime, size}) => {
         const sizeInUnits = size / this.chartBaseUnit;
@@ -44,53 +102,14 @@ export class PoolSizeChartComponent implements OnInit {
           `${formattedDate} – ${formattedSize}`
         ];
       });
+  
       const dataTable = google.visualization.arrayToDataTable([
         ['Day', 'Size', { type: 'string', role: 'tooltip' }],
         ...series,
       ]);
 
       const chart = new google.visualization.LineChart(this.chartElement.nativeElement);
-
-      chart.draw(dataTable, {
-        curveType: 'function',
-        legend: 'none',
-        backgroundColor: 'transparent',
-        colors: [this.palette.series],
-        chartArea: {
-          width: '90%',
-          height: '80%',
-          right: 0,
-          left: 90,
-        },
-        hAxis: {
-          viewWindowMode: 'maximized',
-          textStyle: {
-            color: this.palette.text,
-          },
-          gridlines: {
-            color: this.palette.gridlines,
-            count: 1,
-          },
-          minorGridlines: {
-            color: this.palette.gridlines,
-            count: 0,
-          },
-        },
-        vAxis: {
-          viewWindowMode: 'maximized',
-          format: '#.#TB',
-          textStyle: {
-            color: this.palette.text,
-          },
-          gridlines: {
-            color: this.palette.gridlines,
-          },
-          minorGridlines: {
-            count: 0,
-          }
-        },
-        pointSize: 3,
-      });
+      chart.draw(dataTable, config);
     };
 
     google.charts.load('current', { packages: ['corechart'] });
