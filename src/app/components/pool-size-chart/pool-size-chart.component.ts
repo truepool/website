@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild, SimpleChanges } from '@angular/core';
 import { format } from 'date-fns';
 import { debounce } from 'lodash';
 import { FileSizePipe } from 'ngx-filesize';
@@ -12,13 +12,14 @@ import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
   styleUrls: ['./pool-size-chart.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PoolSizeChartComponent implements OnInit, OnChanges {
+export class PoolSizeChartComponent implements OnInit {
   @Input() sizes: PoolSize[];
   @Input() theme: PoolSizeChartTheme = PoolSizeChartTheme.Dark;
-  @Input() config: any;
   @ViewChild('chart') chartElement: ElementRef;
   @ViewChild('linearScaleButton') linearScaleButtonElement: ElementRef;
   @ViewChild('logScaleButton') logScaleButtonElement: ElementRef;
+  config: google.visualization.LineChartOptions;
+  logScale: boolean;
 
   readonly chartBaseUnit = 1024 ** 4; // TB
 
@@ -76,21 +77,13 @@ export class PoolSizeChartComponent implements OnInit, OnChanges {
     this.setupChart(this.config);
   }
 
-  ngOnChanges(changes : any) {
-    if ( changes.config != undefined ) {
-      this.config = changes.config.currentValue;
-      this.setupChart(this.config);
-    }
-  }
-
-  setLogScale(logScale: Boolean): void {
-    this.config.vAxis.logScale = logScale;
+  toggleLogScale(): void {
+    this.logScale = !this.logScale;
+    this.config.vAxis.logScale = this.logScale;
     this.setupChart(this.config);
-    this.linearScaleButtonElement.nativeElement.disabled = !logScale;
-    this.logScaleButtonElement.nativeElement.disabled = logScale;
   }
 
-  private setupChart(config: any): void {
+  private setupChart(config: google.visualization.LineChartOptions): void {
     const drawChart = () => {
       const series = this.sizes.map(({ datetime, size }) => {
         const sizeInUnits = size / this.chartBaseUnit;
