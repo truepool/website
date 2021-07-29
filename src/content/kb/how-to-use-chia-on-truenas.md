@@ -2,14 +2,14 @@
 
 # Table of contents
 
-- [What is TrueNAS?](#what-is-truenas)
-- [What is TrueNAS SCALE?](#what-is-truenas-scale)
-- [Why TrueNAS for Chia?](#why-truenas-for-chia)
-  - [TrueNAS Plotting Best Practices](#truenas-plotting-best-practices)
-  - [TrueNAS Farming Best Practices](#truenas-farming-best-practices)
-- [Can I use TrueNAS CORE/Enterprise to Farm?](#can-i-use-truenas-coreenterprise-to-farm)
-- [Installing Chia on TrueNAS SCALE](#installing-chia-on-truenas-scale)
-- [Installing Chia on TrueNAS CORE/Enterprise](#installing-chia-on-truenas-coreenterprise)
+- [What is TrueNAS?](/kb/how-to-use-chia-on-truenas/#what-is-truenas)
+- [What is TrueNAS SCALE?](/kb/how-to-use-chia-on-truenas/#what-is-truenas-scale)
+- [Why TrueNAS for Chia?](/kb/how-to-use-chia-on-truenas/#why-truenas-for-chia)
+  - [TrueNAS Plotting Best Practices](/kb/how-to-use-chia-on-truenas/#truenas-plotting-best-practices)
+  - [TrueNAS Farming Best Practices](/kb/how-to-use-chia-on-truenas/#truenas-farming-best-practices)
+- [Can I use TrueNAS CORE/Enterprise to Farm?](/kb/how-to-use-chia-on-truenas/#can-i-use-truenas-coreenterprise-to-farm)
+- [Installing Chia on TrueNAS SCALE](/kb/how-to-use-chia-on-truenas/#installing-chia-on-truenas-scale)
+- [Installing Chia on TrueNAS CORE/Enterprise](/kb/how-to-use-chia-on-truenas/#installing-chia-on-truenas-coreenterprise)
 
 ## What is TrueNAS?
 
