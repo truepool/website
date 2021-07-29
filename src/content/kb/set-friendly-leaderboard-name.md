@@ -12,9 +12,10 @@ Once you look up your launcher ID follow these steps:
 
 ### From the command line:
 
-1. Issue the command `chia plotnft get_login_link -l <launcher_id>`
-2. Open the link returned in your browser
-3. Set the *friendly name* you wish to use and submit. 
+1. Get your Launcher ID by running: `chia plotnft show`
+2. Issue the command `chia plotnft get_login_link -l <launcher_id>`
+3. Open the link returned in your browser
+4. Set the *friendly name* you wish to use and submit. 
 
 ### From the Chia UI:
 
