@@ -5,12 +5,11 @@
         [error]="state.error"
     >
         <div class="page-title">Payout #{{ state.payout?.id }}</div>
-        <!-- TODO - make more human-readable: 1y 4m ago (2021-05-23) -->
-        <p>{{ state.payout?.datetime }}</p>
+        <p>{{ state.payout?.datetime | date: 'short' }}</p>
 
         <h2>Coins</h2>
         <ng-container *ngIf="state.coinRecords as coins">
-            <table class="stats-table mb-md">
+            <table class="stats-table">
                 <thead>
                     <tr>
                         <th>Date</th>
