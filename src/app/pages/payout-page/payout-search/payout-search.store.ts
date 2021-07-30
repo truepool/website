@@ -5,6 +5,7 @@ import { catchError, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { CoinRecord } from 'src/app/interfaces/coin-record.interface';
 import { Payout, PayoutAddress } from 'src/app/interfaces/payout.interface';
 import { CoinRecordService } from 'src/app/services/api/coin-record.service';
+import { FarmerService } from 'src/app/services/api/farmer.service';
 import { PayoutService } from 'src/app/services/api/payout.service';
 
 export interface PayoutSearchState {
@@ -25,7 +26,7 @@ const initialState: PayoutSearchState = {
 
 @Injectable({ providedIn: 'root' })
 export class PayoutSearchStore extends ComponentStore<PayoutSearchState> {
-  constructor(private payoutService: PayoutService, private coinRecordService: CoinRecordService) {
+  constructor(private payoutService: PayoutService, private coinRecordService: CoinRecordService, private farmerService: FarmerService) {
     super(initialState);
   }
 
