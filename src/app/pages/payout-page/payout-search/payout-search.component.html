@@ -1,20 +1,38 @@
 <div class="page-content">
-    <div class="page-title">Payout</div>
     <app-content-loader
         *appLet="state$ | async as state"
         [isLoading]="state.isLoading"
         [error]="state.error"
     >
-        <ng-container *ngIf="state.payout">
-            <p>{{ state.payout.id }}</p>
-        </ng-container>
-        <ng-container *ngIf="state.coinRecords">
-            <ng-container *ngFor="let coin of state.coinRecords">
-                <p>{{ coin | json }}</p>
-            </ng-container>
+        <section class="flex-start-center flex-gap-md mb-lg">
+            <div class="page-title">Payout {{ state.payout?.id }}</div>
+            <!-- TODO - make more human-readable: 1y 4m ago (2021-05-23) -->
+            <p class="m-none">{{ state.payout?.datetime }}</p>
+        </section>
+        <h2>Coins</h2>
+        <ng-container *ngIf="state.coinRecords as coins">
+            <table class="stats-table mb-md">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Block Index</th>
+                        <th>Farmed By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let coin of coins">
+                        <td>
+                            {{ coin.timestamp * 1000 | date: 'short' }}
+                        </td>
+                        <td>{{ coin.confirmed_block_index }}</td>
+                        <td>{{ coin.farmer_display_name }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </ng-container>
         <ng-container *ngIf="state.addresses">
-            <table>
+            <h2>Farmer Payouts</h2>
+            <table class="mb-md">
                 <thead>
                     <tr>
                         <th>Farmer</th>
@@ -30,7 +48,9 @@
                     <ng-template #payoutAddresses>
                         <ng-container *ngFor="let address of state.addresses; let i = index;">
                             <tr>
-                                <td>{{ address.farmer }}</td>
+                                <td>
+                                    {{ address.farmer?.display_name || 'Unknown' }}
+                                </td>
                                 <td>{{ address.amount }}</td>
                                 <td>{{ address.confirmed_height }}</td>
                                 <td>{{ address.transaction }}</td>

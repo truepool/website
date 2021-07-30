@@ -14,3 +14,29 @@ body {
   flex-direction: column;
 }
 
+.flex-start-center {
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.flex-gap-md {
+  gap: 24px;
+}
+
+.m-none {
+  margin: 0;
+}
+
+.mb-md {
+  margin-bottom: $space-md;
+}
+
+.mb-lg {
+  margin-bottom: $space-lg;
+}
+
+.mb-xl {
+  margin-bottom: $space-xl;
+}
+
