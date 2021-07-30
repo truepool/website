@@ -96,13 +96,15 @@
       <table class="stats-table">
         <thead>
         <tr>
+          <th> </th>
           <th>Date</th>
           <th>Amount</th>
         </tr>
         </thead>
         <tbody>
           <ng-container *ngFor="let payout of payoutsState.payouts">
-            <tr [routerLink]="['/payout', payout.id]">
+            <tr>
+              <td><a class="details-link" [routerLink]="['/payout', payout.id]">#{{ payout.id }}</a></td>
               <td>{{ payout.datetime | date: 'short' }}</td>
               <td>{{ payout.amount | xch }}</td>
             </tr>

@@ -31,4 +31,15 @@ export class PayoutSearchComponent {
     
     this.farmer = farmer;
   }
+
+  onCoinFarmerSelection(launcherId: string): void {
+    if (this.farmer && this.farmer.launcher_id === launcherId) {
+      this.farmer = null
+      return
+    }
+
+    // TODO
+    // Ask William to add the Farmer object to the coinrecord payloads?
+
+  }
 }

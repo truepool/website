@@ -9,6 +9,12 @@
             {{ state.payout?.datetime | date: 'short' }}
         </p>
 
+
+
+
+
+
+
         <h2>Coins</h2>
         <ng-container *ngIf="state.coinRecords as coins">
             <table class="stats-table">
@@ -20,15 +26,60 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let coin of coins">
-                        <td>
-                            {{ coin.timestamp * 1000 | date: 'short' }}
-                        </td>
-                        <td>{{ coin.confirmed_block_index }}</td>
-                        <td>
-                            <a>{{ coin.farmer_display_name }}</a>
-                        </td>
-                    </tr>
+                    <ng-container *ngFor="let coin of coins">
+                        <tr>
+                            <td>
+                                {{ coin.timestamp * 1000 | date: 'short' }}
+                            </td>
+                            <td>{{ coin.confirmed_block_index }}</td>
+                            <td>
+                                <a
+                                    class="details-link"
+                                    (click)="onCoinFarmerSelection(coin.farmed_by)"
+                                >
+                                    {{ coin.farmer_display_name }}
+                                </a>
+                            </td>
+                        </tr>
+                        <tr
+                            *ngIf="farmer && farmer.launcher_id === coin.farmed_by"
+                            class="details"
+                        >
+                            <td colspan="5">
+                                <h4>
+                                    <ng-container *ngIf="farmer.display_name; else noName">{{ farmer.display_name }}</ng-container>
+                                    <ng-template #noName>
+                                        Unnamed farmer
+                                        <a
+                                            class="set-name-link"
+                                            routerLink="/kb/set-friendly-leaderboard-name"
+                                        >
+                                            Learn how to set a name &#10142;
+                                        </a>
+                                    </ng-template>
+                                </h4>
+                                <table class="details-view details-view-blue table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <th>Launcher ID</th>
+                                            <td>{{ farmer.launcher_id }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Points</th>
+                                            <td>
+                                                {{ farmer.points | number }}
+                                        ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Difficulty</th>
+                                            <td>{{ farmer.difficulty | number }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </ng-container>
                 </tbody>
             </table>
         </ng-container>
@@ -39,8 +90,6 @@
                     <tr>
                         <th>Farmer</th>
                         <th>Amount</th>
-                        <th>Height</th>
-                        <th>Transaction</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,8 +108,6 @@
                                     </a>
                                 </td>
                                 <td>{{ address.amount | xch }}</td>
-                                <td>{{ address.confirmed_height }}</td>
-                                <td>{{ address.transaction }}</td>
                             </tr>
                             <tr
                                 *ngIf="farmer && farmer?.launcher_id === address.farmer?.launcher_id"
