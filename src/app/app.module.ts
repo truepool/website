@@ -35,12 +35,12 @@ import { GenericArticleComponent } from './pages/generic-article/generic-article
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
-import { PayoutPageComponent } from './pages/payout-page/payout-page.component';
-import { PayoutSearchComponent } from './pages/payout-page/payout-search/payout-search.component';
+import { PayoutPageModule } from './pages/payout-page/payout-page.module';
 import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { MinutesPipe } from './pipes/minutes.pipe';
 import { XchPipe } from './pipes/xch.pipe';
+import { SharedModule } from './shared.module';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
@@ -56,14 +56,12 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     NewsComponent,
     HeaderComponent,
     LeadSectionComponent,
-    ContentLoaderComponent,
     LeaderboardComponent,
     FarmerSearchPromptComponent,
     FooterComponent,
     ContributionPromptComponent,
     PagerComponent,
     PartialsChartComponent,
-    PayoutSearchComponent,
 
     // Pages
     StatsPageComponent,
@@ -74,20 +72,19 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     KnowledgeBaseListingComponent,
     NotFoundPageComponent,
     SetNameComponent,
-    PayoutPageComponent,
 
     // Directives
     SmoothlyScrollToDirective,
     LetDirective,
 
     // Pipes
-    XchPipe,
     MinutesPipe,
     FarmerSearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    SharedModule,
     HttpClientModule,
     StoreModule.forRoot({
       [poolSizeStateKey]: poolSizesReducer,
@@ -100,6 +97,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     ReactiveFormsModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     BrowserAnimationsModule,
+    PayoutPageModule,
   ],
   providers: [
     FileSizePipe,

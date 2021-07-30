@@ -1,14 +1,13 @@
 <div class="page-content">
     <app-content-loader
-        *appLet="state$ | async as state"
+        *ngIf="state$ | async as state"
         [isLoading]="state.isLoading"
         [error]="state.error"
     >
-        <section class="flex-start-center flex-gap-md mb-lg">
-            <div class="page-title">Payout {{ state.payout?.id }}</div>
-            <!-- TODO - make more human-readable: 1y 4m ago (2021-05-23) -->
-            <p class="m-none">{{ state.payout?.datetime }}</p>
-        </section>
+        <div class="page-title">Payout #{{ state.payout?.id }}</div>
+        <!-- TODO - make more human-readable: 1y 4m ago (2021-05-23) -->
+        <p>{{ state.payout?.datetime }}</p>
+
         <h2>Coins</h2>
         <ng-container *ngIf="state.coinRecords as coins">
             <table class="stats-table mb-md">
@@ -48,10 +47,8 @@
                     <ng-template #payoutAddresses>
                         <ng-container *ngFor="let address of state.addresses; let i = index;">
                             <tr>
-                                <td>
-                                    {{ address.farmer?.display_name || 'Unknown' }}
-                                </td>
-                                <td>{{ address.amount }}</td>
+                                <td>{{ address.farmer?.display_name || 'Unknown' }}</td>
+                                <td>{{ address.amount | xch }}</td>
                                 <td>{{ address.confirmed_height }}</td>
                                 <td>{{ address.transaction }}</td>
                             </tr>

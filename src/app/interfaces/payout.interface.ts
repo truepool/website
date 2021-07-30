@@ -1,3 +1,4 @@
+import { Farmer } from './farmer.interface';
 import { PaginatedQueryParams } from './paginated-response.interface';
 
 export interface Payout {
@@ -15,7 +16,7 @@ export interface PayoutAddress {
   transaction: string;
   confirmed_height: number;
   payout: Payout;
-  farmer: string;
+  farmer: Farmer;
 }
 
 export type PayoutAddressQueryParams = {

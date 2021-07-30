@@ -8,8 +8,6 @@ import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/kn
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { SetNameComponent } from './pages/set-name/set-name.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
-import { PayoutPageComponent } from './pages/payout-page/payout-page.component';
-import { PayoutSearchComponent } from './pages/payout-page/payout-search/payout-search.component';
 
 const routes: Routes = [
   {
@@ -26,8 +24,8 @@ const routes: Routes = [
     component: FarmersPageComponent,
   },
   {
-    path: 'payout/:id',
-    component: PayoutSearchComponent
+    path: 'payout',
+    loadChildren: () => import('./pages/payout-page/payout-page.module').then(m => m.PayoutPageModule)
   },
   {
     path: 'kb',

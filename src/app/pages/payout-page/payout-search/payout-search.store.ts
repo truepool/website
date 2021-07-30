@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
-import { EMPTY, Observable } from 'rxjs';
+import { combineLatest, EMPTY, Observable } from 'rxjs';
 import { catchError, map, switchMap, takeUntil, tap } from 'rxjs/operators';
 import { CoinRecord } from 'src/app/interfaces/coin-record.interface';
 import { Payout, PayoutAddress } from 'src/app/interfaces/payout.interface';
@@ -37,26 +37,23 @@ export class PayoutSearchStore extends ComponentStore<PayoutSearchState> {
           isLoading: true,
         });
       }),
-      switchMap((query: string) => {
-        return this.payoutService
-          .getPayout(query)
-          .pipe(tap((payout) => this.patchState({ payout })))
-      }),
-      switchMap((payout: Payout) =>
-        this.coinRecordService.getCoinRecords({ payout: payout.id.toString() })
-          .pipe(
-            tap((coinRecords) => {
-              this.patchState({ coinRecords: coinRecords.results });
-            }),
-            map(() => payout)
-          )
+      switchMap((payoutId: string) =>
+        combineLatest([
+          this.payoutService.getPayout(payoutId)
+            .pipe(tap((payout) => { this.patchState({ payout }) })),
+          this.coinRecordService.getCoinRecords({ payout: payoutId })
+            .pipe(
+              tap((coinRecords) => {
+                this.patchState({ coinRecords: coinRecords.results });
+              })
+            ),
+          this.payoutService.getPayoutAddresses({ payout: payoutId })
+            .pipe(
+              tap((addresses) => { this.patchState({ addresses: addresses.results }); })
+            )
+          ])
       ),
-      switchMap((payout: Payout) =>
-        this.payoutService.getPayoutAddresses({ payout: payout.id.toString() })
-          .pipe(
-            tap((addresses) => { this.patchState({ addresses: addresses.results, isLoading: false }); })
-          )
-      ),
+      tap(() => { this.patchState({ isLoading: false }); }),
       catchError(() => {
         const error = 'Error when searching for a payout.';
 
