@@ -51,46 +51,54 @@
                         <ng-container *ngFor="let address of state.addresses; let i = index;">
                             <tr>
                                 <td>
-                                    <a (click)="onFarmerSelection(address.farmer)">
-                                        {{ address.farmer?.display_name || 'Unknown' }}
+                                    <a
+                                        class="details-link"
+                                        (click)="onFarmerSelection(address.farmer)"
+                                    >
+                                        {{ address.farmer?.display_name || 'Unnamed farmer' }}
                                     </a>
                                 </td>
                                 <td>{{ address.amount | xch }}</td>
                                 <td>{{ address.confirmed_height }}</td>
                                 <td>{{ address.transaction }}</td>
                             </tr>
-                            <tr *ngIf="farmer && farmer?.launcher_id === address.farmer?.launcher_id">
-                                <h4>
-                                    <ng-container *ngIf="farmer.display_name; else noName">{{ farmer.display_name }}</ng-container>
-                                    <ng-template #noName>
-                                        Unnamed farmer
-                                        <a
-                                            class="set-name-link"
-                                            routerLink="/kb/set-friendly-leaderboard-name"
-                                        >
-                                            Learn how to set a name &#10142;
-                                        </a>
-                                    </ng-template>
-                                </h4>
-                                <table class="details-view details-view-blue table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Launcher ID</th>
-                                            <td>{{ farmer.launcher_id }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Points</th>
-                                            <td>
-                                                {{ farmer.points | number }}
-                                        ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Difficulty</th>
-                                            <td>{{ farmer.difficulty | number }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                            <tr
+                                *ngIf="farmer && farmer?.launcher_id === address.farmer?.launcher_id"
+                                class="details"
+                            >
+                                <td colspan="5">
+                                    <h4>
+                                        <ng-container *ngIf="farmer.display_name; else noName">{{ farmer.display_name }}</ng-container>
+                                        <ng-template #noName>
+                                            Unnamed farmer
+                                            <a
+                                                class="set-name-link"
+                                                routerLink="/kb/set-friendly-leaderboard-name"
+                                            >
+                                                Learn how to set a name &#10142;
+                                            </a>
+                                        </ng-template>
+                                    </h4>
+                                    <table class="details-view details-view-blue table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <th>Launcher ID</th>
+                                                <td>{{ farmer.launcher_id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Points</th>
+                                                <td>
+                                                    {{ farmer.points | number }}
+                                            ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Difficulty</th>
+                                                <td>{{ farmer.difficulty | number }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
                             </tr>
                         </ng-container>
                     </ng-template>
