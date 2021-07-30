@@ -24,8 +24,6 @@ export class StatsPageComponent implements OnInit {
   payoutsState$ = this.payoutsStore.state$;
   growthLast24h$ = this.mainStore.select(selectGrowthLast24h);
   somePoolSizes$ = this.mainStore.select(selectSomePoolSizes);
-  
-  showDetailsForPayoutId: number = null
 
   readonly PoolSizeChartTheme = PoolSizeChartTheme;
 

@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { PaginatedQueryParams, PaginatedResponse } from '../../interfaces/paginated-response.interface';
 import { Payout, PayoutAddress, PayoutAddressQueryParams } from '../../interfaces/payout.interface';
-import { tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class PayoutService {
