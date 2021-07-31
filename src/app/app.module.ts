@@ -43,6 +43,7 @@ import { MinutesPipe } from './pipes/minutes.pipe';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
+import { TruePoolI18nPipe } from './pipes/i18n.pipe';
 
 @NgModule({
   declarations: [
@@ -80,6 +81,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     // Pipes
     XchPipe,
     MinutesPipe,
+    TruePoolI18nPipe,
     FarmerSearchComponent,
   ],
   imports: [

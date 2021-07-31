@@ -1,0 +1,14 @@
+{
+    "hello": {
+        "en": "hello",
+        "ja": "こんにちは",
+        "uk": "Здравствуйте",
+        "pl": "cześć"
+    },
+    "farmers": {
+        "en": "farmers",
+        "ja": "農民",
+        "uk": "фермерів",
+        "pl": "rolnicy"
+    }
+}
