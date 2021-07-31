@@ -27,47 +27,51 @@
               </td>
               <td>{{ coin.confirmed_block_index }}</td>
               <td>
-                <a class="details-link">{{ coin.farmer_display_name }}</a>
+                <a
+                  class="details-link"
+                  (click)="onCoinFarmerSelection(coin.farmed_by)"
+                >
+                  {{ coin.farmed_by.display_name || 'Unnamed Farmer' }}
+                </a>
               </td>
             </tr>
-            <!-- <tr
-                            *ngIf="farmer && farmer.launcher_id === coin.farmed_by"
-                            class="details"
-                        >
-                            <td colspan="5">
-                                <h4>
-                                    <ng-container *ngIf="farmer.display_name; else noName">{{ farmer.display_name }}</ng-container>
-                                    <ng-template #noName>
-                                        Unnamed farmer
-                                        <a
-                                            class="set-name-link"
-                                            routerLink="/kb/set-friendly-leaderboard-name"
-                                        >
-                                            Learn how to set a name &#10142;
-                                        </a>
-                                    </ng-template>
-                                </h4>
-                                <table class="details-view details-view-blue table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <th>Launcher ID</th>
-                                            <td>{{ farmer.launcher_id }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Points</th>
-                                            <td>
-                                                {{ farmer.points | number }}
-                                        ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th>Difficulty</th>
-                                            <td>{{ farmer.difficulty | number }}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr> -->
+            <tr
+              *ngIf="coinFarmer && coinFarmer.launcher_id === coin.farmed_by.launcher_id"
+              class="details"
+            >
+              <td colspan="5">
+                <h4>
+                  <ng-container *ngIf="coinFarmer.display_name; else noName">{{ coinFarmer.display_name }}</ng-container>
+                  <ng-template #noName>
+                    Unnamed farmer
+                    <a
+                      class="set-name-link"
+                      routerLink="/kb/set-friendly-leaderboard-name"
+                    >
+                      Learn how to set a name &#10142;
+                    </a>
+                  </ng-template>
+                </h4>
+                <table class="details-view details-view-blue table-striped">
+                  <tbody>
+                    <tr>
+                      <th>Launcher ID</th>
+                      <td>{{ coinFarmer.launcher_id }}</td>
+                    </tr>
+                    <tr>
+                      <th>Points</th>
+                      <td>
+                        {{ coinFarmer.points | number }} ({{ coinFarmer.points_percentage / 100 | percent: '1.0-4' }})
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Difficulty</th>
+                      <td>{{ coinFarmer.difficulty | number }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
           </ng-container>
         </tbody>
       </table>

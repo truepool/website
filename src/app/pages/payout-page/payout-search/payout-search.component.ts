@@ -14,32 +14,36 @@ import { PayoutSearchStore } from './payout-search.store';
 })
 export class PayoutSearchComponent {
   state$ = this.store.state$;
-  payoutId$ = this.activatedRoute.paramMap.pipe(map(pMap => pMap.get('id')));
-  farmer: Farmer = null
+  payoutId$ = this.activatedRoute.paramMap.pipe(map((pMap) => pMap.get('id')));
+  farmer: Farmer = null;
+  coinFarmer: Farmer = null;
 
-  constructor(private store: PayoutSearchStore, private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private store: PayoutSearchStore,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
-    this.payoutId$.pipe(take(1)).subscribe(payoutId => this.store.searchPayout(payoutId));
+    this.payoutId$
+      .pipe(take(1))
+      .subscribe((payoutId) => this.store.searchPayout(payoutId));
   }
 
   onFarmerSelection(farmer: Farmer): void {
     if (this.farmer && this.farmer.launcher_id === farmer.launcher_id) {
-      this.farmer = null
-      return
+      this.farmer = null;
+      return;
     }
-    
+
     this.farmer = farmer;
   }
 
-  onCoinFarmerSelection(launcherId: string): void {
-    if (this.farmer && this.farmer.launcher_id === launcherId) {
-      this.farmer = null
-      return
+  onCoinFarmerSelection(farmer: Farmer): void {
+    if (this.coinFarmer && this.coinFarmer.launcher_id === farmer.launcher_id) {
+      this.coinFarmer = null;
+      return;
     }
 
-    // TODO
-    // Ask William to add the Farmer object to the coinrecord payloads?
-
+    this.coinFarmer = farmer;
   }
 }
