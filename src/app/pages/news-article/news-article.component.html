@@ -1,5 +1,9 @@
 <div class="page-content">
-  <h1 class="page-title">{{ article.title }}</h1>
+  <a routerLink="/news" class="category-link">News</a>
+  <h1 class="page-title">
+    {{ article.title }}
+    <span class="date">{{ article.date }}</span>
+  </h1>
 
   <article>
     <app-markdown-article [markdownUrl]="markdownSrc"></app-markdown-article>

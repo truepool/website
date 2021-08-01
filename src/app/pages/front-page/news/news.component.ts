@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { getOrderedNews } from 'src/app/utils/get-ordered-news.utils';
 
 @Component({
   selector: 'app-news',
@@ -7,5 +8,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsComponent {
-
+  lastNews = getOrderedNews().slice(0, 3);
 }

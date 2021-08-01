@@ -1,16 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MarkdownService } from 'ngx-markdown';
+import { ContentItem } from 'src/app/interfaces/content-item.interface';
+import { newsItems } from 'src/content/news/news-directory';
 import { contentDirectory } from '../../../content/content-directory';
-import { ContentItem } from '../../interfaces/content-item.interface';
 
 @Component({
-  templateUrl: 'generic-article.component.html',
-  styleUrls: ['./generic-article.component.scss'],
+  templateUrl: 'news-article.component.html',
+  styleUrls: ['./news-article.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GenericArticleComponent implements OnInit {
-  readonly pagePrefix = 'pages/';
+export class NewsArticleComponent {
+  readonly pagePrefix = 'news/';
 
   article: ContentItem;
 
@@ -25,8 +25,8 @@ export class GenericArticleComponent implements OnInit {
 
   // TODO: Job for resolver
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id as string;
-    const article = contentDirectory.find((item) => item.url === `${this.pagePrefix}${id}`);
+    const slug = this.activatedRoute.snapshot.params.slug as string;
+    const article = newsItems.find((item) => item.url === `${this.pagePrefix}${slug}`);
 
     if (!article) {
       void this.router.navigate(['/404']);

@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { getOrderedNews } from 'src/app/utils/get-ordered-news.utils';
 import { PoolSizeState } from '../../../stores/pool-sizes/pool-sizes.reducer';
 import { selectLatestPoolSize } from '../../../stores/pool-sizes/pool-sizes.selectors';
 
