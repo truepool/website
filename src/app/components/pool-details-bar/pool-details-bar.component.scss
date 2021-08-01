@@ -1,3 +1,5 @@
+@import "../../../assets/css/variables";
+
 :host {
   .wrapper-details {
     align-items: center;
@@ -23,6 +25,17 @@
     span {
       font-size: 14px;
       opacity: 0.7;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-sm) {
+    .wrapper-detail {
+      p {
+        font-size: 14px;
+      }
+      span {
+        font-size: 12px;
+      }
     }
   }
 }
