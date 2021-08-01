@@ -3,7 +3,3 @@
 :host {
   @include page();
 }
-
-article ::ng-deep {
-  @include common-article-styles();
-}

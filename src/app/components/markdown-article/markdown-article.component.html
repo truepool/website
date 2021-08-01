@@ -1,0 +1,6 @@
+<app-content-loader
+  [isLoading]="isLoading"
+  [error]="loadingError"
+>
+  <markdown *ngIf="markdown">{{ markdown }}</markdown>
+</app-content-loader>

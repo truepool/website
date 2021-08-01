@@ -9,10 +9,15 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe, NgxFilesizeModule } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
+import { MarkdownArticleComponent } from 'src/app/components/markdown-article/markdown-article.component';
 import { PagerComponent } from 'src/app/components/pager/pager.component';
-import { FarmerSearchPromptComponent } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/farmer-search.component';
 import { PartialsChartComponent } from 'src/app/pages/farmers-page/partials-chart/partials-chart.component';
+import { NewsArticleComponent } from 'src/app/pages/news-article/news-article.component';
+import { NewsListingComponent } from 'src/app/pages/news-listing/news-listing.component';
+import {
+  FarmerSearchPromptComponent,
+} from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +65,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     ContributionPromptComponent,
     PagerComponent,
     PartialsChartComponent,
+    MarkdownArticleComponent,
 
     // Pages
     StatsPageComponent,
@@ -70,6 +76,8 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     KnowledgeBaseListingComponent,
     NotFoundPageComponent,
     SetNameComponent,
+    NewsListingComponent,
+    NewsArticleComponent,
 
     // Directives
     SmoothlyScrollToDirective,

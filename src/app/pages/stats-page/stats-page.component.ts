@@ -6,7 +6,7 @@ import { PoolSizeState } from '../../stores/pool-sizes/pool-sizes.reducer';
 import {
   selectGrowthLast24h,
   selectPoolSizesState,
-  selectSomePoolSizes
+  selectSomePoolSizes,
 } from '../../stores/pool-sizes/pool-sizes.selectors';
 import { CoinRecordsStore } from './coin-records.store';
 import { PayoutsStore } from '../payout-page/payouts.store';
