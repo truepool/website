@@ -1,0 +1,20 @@
+## TruePool Update 7/27/2021
+
+TruePool Farmers,
+
+We are happy to provide a quick status update for the last week of July. In case you haven’t been following along on our very active [Discord channels](https://discord.com/invite/hWwAfGFyBz), the TruePool service has continued to quickly evolve with some of the following features being added in the past few days:
+
+- Estimated Time to Win Widgets
+- [Custom Leaderboard Nicknames](https://truepool.io/kb/set-friendly-leaderboard-name)
+- Farmer Details including:
+  - Partials received
+  - Errors on submissions
+  - Payout History
+  - Point % and Difficulty
+  - Space Estimates
+- Discord Bot to announce Block Wins
+- [Updated Docker & TrueNAS Plugins](https://truepool.io/kb/truepool-docker-image) with the latest in MadMax, BladeBit, Plotman and Farmr.net utilities to go along with your Chia Farm.
+
+Lastly, we also want to touch on what we’re seeing take place in the wider pooling community. There are already some large Chia pools beginning to [shutter their doors](https://thechiaplot.net/2021/07/26/pool-garden-chia-pool-shuts-its-doors/) after being unable to keep up with operating costs. We want to assure our Chia farming community that TruePool is here for the long haul, not trying to finance as we go to keep the servers lit up. We believe Chia has a bright future, and look forward to serving the needs of our fellow co-op farmers for many years to come.
+
+Happy farming and good luck on those future block wins!

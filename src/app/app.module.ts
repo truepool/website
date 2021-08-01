@@ -1,6 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { NgModule } from '@angular/core';
+import { NgModule, SecurityContext } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -93,7 +93,10 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     }),
     NgxFilesizeModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot({ loader: HttpClient }),
+    MarkdownModule.forRoot({
+      loader: HttpClient,
+      sanitize: SecurityContext.NONE,
+    }),
     BrowserAnimationsModule,
     PayoutPageModule,
   ],
