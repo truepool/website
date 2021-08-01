@@ -1,0 +1,20 @@
+<div class="page-content">
+  <div class="page-listing">
+    <h1 class="page-title">News</h1>
+
+    <div *ngFor="let newsItem of newsItems" class="news-item">
+      <h2 class="news-title">
+        {{ newsItem.title }}
+        <span class="date">{{ newsItem.date }}</span>
+      </h2>
+
+      <div class="summary" [innerHTML]="newsItem.summary"></div>
+
+      <a
+        *ngIf="newsItem.url"
+        [routerLink]="'/' + newsItem.url"
+        class="continue-reading"
+      >Read full article &#10159;</a>
+    </div>
+  </div>
+</div>

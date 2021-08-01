@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { FarmerPartial, FarmerPartialQueryParams } from 'src/app/interfaces/farmer-partial.interface';
 import { environment } from '../../../environments/environment';
-import { PaginatedQueryParams, PaginatedResponse } from '../../interfaces/paginated-response.interface';
-import { Payout, PayoutAddress, PayoutAddressQueryParams } from '../../interfaces/payout.interface';
+import { PaginatedResponse } from '../../interfaces/paginated-response.interface';
 
 @Injectable({ providedIn: 'root' })
 export class FarmerPartialService {

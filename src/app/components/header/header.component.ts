@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+interface MenuItem {
+  routerLink: string;
+  title: string;
+}
+
 @Component({
   selector: 'app-header',
   templateUrl: 'header.component.html',
@@ -7,5 +12,16 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
+  isMobileMenuOpen = false;
 
+  readonly menuItems: MenuItem[] = [
+    { routerLink: '/news', title: 'News' },
+    { routerLink: '/stats', title: 'Stats' },
+    { routerLink: '/farmers', title: 'Farmers' },
+    { routerLink: '/kb', title: 'Knowledge Base' },
+  ];
+
+  onMobileMenuToggled(): void {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
 }

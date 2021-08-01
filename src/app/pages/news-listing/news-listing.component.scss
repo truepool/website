@@ -1,0 +1,30 @@
+@import "../../../assets/css/mixins";
+@import "../../../assets/css/variables";
+
+:host {
+  @include page();
+}
+
+.news-item {
+  margin-bottom: 42px;
+}
+
+.summary {
+  max-width: 900px;
+}
+
+.continue-reading {
+  margin-bottom: 13px;
+  display: block;
+}
+
+.date {
+  opacity: 0.5;
+  text-align: right;
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin-left: 5px;
+  vertical-align: middle;
+  display: inline-block;
+  padding-bottom: 2px;
+}
