@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ContentItem } from 'src/app/interfaces/content-item.interface';
 import { newsItems } from 'src/content/news/news-directory';
-import { contentDirectory } from '../../../content/content-directory';
 
 @Component({
   templateUrl: 'news-article.component.html',

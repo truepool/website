@@ -15,6 +15,9 @@ import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/
 import { PartialsChartComponent } from 'src/app/pages/farmers-page/partials-chart/partials-chart.component';
 import { NewsArticleComponent } from 'src/app/pages/news-article/news-article.component';
 import { NewsListingComponent } from 'src/app/pages/news-listing/news-listing.component';
+import {
+  FarmerSearchPromptComponent,
+} from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,7 +32,6 @@ import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
 import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
-import { FarmerSearchPromptComponent } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { LeaderboardComponent } from './pages/farmers-page/leaderboard/leaderboard.component';
 import { AboutUsComponent } from './pages/front-page/about-us/about-us.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';

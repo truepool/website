@@ -15,7 +15,7 @@ export class HeaderComponent {
   isMobileMenuOpen = false;
 
   readonly menuItems: MenuItem[] = [
-    { routerLink: '/pages/news', title: 'News' },
+    { routerLink: '/news', title: 'News' },
     { routerLink: '/stats', title: 'Stats' },
     { routerLink: '/farmers', title: 'Farmers' },
     { routerLink: '/kb', title: 'Knowledge Base' },

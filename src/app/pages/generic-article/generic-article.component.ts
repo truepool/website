@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MarkdownService } from 'ngx-markdown';
 import { contentDirectory } from '../../../content/content-directory';
 import { ContentItem } from '../../interfaces/content-item.interface';
 

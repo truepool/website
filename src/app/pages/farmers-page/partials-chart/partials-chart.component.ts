@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, ViewChild,
+} from '@angular/core';
 import { format, fromUnixTime, isSameHour } from 'date-fns';
 import { debounce } from 'lodash';
 import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';

@@ -1,7 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { compareAsc, compareDesc, isAfter, parse } from 'date-fns';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { getOrderedNews } from 'src/app/utils/get-ordered-news.utils';
-import { newsItems } from 'src/content/news/news-directory';
 
 @Component({
   templateUrl: 'news-listing.component.html',
@@ -9,7 +8,5 @@ import { newsItems } from 'src/content/news/news-directory';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewsListingComponent {
-  readonly allowedPrefix = 'news/';
-
   readonly newsItems = getOrderedNews();
 }
