@@ -18,28 +18,39 @@
   line-height: 1.2em;
   border-left: 4px solid $color-yellow;
 
-  p {
+  .news-item-title {
+    margin-bottom: 0.7rem;
+  }
+
+  ::ng-deep p {
     margin-bottom: 0;
-    margin-top: 0.7em;
+    margin-top: 0.7rem;
 
     &:first-of-type {
       margin-top: 0;
     }
   }
 
-  .date {
-    opacity: 0.5;
-    text-align: right;
-    margin-top: 5px;
-  }
-
-  a {
+  ::ng-deep a {
     color: white;
 
     &:visited,
     &:active,
     &:focus {
       color: white;
+    }
+  }
+
+  .news-item-footer {
+    display: flex;
+    align-items: flex-end;
+    margin-top: 5px;
+    margin-bottom: 2px;
+
+    .date {
+      opacity: 0.5;
+      margin-top: 5px;
+      margin-left: auto;
     }
   }
 }
