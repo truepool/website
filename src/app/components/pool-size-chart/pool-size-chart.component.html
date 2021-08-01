@@ -1,1 +1,5 @@
 <div #chart id="stats"></div>
+<div class="pool-size-chart-controls">
+    <button class="button button-blue" #linearScaleButton [disabled]="!logScale" (click)="toggleLogScale()">Linear</button>
+    <button class="button button-blue" #logScaleButton [disabled]="logScale" (click)="toggleLogScale()">Logarithmic</button>
+</div>

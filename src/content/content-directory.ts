@@ -23,4 +23,8 @@ export const contentDirectory: ContentItem[] = [
     title: 'Join Truepool',
     url: 'pages/join-truepool',
   },
+  {
+    title: 'News',
+    url: 'pages/news',
+  },
 ];
