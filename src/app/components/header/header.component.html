@@ -1,16 +1,27 @@
-<div class="test-warning">
-  Mainnet pooling protocol is live and stable.
-</div>
-
 <header>
   <a class="title" routerLink="/">
     <img src="./assets/img/logo-with-text.png" class="logo">
   </a>
-  <ul class="menu">
-    <li class="about-us-link"><a routerLink="/news">News</a></li>
-    <li class="first-mobile-link"><a routerLink="/stats">Stats</a></li>
-    <li><a routerLink="/farmers">Farmers</a></li>
-    <li><a routerLink="/kb">Knowledge Base</a></li>
+
+  <div
+    class="mobile-menu-toggle"
+    [class.open]="isMobileMenuOpen"
+    (click)="onMobileMenuToggled()"
+  >
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <ul class="normal-menu">
+    <li *ngFor="let item of menuItems" [routerLink]="item.routerLink">{{ item.title }}</li>
     <li><a routerLink="/pages/join-truepool" class="action-button">Join</a></li>
   </ul>
+
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul>
+      <li *ngFor="let item of menuItems" [routerLink]="item.routerLink">{{ item.title }}</li>
+    </ul>
+    <a routerLink="/pages/join-truepool" class="action-button">Join</a>
+  </div>
 </header>
