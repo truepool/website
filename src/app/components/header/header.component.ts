@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { filter } from 'rxjs/operators';
 
 interface MenuItem {
@@ -7,6 +8,7 @@ interface MenuItem {
   title: string;
 }
 
+@UntilDestroy()
 @Component({
   selector: 'app-header',
   templateUrl: 'header.component.html',
@@ -25,7 +27,10 @@ export class HeaderComponent {
 
   constructor(private router: Router) {
     this.router.events
-      .pipe(filter((event) => event instanceof NavigationStart))
+      .pipe(
+        filter((event) => event instanceof NavigationStart),
+        untilDestroyed(this),
+      )
       .subscribe(() => (this.isMobileMenuOpen = false));
   }
 
