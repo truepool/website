@@ -1,0 +1,5 @@
+@import "../../../assets/css/mixins";
+
+:host ::ng-deep {
+  @include common-article-styles();
+}

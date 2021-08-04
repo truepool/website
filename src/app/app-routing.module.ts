@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NewsArticleComponent } from 'src/app/pages/news-article/news-article.component';
+import { NewsListingComponent } from 'src/app/pages/news-listing/news-listing.component';
 import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
@@ -35,6 +37,20 @@ const routes: Routes = [
   {
     path: 'set-name',
     component: SetNameComponent,
+  },
+  {
+    // Backwards compatibility for an article with existing links
+    path: 'pages/news',
+    redirectTo: '/news/update-2021-07-25',
+  },
+  {
+    path: 'news',
+    component: NewsListingComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'news/:slug',
+    component: NewsArticleComponent,
   },
   {
     path: 'pages/:id',

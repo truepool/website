@@ -37,6 +37,8 @@ Its included ZFS filesystem includes some unique characteristics for monitoring 
 2. ZFS’s ARC / L2ARC will be helpful to keep recent plot reads in RAM, helping reduce overall lookup times as challenges are issued. This works out of the box, and the more RAM / L2ARC space available will help this run more efficiently.
 
 3. It’s often best to not plot and run your master farm / blockchain node on the same system. Plotting is resource intensive and if not done carefully can starve your Farmer node for resources, causing the blockchain to get out of sync, and your Farmer to miss out on challenges.
+  
+4. ZFS allocates some "slop" space by default that can be re-claimed to use for storing plots. On SCALE this can be done by running ```echo 9 > /sys/module/zfs/parameters/spa_slop_shift```
 
 ## Can I use TrueNAS CORE/Enterprise to Farm?
 
