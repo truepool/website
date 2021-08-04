@@ -1,0 +1,41 @@
+@import "../../../assets/css/variables";
+
+:host {
+  .wrapper-details {
+    align-items: center;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    padding: 16px 4px;
+  }
+
+  .wrapper-detail {
+    align-items: center;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+
+    p {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 20px;
+      margin: 0;
+    }
+
+    span {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  }
+
+  @media screen and (max-width: $breakpoint-sm) {
+    .wrapper-detail {
+      p {
+        font-size: 14px;
+      }
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+}

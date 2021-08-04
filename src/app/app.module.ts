@@ -47,6 +47,7 @@ import { SharedModule } from './shared.module';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
+import { PoolDetailsBarComponent } from './components/pool-details-bar/pool-details-bar.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     ContributionPromptComponent,
     PagerComponent,
     PartialsChartComponent,
+    PoolDetailsBarComponent,
     MarkdownArticleComponent,
 
     // Pages
