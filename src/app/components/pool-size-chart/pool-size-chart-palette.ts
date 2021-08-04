@@ -8,7 +8,7 @@ export interface PoolSizeChartPalette {
 
 export const poolSizeChartPalette: { [key in PoolSizeChartTheme]: PoolSizeChartPalette } = {
   [PoolSizeChartTheme.Dark]: {
-    series: '#ebb012',
+    series: '#3f94d0',
     gridlines: '#636363',
     text: 'white',
   },

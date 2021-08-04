@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild,
+  ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild
 } from '@angular/core';
 import { format } from 'date-fns';
 import { debounce } from 'lodash';
@@ -7,6 +7,7 @@ import { FileSizePipe } from 'ngx-filesize';
 import { PoolSize } from '../../interfaces/pool-size.interface';
 import { PoolSizeChartPalette, poolSizeChartPalette } from './pool-size-chart-palette';
 import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
+import { ColorSchemeService } from '../../services/api/color-scheme.service';
 
 @Component({
   selector: 'app-pool-size-chart',
@@ -16,7 +17,7 @@ import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
 })
 export class PoolSizeChartComponent implements OnInit {
   @Input() sizes: PoolSize[];
-  @Input() theme: PoolSizeChartTheme = PoolSizeChartTheme.Dark;
+  @Input() theme: PoolSizeChartTheme = null;
   @ViewChild('chart') chartElement: ElementRef;
   @ViewChild('linearScaleButton') linearScaleButtonElement: ElementRef;
   @ViewChild('logScaleButton') logScaleButtonElement: ElementRef;
@@ -26,14 +27,23 @@ export class PoolSizeChartComponent implements OnInit {
   readonly chartBaseUnit = 1024 ** 4; // TB
 
   get palette(): PoolSizeChartPalette {
+    if ( this.theme == null ) {
+      if (this.colorSchemeService.currentActive() == 'dark' ) {
+        this.theme = PoolSizeChartTheme.Dark;
+      } else {
+        this.theme = PoolSizeChartTheme.Light;
+      }
+    }
     return poolSizeChartPalette[this.theme];
   }
 
-  constructor(
-    private filesize: FileSizePipe,
-  ) {}
+  constructor(private filesize: FileSizePipe, private colorSchemeService: ColorSchemeService) {
+    // Load Color Scheme
+    this.colorSchemeService.load();
+  }
 
   ngOnInit(): void {
+
     this.config = {
       curveType: 'function',
       legend: 'none',

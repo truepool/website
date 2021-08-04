@@ -1,13 +1,14 @@
+@import "../../../assets/css/mixins";
 @import "../../../assets/css/variables";
 
-$header-border: #ffffff2e;
-
 header {
+  @include theme('background-color', 'banner-color');
+  @include theme('color', 'inverse-font-color');
   padding: 12px 12%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid $header-border;
+  @include theme('border-bottom', 'header-border', true, '1px solid');
   position: relative;
   flex-wrap: wrap;
 
@@ -22,7 +23,7 @@ header {
     font-size: 1.8em;
     font-weight: 600;
     text-decoration: none;
-    color: white;
+    @include theme('color', 'inverse-font-color');
     display: flex;
     align-items: center;
 
@@ -53,7 +54,7 @@ header {
     }
 
     a {
-      color: white;
+      @include theme('color', 'inverted-font-color');
       padding: 7px 2px;
       text-decoration: none;
       box-sizing: border-box;
@@ -68,7 +69,7 @@ header {
 
       &:hover,
       &:focus {
-        border-color: #ffffff36;
+        @include theme('border-color', 'primary-color-dark');
       }
     }
 
@@ -82,7 +83,8 @@ header {
 
   .action-button {
     border-radius: 4px;
-    background: $color-green-dark;
+    @include theme('background-color', 'accent-color');
+    @include theme('color', 'white');
     border: 1px solid transparent;
     padding-left: 20px;
     padding-right: 20px;
@@ -93,14 +95,17 @@ header {
     padding-top: 8px;
     margin-left: 10px;
     text-transform: uppercase;
-    color: white;
     text-decoration: none;
 
     &:hover,
     &:focus {
-      border-color: #ffffff61;
+      @include theme('border-color', 'accent-color-dark');
     }
   }
+
+/*****************************************************************************
+*   MOBILE
+******************************************************************************/
 
   $mobile-menu-height: 24px;
   $menu-bar-height: 4px;
@@ -213,6 +218,7 @@ header {
     }
 
     .action-button {
+      
       opacity: 0;
       padding: 8px 30px;
       margin-left: 20px;

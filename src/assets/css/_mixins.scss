@@ -1,4 +1,5 @@
 @import "variables";
+@import "themes";
 
 @mixin page {
   flex-grow: 1;
@@ -6,8 +7,6 @@
   flex-direction: column;
 
   .page-content {
-    color: black;
-    background: white;
     padding: 42px 12% 140px;
     box-sizing: border-box;
     flex-grow: 1;
@@ -45,5 +44,37 @@
   li {
     margin-top: 3px;
     margin-bottom: 3px;
+  }
+}
+
+
+@mixin themeProperty($theme, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties) {
+  @if $additionalPropertiesPositionIsFront {
+    #{$property}: unquote($additionalProperties + ' ' + map-get($theme, $color));
+  } @else {
+    #{$property}: unquote(map-get($theme, $color) + ' ' + $additionalProperties);
+  }
+}
+
+@mixin theme($property, $color, $additionalPropertiesPositionIsFront: false, $additionalProperties: '') {
+  $light: map-get($themes, $light-theme);
+  $dark: map-get($themes, $dark-theme);
+
+  @include themeProperty($light, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
+
+  @media (prefers-color-scheme: dark) {
+    @include themeProperty($dark, $property, $color, $additionalPropertiesPositionIsFront, $additionalProperties);
+  }
+}
+
+@mixin themeImage($alias, $additionalProperties) {
+  $light: map-get($themes, $light-theme);
+  $dark: map-get($themes, $dark-theme);
+  $lightImg: unquote(map-get($light, $alias));
+  $darkImg: unquote(map-get($dark, $alias) + ' ' + $additionalProperties);
+
+  background: url(#{$lightImg});
+  @media (prefers-color-scheme: dark) {
+    background: url(#{$darkImg});
   }
 }

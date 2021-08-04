@@ -5,7 +5,7 @@ a.arrow {
 
 code {
   display: block;
-  border-left: 3px solid $color-blue-dark;
+  @include theme('border-left', 'primary-color-dark', true, '3px solid');
   padding: 4px 20px;
   white-space: pre-line;
 }
@@ -15,10 +15,10 @@ ul {
 }
 
 a {
-  color: $color-blue-dark;
+  @include theme('color', 'primary-color-dark');
 
   &:visited {
-    color: darken($color-blue-dark, 20%);
+    @include theme('color', 'primary-color-light');
   }
 }
 

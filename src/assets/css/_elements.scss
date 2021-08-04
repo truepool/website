@@ -1,11 +1,11 @@
-@import "variables";
+@import "mixins";
 
 table {
   border-collapse: collapse;
 
   td, th {
     padding: 8px 10px 6px;
-    border: 1px solid $color-gray-light;
+    @include theme('border', 'gray-dark', true, '1px solid');
   }
 
   th {
@@ -14,20 +14,17 @@ table {
 
   &.table-striped {
     tr:nth-child(odd) {
-      background-color: #f5f5f573;
+      @include theme('background-color', 'gray-light');
     }
   }
 }
 
 .details-view {
-  border-left: 5px solid $color-gray-light;
+  @include theme('border-left', 'gray-dark', true, '5px solid');
   border-radius: 10px;
 
   &.details-view-blue {
-    border-left-color: $color-blue-dark;
-  }
-
-  th {
+    @include theme('border-left-color', 'primary-color-dark');
 
   }
 
