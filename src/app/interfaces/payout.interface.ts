@@ -1,6 +1,8 @@
+import { Farmer } from './farmer.interface';
 import { PaginatedQueryParams } from './paginated-response.interface';
 
 export interface Payout {
+  id: number;
   url: string;
   datetime: string;
   amount: number;
@@ -14,7 +16,7 @@ export interface PayoutAddress {
   transaction: string;
   confirmed_height: number;
   payout: Payout;
-  farmer: string;
+  farmer: Farmer;
 }
 
 export type PayoutAddressQueryParams = {
@@ -22,3 +24,7 @@ export type PayoutAddressQueryParams = {
   puzzle_hash?: string;
   farmer?: string;
 } & PaginatedQueryParams;
+
+export type PayoutQueryParams = {
+  id: string
+}

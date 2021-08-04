@@ -4,7 +4,6 @@ import { EMPTY, Observable } from 'rxjs';
 import {
   catchError, switchMap, takeUntil, tap,
 } from 'rxjs/operators';
-import { FarmerService } from 'src/app/services/api/farmer.service';
 import { CoinRecord } from '../../interfaces/coin-record.interface';
 import { CoinRecordService } from '../../services/api/coin-record.service';
 
@@ -22,10 +21,7 @@ const initialState: CoinRecordsState = {
 
 @Injectable({ providedIn: 'root' })
 export class CoinRecordsStore extends ComponentStore<CoinRecordsState> {
-  constructor(
-    private coinRecordsService: CoinRecordService,
-    private farmerService: FarmerService,
-  ) {
+  constructor(private coinRecordsService: CoinRecordService) {
     super(initialState);
   }
 
