@@ -34,5 +34,5 @@ export const selectGrowthLast24h = createSelector(
     }
 
     return 0;
-  }
-)
+  },
+);

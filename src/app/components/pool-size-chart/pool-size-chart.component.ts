@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild, SimpleChanges } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild,
+} from '@angular/core';
 import { format } from 'date-fns';
 import { debounce } from 'lodash';
 import { FileSizePipe } from 'ngx-filesize';
@@ -69,11 +71,11 @@ export class PoolSizeChartComponent implements OnInit {
         },
         minorGridlines: {
           count: 0,
-        }
+        },
       },
       pointSize: 3,
     };
-    
+
     this.setupChart(this.config);
   }
 
@@ -95,7 +97,7 @@ export class PoolSizeChartComponent implements OnInit {
           `${formattedDate} – ${formattedSize}`,
         ];
       });
-  
+
       const dataTable = google.visualization.arrayToDataTable([
         ['Day', 'Size', { type: 'string', role: 'tooltip' }],
         ...series,
