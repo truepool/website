@@ -29,14 +29,14 @@ import { PoolSizeChartComponent } from './components/pool-size-chart/pool-size-c
 import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
+import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
+import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
 import { LeaderboardComponent } from './pages/farmers-page/leaderboard/leaderboard.component';
 import { AboutUsComponent } from './pages/front-page/about-us/about-us.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
 import { LeadSectionComponent } from './pages/front-page/lead-section/lead-section.component';
 import { NewsComponent } from './pages/front-page/news/news.component';
 import { OperatorsComponent } from './pages/front-page/operators/operators.component';
-import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
-import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { PayoutPageModule } from './pages/payout-page/payout-page.module';
