@@ -1,6 +1,7 @@
 import { ContentItem } from 'src/app/interfaces/content-item.interface';
+import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
-export const newsItems: ContentItem[] = [
+export const newsItems: NewsItem[] = [
   {
     title: 'Custom nicknames and more stats',
     summary: `
