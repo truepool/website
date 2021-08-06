@@ -3,7 +3,7 @@
 
 header {
   @include theme('background-color', 'banner-color');
-  @include theme('color', 'inverse-font-color');
+  @include theme('color', 'banner-font-color');
   padding: 12px 12%;
   display: flex;
   justify-content: space-between;
@@ -23,7 +23,7 @@ header {
     font-size: 1.8em;
     font-weight: 600;
     text-decoration: none;
-    @include theme('color', 'inverse-font-color');
+    @include theme('color', 'banner-font-color');
     display: flex;
     align-items: center;
 
@@ -54,7 +54,7 @@ header {
     }
 
     a {
-      @include theme('color', 'inverted-font-color');
+      @include theme('color', 'banner-font-color');
       padding: 7px 2px;
       text-decoration: none;
       box-sizing: border-box;

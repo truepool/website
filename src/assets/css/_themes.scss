@@ -19,14 +19,17 @@ $gray: "gray";
 $gray-dark: "gray-dark";
 $gray-light: "gray-light";
 $banner-color: "banner-color";
+$banner-font-color: "banner-font-color";
 $header-border: "header-border";
+$github-font-color: "github-font-color";
+$github-background-color: "github-background-color";
 $github-icon: "github-icon";
 
 $themes: (
     $light-theme: (
       $primary-color: #0096d5,
-      $primary-color-dark: #3f94d0,
-      $primary-color-light: #5ebce7c0,
+      $primary-color-dark: #275a7e,
+      $primary-color-light: #3586acc0,
       $accent-color: #00af52,
       $accent-color-dark: #009244,
       $accent-color-light: #0ecc67,
@@ -40,10 +43,13 @@ $themes: (
       $white: #ffffff,
       $gray: #bbbbbb,
       $gray-dark: #aaaaaa,
-      $gray-light: #eeeeee,
+      $gray-light: #e6e6e6,
       $banner-color: #252525,
-      $header-border: #ffffff2e,
-      $github-icon: '../img/github-light.png',
+      $banner-font-color: #ffffff,
+      $header-border: #ffffff2e,  
+      $github-font-color: #0d0d0d,
+      $github-background-color: #f7f7f7,
+      $github-icon: '../img/github-dark.png',
     ),
     $dark-theme: (
       $primary-color: #0096d5,
@@ -63,8 +69,11 @@ $themes: (
       $gray: #bbbbbb,
       $gray-dark: #d4d4d4,
       $gray-light: #333333,
-      $banner-color: #ffffff,
+      $banner-color: #161616,
+      $banner-font-color: #eeeeee,
       $header-border: #ffffff2e,
-      $github-icon: '../img/github-dark.png',
+      $github-font-color: #eeeeee,
+      $github-background-color: #0d0d0d,
+      $github-icon: '../img/github-light.png',
     )
 );

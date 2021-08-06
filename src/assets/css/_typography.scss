@@ -15,10 +15,10 @@ ul {
 }
 
 a {
-  @include theme('color', 'primary-color-dark');
+  @include theme('color', 'primary-color');
 
   &:visited {
-    @include theme('color', 'primary-color-light');
+    @include theme('color', 'primary-color-dark');
   }
 }
 

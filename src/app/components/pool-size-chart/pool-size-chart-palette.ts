@@ -1,4 +1,4 @@
-import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
+import { ColorSchemeTheme } from 'src/app/services/api/color-scheme.enum';
 
 export interface PoolSizeChartPalette {
   series: string;
@@ -6,13 +6,13 @@ export interface PoolSizeChartPalette {
   text: string;
 }
 
-export const poolSizeChartPalette: { [key in PoolSizeChartTheme]: PoolSizeChartPalette } = {
-  [PoolSizeChartTheme.Dark]: {
+export const poolSizeChartPalette: { [key in ColorSchemeTheme]: PoolSizeChartPalette } = {
+  [ColorSchemeTheme.Dark]: {
     series: '#3f94d0',
     gridlines: '#636363',
     text: 'white',
   },
-  [PoolSizeChartTheme.Light]: {
+  [ColorSchemeTheme.Light]: {
     series: '#3f94d0',
     gridlines: '#d9d9d9',
     text: 'black',

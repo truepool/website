@@ -67,7 +67,7 @@
   }
 }
 
-@mixin themeImage($alias, $additionalProperties) {
+@mixin themeImage($alias, $additionalProperties: '') {
   $light: map-get($themes, $light-theme);
   $dark: map-get($themes, $dark-theme);
   $lightImg: unquote(map-get($light, $alias));

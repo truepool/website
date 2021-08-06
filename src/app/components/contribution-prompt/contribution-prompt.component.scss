@@ -2,8 +2,8 @@
 
 :host {
   display: flex;
-  @include theme('background-color', 'banner-color');
-  @include theme('color', 'inverse-font-color');
+  @include theme('background-color', 'github-background-color');
+  @include theme('color', 'github-font-color');
   padding: 11px 21px;
   border-radius: 6px;
   width: fit-content;
@@ -14,7 +14,7 @@
   width: 64px;
   height: 64px;
   margin-right: 9px;
-  @include themeImage('github-icon', '');
+  @include themeImage('github-icon');
 }
 
 .prompt {

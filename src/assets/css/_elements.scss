@@ -5,7 +5,7 @@ table {
 
   td, th {
     padding: 8px 10px 6px;
-    @include theme('border', 'gray-dark', true, '1px solid');
+    @include theme('border', 'gray-light', true, '1px solid');
   }
 
   th {
