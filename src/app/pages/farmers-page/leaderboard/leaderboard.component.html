@@ -32,8 +32,8 @@
               </td>
             </tr>
 
-            <tr *ngIf="farmer.launcher_id === showDetailsForLauncherId">
-              <td colspan="5" class="farmer-details">
+            <tr *ngIf="farmer.launcher_id === showDetailsForLauncherId" class="details">
+              <td colspan="5">
                 <app-farmer-search-results [query]="showDetailsForLauncherId"></app-farmer-search-results>
               </td>
             </tr>

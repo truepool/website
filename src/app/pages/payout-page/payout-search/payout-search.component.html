@@ -1,0 +1,151 @@
+<app-pool-details-bar></app-pool-details-bar>
+
+<div class="page-content">
+  <app-content-loader
+    *ngIf="state$ | async as state"
+    [isLoading]="state.isLoading"
+    [error]="state.error"
+  >
+    <div class="page-title">Payout #{{ state.payout?.id }}</div>
+    <p>
+      {{ state.payout?.datetime | date: 'short' }}
+    </p>
+
+    <h2>Coins</h2>
+    <ng-container *ngIf="state.coinRecords as coins">
+      <table class="stats-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Block Index</th>
+            <th>Farmed By</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let coin of coins">
+            <tr>
+              <td>
+                {{ coin.timestamp * 1000 | date: 'short' }}
+              </td>
+              <td>{{ coin.confirmed_block_index }}</td>
+              <td>
+                <a
+                  class="details-link"
+                  (click)="onCoinFarmerSelection(coin.farmed_by)"
+                >
+                  {{ coin.farmed_by.display_name || 'Unnamed Farmer' }}
+                </a>
+              </td>
+            </tr>
+            <tr
+              *ngIf="coinFarmer && coinFarmer.launcher_id === coin.farmed_by.launcher_id"
+              class="details"
+            >
+              <td colspan="5">
+                <h4>
+                  <ng-container *ngIf="coinFarmer.display_name; else noName">{{ coinFarmer.display_name }}</ng-container>
+                  <ng-template #noName>
+                    Unnamed farmer
+                    <a
+                      class="set-name-link"
+                      routerLink="/kb/set-friendly-leaderboard-name"
+                    >
+                      Learn how to set a name &#10142;
+                    </a>
+                  </ng-template>
+                </h4>
+                <table class="details-view details-view-blue table-striped">
+                  <tbody>
+                    <tr>
+                      <th>Launcher ID</th>
+                      <td>{{ coinFarmer.launcher_id }}</td>
+                    </tr>
+                    <tr>
+                      <th>Points</th>
+                      <td>
+                        {{ coinFarmer.points | number }} ({{ coinFarmer.points_percentage / 100 | percent: '1.0-4' }})
+                      </td>
+                    </tr>
+                    <tr>
+                      <th>Difficulty</th>
+                      <td>{{ coinFarmer.difficulty | number }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-container *ngIf="state.addresses">
+      <h2>Farmer Payouts</h2>
+      <table class="mb-md">
+        <thead>
+          <tr>
+            <th>Farmer</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="!state.addresses?.length; else payoutAddresses">
+            <td colspan="4">No records.</td>
+          </tr>
+          <ng-template #payoutAddresses>
+            <ng-container *ngFor="let address of state.addresses; let i = index;">
+              <tr>
+                <td>
+                  <a
+                    class="details-link"
+                    (click)="onFarmerSelection(address.farmer)"
+                  >
+                    {{ address.farmer?.display_name || 'Unnamed farmer' }}
+                  </a>
+                </td>
+                <td>{{ address.amount | xch }}</td>
+              </tr>
+              <tr
+                *ngIf="farmer && farmer?.launcher_id === address.farmer?.launcher_id"
+                class="details"
+              >
+                <td colspan="5">
+                  <h4>
+                    <ng-container *ngIf="farmer.display_name; else noName">{{ farmer.display_name }}</ng-container>
+                    <ng-template #noName>
+                      Unnamed farmer
+                      <a
+                        class="set-name-link"
+                        routerLink="/kb/set-friendly-leaderboard-name"
+                      >
+                        Learn how to set a name &#10142;
+                      </a>
+                    </ng-template>
+                  </h4>
+                  <table class="details-view details-view-blue table-striped">
+                    <tbody>
+                      <tr>
+                        <th>Launcher ID</th>
+                        <td>{{ farmer.launcher_id }}</td>
+                      </tr>
+                      <tr>
+                        <th>Points</th>
+                        <td>
+                          {{ farmer.points | number }}
+                                            ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>Difficulty</th>
+                        <td>{{ farmer.difficulty | number }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-template>
+        </tbody>
+      </table>
+    </ng-container>
+  </app-content-loader>
+</div>

@@ -26,6 +26,10 @@ const routes: Routes = [
     component: FarmersPageComponent,
   },
   {
+    path: 'payout',
+    loadChildren: () => import('./pages/payout-page/payout-page.module').then(m => m.PayoutPageModule)
+  },
+  {
     path: 'kb',
     component: KnowledgeBaseListingComponent,
     pathMatch: 'full',

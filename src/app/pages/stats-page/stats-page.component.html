@@ -76,7 +76,7 @@
         <tr *ngFor="let record of coinRecordsState.coinRecords">
           <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
           <td>{{ record.confirmed_block_index }}</td>
-          <td>{{ record.farmer_display_name || record.farmed_by }}</td>
+          <td>{{ record.farmed_by.display_name || 'Unnamed Farmer' }}</td>
         </tr>
         </tbody>
       </table>
@@ -96,15 +96,19 @@
       <table class="stats-table">
         <thead>
         <tr>
+          <th> </th>
           <th>Date</th>
           <th>Amount</th>
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let payout of payoutsState.payouts">
-          <td>{{ payout.datetime | date: 'short' }}</td>
-          <td>{{ payout.amount | xch }}</td>
-        </tr>
+          <ng-container *ngFor="let payout of payoutsState.payouts">
+            <tr>
+              <td><a class="details-link" [routerLink]="['/payout', payout.id]">#{{ payout.id }}</a></td>
+              <td>{{ payout.datetime | date: 'short' }}</td>
+              <td>{{ payout.amount | xch }}</td>
+            </tr>
+          </ng-container>
         </tbody>
       </table>
     </ng-template>
