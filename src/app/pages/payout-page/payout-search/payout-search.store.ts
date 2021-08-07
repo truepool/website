@@ -14,6 +14,8 @@ export interface PayoutSearchState {
   error: string;
   payout: Payout | null;
   addresses: PayoutAddress[] | null;
+  addressesCurrentPage: number;
+  addressesCount: number;
   coinRecords: CoinRecord[] | null;
 }
 
@@ -21,43 +23,65 @@ const initialState: PayoutSearchState = {
   isLoading: false,
   error: null,
   payout: null,
+  addressesCount: 0,
   addresses: null,
+  addressesCurrentPage: 0,
   coinRecords: null,
 };
 
 @Injectable({ providedIn: 'root' })
 export class PayoutSearchStore extends ComponentStore<PayoutSearchState> {
-  constructor(private payoutService: PayoutService, private coinRecordService: CoinRecordService) {
+  private readonly addressPageSize = 50;
+  constructor(
+    private payoutService: PayoutService,
+    private coinRecordService: CoinRecordService,
+  ) {
     super(initialState);
   }
 
-  readonly searchPayout = this.effect((queries$: Observable<string>) => {
+  readonly searchPayout = this.effect((queries$: Observable<{ payoutId: string; page: number }>) => {
     return queries$.pipe(
-      tap(() => {
+      tap((page) => {
         this.setState({
           ...initialState,
+          addressesCurrentPage: page.page,
           isLoading: true,
         });
       }),
-      switchMap((payoutId: string) => combineLatest([
-        this.payoutService.getPayout(payoutId)
-          .pipe(tap((payout) => { this.patchState({ payout }); })),
-        this.coinRecordService.getCoinRecords({ payout: payoutId })
+      switchMap((page) => combineLatest([
+        this.payoutService.getPayout(page.payoutId).pipe(
+          tap((payout) => {
+            this.patchState({ payout });
+          }),
+        ),
+        this.coinRecordService
+          .getCoinRecords({ payout: page.payoutId })
           .pipe(
             tap((coinRecords) => {
               this.patchState({ coinRecords: coinRecords.results });
             }),
           ),
-        this.payoutService.getPayoutAddresses({ payout: payoutId })
+        this.payoutService
+          .getPayoutAddresses({
+            payout: page.payoutId,
+            ordering: '-amount',
+            offset: page.page * this.addressPageSize,
+            count: this.addressPageSize,
+          })
           .pipe(
             tap((addresses) => {
               this.patchState({
-                addresses: addresses.results.filter((address) => address.farmer !== null),
+                addresses: addresses.results.filter(
+                  (address) => address.farmer !== null,
+                ),
+                addressesCount: addresses.count,
               });
             }),
           ),
       ])),
-      tap(() => { this.patchState({ isLoading: false }); }),
+      tap(() => {
+        this.patchState({ isLoading: false });
+      }),
       catchError(() => {
         const error = 'Error when searching for a payout.';
 

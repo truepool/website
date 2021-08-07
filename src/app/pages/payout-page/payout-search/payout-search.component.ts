@@ -26,7 +26,7 @@ export class PayoutSearchComponent {
   ngOnInit(): void {
     this.payoutId$
       .pipe(take(1))
-      .subscribe((payoutId) => this.store.searchPayout(payoutId));
+      .subscribe((payoutId) => this.store.searchPayout({ payoutId, page: 0 }));
   }
 
   onFarmerSelection(farmer: Farmer): void {
@@ -45,5 +45,10 @@ export class PayoutSearchComponent {
     }
 
     this.coinFarmer = farmer;
+  }
+
+  async onPageChanged(page: number) {
+    const payoutId = await this.payoutId$.pipe(take(1)).toPromise();
+    this.store.searchPayout({ payoutId, page });
   }
 }
