@@ -12,16 +12,6 @@
   }
 }
 
-.pager-container {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 15px;
-
-  @media screen and (max-width: $breakpoint-sm) {
-    justify-content: center;
-  }
-}
-
 .estimated-size-column {
   @media screen and (max-width: $breakpoint-sm) {
     display: none;

@@ -1,7 +1,6 @@
 import { DecimalPipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, SecurityContext } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
@@ -10,7 +9,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
 import { MarkdownArticleComponent } from 'src/app/components/markdown-article/markdown-article.component';
-import { PagerComponent } from 'src/app/components/pager/pager.component';
 import {
   FarmerSearchPromptComponent,
 } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
@@ -63,7 +61,6 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     FarmerSearchPromptComponent,
     FooterComponent,
     ContributionPromptComponent,
-    PagerComponent,
     PartialsChartComponent,
     MarkdownArticleComponent,
 
@@ -99,7 +96,6 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     StoreDevtoolsModule.instrument({
       logOnly: environment.production,
     }),
-    ReactiveFormsModule,
     MarkdownModule.forRoot({
       loader: HttpClient,
       sanitize: SecurityContext.NONE,

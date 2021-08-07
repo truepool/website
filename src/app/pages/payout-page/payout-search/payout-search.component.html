@@ -146,6 +146,15 @@
           </ng-template>
         </tbody>
       </table>
+
+      <div class="pager-container">
+        <app-pager
+          [currentPage]="state.addressesCurrentPage"
+          [pageSize]="50"
+          [totalItems]="state.addressesCount"
+          (pageChange)="onPageChanged($event)"
+        ></app-pager>
+      </div>
     </ng-container>
   </app-content-loader>
 </div>
