@@ -8,11 +8,11 @@ const PAYOUT_ROUTES: Routes = [
   {
     path: '',
     component: PayoutPageComponent,
-    children: [{ path: ':id', component: PayoutSearchComponent }]
-  }
+    children: [{ path: ':id', component: PayoutSearchComponent }],
+  },
 ];
 @NgModule({
   declarations: [PayoutPageComponent, PayoutSearchComponent],
-  imports: [RouterModule.forChild(PAYOUT_ROUTES), SharedModule]
+  imports: [RouterModule.forChild(PAYOUT_ROUTES), SharedModule],
 })
 export class PayoutPageModule {}
