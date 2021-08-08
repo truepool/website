@@ -1,0 +1,20 @@
+@import "../../../assets/css/variables";
+
+.info-icon{
+    padding-left:10px;
+}
+
+.info-tab{
+    border: 1px solid $color-blue-dark;    
+    border-radius: 9px;
+    color: #0d0d0d;
+    background-color: #f2f2f2;
+    position: absolute;
+    max-width: 400px;
+    z-index: 1;
+    margin-top: 1.5rem;
+    padding: 8px 38px 8px 18px;
+    text-transform: none;
+    text-align: center;
+    font-weight: 100;
+}

@@ -13,7 +13,10 @@
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.blockchain_totalspace | filesize }}</div>
-        <div class="big-number-title">Total Network Space</div>
+        <div class="big-number-title">
+          Total Network Space
+          <pop-over [popDetails]="'The combine estimated size of all storage used on the Chia Network.'"></pop-over>
+        </div>
       </div>
       <div class="break"></div>
       <div class="big-number">
@@ -31,11 +34,17 @@
       <div class="break"></div>
       <div class="big-number">
         <div class="big-number-value">{{ info.minutes_to_win | minutes }}</div>
-        <div class="big-number-title">Estimated Time To Win</div>
+        <div class="big-number-title">
+          Estimated Time To Win
+          <pop-over [popDetails]="'The time it will take TruePool to farm a block since the last block won.'"></pop-over>
+        </div>
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.seconds_since_last_win / 60 | minutes }}</div>
-        <div class="big-number-title">Time Since Last Win</div>
+        <div class="big-number-title">
+          Time Since Last Win
+          <pop-over [popDetails]="'The time elapsed since the last block that TruePool found.'"></pop-over>
+        </div>
       </div>
     </div>
   </app-content-loader>
