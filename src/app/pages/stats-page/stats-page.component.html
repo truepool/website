@@ -37,6 +37,7 @@
         <div class="big-number-value">{{ info.seconds_since_last_win / 60 | minutes }}</div>
         <div class="big-number-title">Time Since Last Win</div>
       </div>
+      <div class="empty-block"></div>
     </div>
   </app-content-loader>
 
@@ -48,7 +49,7 @@
   >
     <div *ngIf="poolSizesState.sizes.length" class="pool-size-chart-container">
       <h2 class="pool-space-header">Pool Space</h2>
-      <app-pool-size-chart class="chart" [sizes]="somePoolSizes$ | async" [theme]="PoolSizeChartTheme.Light"></app-pool-size-chart>
+      <app-pool-size-chart class="chart" [sizes]="somePoolSizes$ | async"></app-pool-size-chart>
     </div>
   </app-content-loader>
 

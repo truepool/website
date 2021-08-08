@@ -1,7 +1,11 @@
+@import "../../../assets/css/mixins";
 @import "../../../assets/css/variables";
 
 :host {
   .wrapper-details {
+    @include theme('background-color', 'primary-color');
+    @include theme('color', 'white');
+    @include theme('border-bottom', 'header-border', true, '1px solid');
     align-items: center;
     display: flex;
     gap: 24px;

@@ -1,4 +1,4 @@
-@import "../../assets/css/variables";
+@import "mixins";
 
 html {
   height: 100%;
@@ -6,8 +6,8 @@ html {
 }
 
 body {
-  background-color: $color-black-light;
-  color: white;
+  @include theme('background-color', 'background-color');
+  @include theme('color', 'font-color');
   font-family: 'Assistant', 'Helvetica', sans-serif;
   display: flex;
   min-height: 100%;
