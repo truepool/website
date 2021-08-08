@@ -3,6 +3,15 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Payout Reports, Exchange Information and other updates!',
+    summary: `
+      <p>The TruePool team has been active the past couple weeks, and we've added more
+      reports, tools and other enhancements that make your Farming experience with TruePool first-class.</p>
+    `,
+    date: '8/7/2021',
+    url: 'news/update-2021-08-07',
+  },
+  {
     title: 'Custom nicknames and more stats',
     summary: `
       <p>We are happy to provide a quick status update for the last week of July with new features

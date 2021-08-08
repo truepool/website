@@ -9,7 +9,7 @@ import {
   selectSomePoolSizes,
 } from '../../stores/pool-sizes/pool-sizes.selectors';
 import { CoinRecordsStore } from './coin-records.store';
-import { PayoutsStore } from './payouts.store';
+import { PayoutsStore } from '../payout-page/payouts.store';
 import { InfoStore } from './info.store';
 
 @Component({

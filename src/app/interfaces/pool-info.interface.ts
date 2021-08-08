@@ -12,4 +12,5 @@ export interface PoolInfo {
   reward_last_date: string;
   reward_last_height: number;
   seconds_since_last_win: number;
+  xch_usd_price: number;
 }
