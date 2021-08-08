@@ -13,6 +13,7 @@ The image includes the following:
 - [Farmr Client](https://github.com/joaquimguimaraes/farmr)
 - [Plotman](https://github.com/ericaltendorf/plotman)
 - [BladeBit](https://github.com/harold-b/bladebit/)
+- [PlotNG](https://github.com/maded2/plotng)
 
 ## How do I get it?
 
