@@ -1,4 +1,3 @@
-import { ContentItem } from 'src/app/interfaces/content-item.interface';
 import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [

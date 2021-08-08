@@ -29,6 +29,8 @@ export const contentDirectory: ContentItem[] = [
     title: 'Join Truepool',
     url: 'pages/join-truepool',
     path: 'pages/join-truepool/join-truepool',
-    extraLanguages: ['ru'],
+    extraLanguages: [
+      { language: 'ru', title: 'Присоединиться к Truepool' },
+    ],
   },
 ];

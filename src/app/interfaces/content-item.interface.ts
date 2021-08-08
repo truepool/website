@@ -3,5 +3,10 @@ export interface ContentItem {
   path: string;
   url: string;
   title: string;
-  extraLanguages: string[];
+  extraLanguages: ContentLanguage[];
+}
+
+export interface ContentLanguage {
+  language: string;
+  title: string;
 }

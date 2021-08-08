@@ -1,0 +1,13 @@
+<ng-container *ngIf="otherLanguages.length">
+  <div class="also-available">
+    <span class="message">This article is also available in: </span>
+    <a
+      *ngFor="let language of otherLanguages"
+      class="language"
+      [routerLink]="[]"
+      [queryParams]="languageQueryParams(language)"
+      queryParamsHandling="merge"
+      [relativeTo]=""
+    >{{ language }}</a>
+  </div>
+</ng-container>
