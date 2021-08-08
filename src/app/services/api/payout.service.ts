@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { PaginatedQueryParams, PaginatedResponse } from '../../interfaces/paginated-response.interface';
@@ -15,5 +15,9 @@ export class PayoutService {
 
   getPayoutAddresses(params: PayoutAddressQueryParams): Observable<PaginatedResponse<PayoutAddress>> {
     return this.http.get<PaginatedResponse<PayoutAddress>>(`${environment.apiRoot}/payout_address/`, { params });
+  }
+
+  getPayout(payoutId: string): Observable<Payout> {
+    return this.http.get<Payout>(`${environment.apiRoot}/payout/${payoutId}`);
   }
 }

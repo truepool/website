@@ -1,3 +1,4 @@
+import { Farmer } from './farmer.interface';
 import { PaginatedQueryParams } from './paginated-response.interface';
 
 export interface CoinRecord {
@@ -7,7 +8,7 @@ export interface CoinRecord {
   confirmed_block_index: number;
   puzzle_hash: string;
   amount: number;
-  farmed_by: string;
+  farmed_by: Farmer;
   payout: string;
   farmer_display_name: string;
 }
