@@ -41,6 +41,8 @@
     "lodash": "^4.17.21",
     "ngx-filesize": "^2.0.16",
     "ngx-markdown": "^12.0.1",
+    "ngx-popper": "^7.0.0",
+    "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",
     "typescript-eslint": "0.0.1-alpha.0",

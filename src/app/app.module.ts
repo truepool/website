@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, SecurityContext } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
@@ -8,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
+import { NgxPopperModule } from 'ngx-popper';
 import { MarkdownArticleComponent } from 'src/app/components/markdown-article/markdown-article.component';
 import {
   FarmerSearchPromptComponent,
@@ -45,7 +47,6 @@ import { SharedModule } from './shared.module';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
-import { PopOverComponent } from './components/pop-over/pop-over.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,6 @@ import { PopOverComponent } from './components/pop-over/pop-over.component';
     ContributionPromptComponent,
     PartialsChartComponent,
     MarkdownArticleComponent,
-    PopOverComponent,
 
     // Pages
     StatsPageComponent,
@@ -104,6 +104,8 @@ import { PopOverComponent } from './components/pop-over/pop-over.component';
     }),
     BrowserAnimationsModule,
     PayoutPageModule,
+    FormsModule,
+    NgxPopperModule.forRoot({}),
   ],
   providers: [FileSizePipe, DecimalPipe],
   bootstrap: [AppComponent],
