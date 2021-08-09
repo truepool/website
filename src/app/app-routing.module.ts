@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'payout',
-    loadChildren: () => import('./pages/payout-page/payout-page.module').then(m => m.PayoutPageModule)
+    loadChildren: () => import('./pages/payout-page/payout-page.module').then((m) => m.PayoutPageModule),
   },
   {
     path: 'kb',
