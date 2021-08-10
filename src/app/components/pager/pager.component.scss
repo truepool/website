@@ -1,4 +1,5 @@
 @import "../../../assets/css/variables";
+@import "../../../assets/css/mixins";
 
 :host {
   display: flex;
@@ -7,17 +8,17 @@
 
 .previous-page,
 .next-page {
-  border: 1px solid $color-gray-light;
+  @include theme('border', 'gray-light', true, '1px solid');
   cursor: pointer;
   padding: 9px 14px;
   border-radius: 5px;
   font-weight: 600;
-  color: $color-blue-dark;
+  @include theme('color', 'primary-color-dark');
 
   &.disabled {
     pointer-events: none;
     cursor: default;
-    color: $color-gray-dark;
+    @include theme('color', 'gray-light');
   }
 }
 
@@ -29,7 +30,7 @@
 }
 
 .current-page-link {
-  border-bottom: 1px dotted $color-blue-light;
+  @include theme('border-bottom', 'primary-color-light', true, '1px dotted');
   color: darken($color-blue-dark, 10%);
   margin-right: 6px;
   cursor: pointer;
@@ -37,7 +38,7 @@
 }
 
 .page-input {
-  border: 1px solid $color-gray-light;
+  @include theme('border', 'gray-light', true, '1px solid');
   height: 26px;
   margin-right: 6px;
   -moz-appearance: textfield;
@@ -52,6 +53,6 @@
 
 
   &.has-error {
-    border-color: $color-red-light;
+    @include theme('border-color', 'color-error');
   }
 }

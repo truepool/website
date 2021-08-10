@@ -3,7 +3,7 @@
 
 :host {
   .wrapper-details {
-    @include theme('background-color', 'primary-color');
+    @include theme('background-color', 'gray-bar');
     @include theme('color', 'white');
     @include theme('border-bottom', 'header-border', true, '1px solid');
     align-items: center;
