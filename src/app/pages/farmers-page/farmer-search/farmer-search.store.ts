@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { subHours } from 'date-fns';
-import { EMPTY, forkJoin, Observable } from 'rxjs';
+import {
+  EMPTY, forkJoin, Observable, of,
+} from 'rxjs';
 import {
   catchError, map, switchMap, takeUntil, tap,
 } from 'rxjs/operators';
@@ -73,6 +75,10 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
                 })),
               );
             });
+
+            if (!payoutRequests.length) {
+              return of([]);
+            }
 
             return forkJoin(payoutRequests);
           }),
