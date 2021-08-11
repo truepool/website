@@ -5,6 +5,17 @@
   padding: 15px 17px 14px;
   border-left: 4px solid $color-blue-dark;
   border-radius: 3px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  li {
+    list-style-type: none;
+    display: inline;
+  }
 }
 
 .language {
