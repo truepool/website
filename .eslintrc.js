@@ -30,7 +30,8 @@ module.exports = {
         'no-void': ['error', { 'allowAsStatement': true }],
         'class-methods-use-this': 'off',
         '@typescript-eslint/unbound-method': 'off',
-        'no-console': ['error', { allow: ['warn', 'error', 'info'] }]
+        'no-console': ['error', { allow: ['warn', 'error', 'info'] }],
+        '@typescript-eslint/no-explicit-any': 'error',
       }
     }
   ],
