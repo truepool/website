@@ -43,7 +43,13 @@
       </table>
 
       <div class="pager-container">
+        <div class="leaderboard-explanation">
+          Leaderboard resets once token is won.<br>
+          Farmers with 0 points are not listed, but can be found in search.
+        </div>
+
         <app-pager
+          *ngIf="state.topFarmers.count > pageSize"
           [currentPage]="state.currentPage"
           [pageSize]="pageSize"
           [totalItems]="state.topFarmers.count"
