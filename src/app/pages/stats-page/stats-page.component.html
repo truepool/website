@@ -12,12 +12,12 @@
         <div class="big-number-title">Last Reward</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value">{{ info.blockchain_totalspace | filesize }}</div>
+        <div class="big-number-value">{{ info.blockchain_totalspace | filesize: { standard: 'iec' } }}</div>
         <div class="big-number-title">Total Network Space</div>
       </div>
       <div class="break"></div>
       <div class="big-number">
-        <div class="big-number-value">{{ info.total_size | filesize }}</div>
+        <div class="big-number-value">{{ info.total_size | filesize: { standard: 'iec' } }}</div>
         <div class="big-number-title">Truepool Space</div>
       </div>
       <div class="big-number">
@@ -25,7 +25,7 @@
         <div class="big-number-title">Truepool Network Share</div>
       </div>
       <div class="big-number">
-        <div class="big-number-value">{{ growthLast24h$ | async | filesize }}</div>
+        <div class="big-number-value">{{ growthLast24h$ | async | filesize: { standard: 'iec' } }}</div>
         <div class="big-number-title">Added Last 24h</div>
       </div>
       <div class="break"></div>
@@ -36,6 +36,10 @@
       <div class="big-number">
         <div class="big-number-value">{{ info.seconds_since_last_win / 60 | minutes }}</div>
         <div class="big-number-title">Time Since Last Win</div>
+      </div>
+      <div class="big-number">
+        <div class="big-number-value">{{ (info.seconds_since_last_win / 60) / info.minutes_to_win | percent }}</div>
+        <div class="big-number-title" title="TruePool's luck metric - when our farmers find a block while luck is under 100% it is considered lucky.">Luck</div>
       </div>
     </div>
   </app-content-loader>
