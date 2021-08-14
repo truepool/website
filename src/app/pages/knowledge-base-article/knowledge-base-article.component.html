@@ -1,9 +1,10 @@
 <div class="page-content">
   <a routerLink="/kb" class="category-link">Knowledge Base</a>
-  <h1 class="page-title">{{ article.title }}</h1>
+  <h1 class="page-title">{{ title$ | async }}</h1>
 
   <article>
-    <app-markdown-article [markdownUrl]="markdownSrc"></app-markdown-article>
+    <app-available-in-other-languages [languages]="article.extraLanguages"></app-available-in-other-languages>
+    <app-markdown-article [markdownUrl]="markdownSrc$ | async"></app-markdown-article>
   </article>
 
   <app-contribution-prompt class="prompt"></app-contribution-prompt>

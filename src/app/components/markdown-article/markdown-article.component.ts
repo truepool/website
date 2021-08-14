@@ -1,8 +1,9 @@
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnInit, ViewChild,
 } from '@angular/core';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { MarkdownService } from 'ngx-markdown';
+import { MarkdownComponent, MarkdownService } from 'ngx-markdown';
+import { finalize } from 'rxjs/operators';
 
 @UntilDestroy()
 @Component({
@@ -13,6 +14,8 @@ import { MarkdownService } from 'ngx-markdown';
 })
 export class MarkdownArticleComponent implements OnInit, OnChanges {
   @Input() markdownUrl: string;
+
+  @ViewChild(MarkdownComponent, { static: false }) markdownComponent: MarkdownComponent;
 
   // TODO: Can be moved to store.
   markdown: string;
@@ -36,12 +39,21 @@ export class MarkdownArticleComponent implements OnInit, OnChanges {
     this.isLoading = true;
     this.loadingError = null;
     this.markdownService.getSource(this.markdownUrl)
-      .pipe(untilDestroyed(this))
+      .pipe(
+        finalize(() => this.isLoading = false),
+        untilDestroyed(this),
+      )
       .subscribe(
-        (markdown) => this.markdown = markdown,
-        () => this.loadingError = 'Article could not be loaded.',
+        (markdown) => {
+          this.markdown = markdown;
+
+          // This should not be necessary, but somehow is need when changing languages.
+          // Probably an issue with underlying ngx-markdown.
+          this.markdownComponent?.render(markdown);
+          this.cdr.markForCheck();
+        },
         () => {
-          this.isLoading = false;
+          this.loadingError = 'Article could not be loaded.';
           this.cdr.markForCheck();
         },
       );

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ContentItem } from 'src/app/interfaces/content-item.interface';
+import { NewsItem } from 'src/app/interfaces/news-item.interface';
 import { newsItems } from 'src/content/news/news-directory';
 
 @Component({
@@ -11,7 +11,7 @@ import { newsItems } from 'src/content/news/news-directory';
 export class NewsArticleComponent {
   readonly pagePrefix = 'news/';
 
-  article: ContentItem;
+  article: NewsItem;
 
   constructor(
     private router: Router,

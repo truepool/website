@@ -47,7 +47,7 @@ export class PayoutSearchComponent {
     this.coinFarmer = farmer;
   }
 
-  async onPageChanged(page: number) {
+  async onPageChanged(page: number): Promise<void> {
     const payoutId = await this.payoutId$.pipe(take(1)).toPromise();
     this.store.searchPayout({ payoutId, page });
   }
