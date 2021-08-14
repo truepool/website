@@ -7,6 +7,8 @@ export interface Farmer {
   p2_singleton_puzzle_hash: string;
   points: number;
   points_percentage: number;
+  points_pplns: number;
+  share_pplns: number;
   difficulty: number;
   is_pool_member: number;
   farm_estimated_size: number;

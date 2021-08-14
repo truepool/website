@@ -1,0 +1,21 @@
+<table class="details-view details-view-blue table-striped">
+  <tr>
+    <th>Launcher ID</th>
+    <td>{{ farmer.launcher_id }}</td>
+  </tr>
+  <tr>
+    <th>Points (24 hours)</th>
+    <td>
+      {{ farmer.points_pplns | number }}
+      ({{ farmer.share_pplns | percent: '1.0-4' }})
+    </td>
+  </tr>
+  <tr>
+    <th>Estimated Size</th>
+    <td>{{ farmer.farm_estimated_size | filesize: { standard: 'iec' } }}</td>
+  </tr>
+  <tr>
+    <th>Difficulty</th>
+    <td>{{ farmer.difficulty | number }}</td>
+  </tr>
+</table>

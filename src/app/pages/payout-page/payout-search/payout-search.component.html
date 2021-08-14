@@ -54,24 +54,7 @@
                     </a>
                   </ng-template>
                 </h4>
-                <table class="details-view details-view-blue table-striped">
-                  <tbody>
-                    <tr>
-                      <th>Launcher ID</th>
-                      <td>{{ coinFarmer.launcher_id }}</td>
-                    </tr>
-                    <tr>
-                      <th>Points</th>
-                      <td>
-                        {{ coinFarmer.points | number }} ({{ coinFarmer.points_percentage / 100 | percent: '1.0-4' }})
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Difficulty</th>
-                      <td>{{ coinFarmer.difficulty | number }}</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <app-farmer-details [farmer]="coinFarmer"></app-farmer-details>
               </td>
             </tr>
           </ng-container>
@@ -121,25 +104,7 @@
                       </a>
                     </ng-template>
                   </h4>
-                  <table class="details-view details-view-blue table-striped">
-                    <tbody>
-                      <tr>
-                        <th>Launcher ID</th>
-                        <td>{{ farmer.launcher_id }}</td>
-                      </tr>
-                      <tr>
-                        <th>Points</th>
-                        <td>
-                          {{ farmer.points | number }}
-                                            ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>Difficulty</th>
-                        <td>{{ farmer.difficulty | number }}</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <app-farmer-details [farmer]="farmer"></app-farmer-details>
                 </td>
               </tr>
             </ng-container>
