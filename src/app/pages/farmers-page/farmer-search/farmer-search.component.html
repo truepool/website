@@ -3,71 +3,76 @@
   [isLoading]="state.isLoading"
   [error]="state.error"
 >
-  <div *ngFor="let result of state.results" class="search-result">
-    <h4>
-      <ng-container *ngIf="result.farmer.display_name; else noName">{{ result.farmer.display_name }}</ng-container>
-      <ng-template #noName>
-        Unnamed farmer <a class="set-name-link" routerLink="/kb/set-friendly-leaderboard-name">Learn how to set a name &#10142;</a>
-      </ng-template>
-    </h4>
-
-    <app-farmer-details [farmer]="result.farmer"></app-farmer-details>
-
-    <h5>Last payouts</h5>
-
-    <ng-container *ngIf="!result.payouts?.length; else payoutsTable">
-      This farmer has no payouts.
-    </ng-container>
-    <ng-template #payoutsTable>
-      <table>
-        <thead>
-        <tr>
-          <th>Date</th>
-          <th>Amount</th>
-          <th>Transaction</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let payout of result.payouts">
-          <td>{{ payout.payout.datetime | date: 'short' }}</td>
-          <td>{{ payout.amount | xch }}</td>
-          <td>{{ payout.transaction }}</td>
-        </tr>
-        </tbody>
-      </table>
-    </ng-template>
-
-    <h5>Partials Last 24h</h5>
-
-    <ng-container *ngIf="!result.partials?.length; else partialsInfo">
-      This farmer has no partials.
-    </ng-container>
-    <ng-template #partialsInfo>
-      <app-partials-chart [partials]="result.partials"></app-partials-chart>
-
-      <ng-container *appLet="filterErrors(result.partials) as errors">
-        <h4>Errors</h4>
-        <ng-container *ngIf="!errors.length; else errorTable">
-          No errors last 24 hours.
-        </ng-container>
-
-        <ng-template #errorTable>
-          <table>
-            <thead>
-            <tr>
-              <th>Date</th>
-              <th>Error</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let partial of errors">
-              <td>{{ partial.timestamp * 1000 | date: 'M/d/yy, h:mm:ss a' }}</td>
-              <td>{{ partial.error || '-' }} </td>
-            </tr>
-            </tbody>
-          </table>
-        </ng-template>
-      </ng-container>
-    </ng-template>
+  <div *ngIf="!state.results?.length; else showResults" class="nothing-found">
+    No farmers found.
   </div>
+  <ng-template #showResults>
+    <div *ngFor="let result of state.results" class="search-result">
+      <h4>
+        <ng-container *ngIf="result.farmer.display_name; else noName">{{ result.farmer.display_name }}</ng-container>
+        <ng-template #noName>
+          Unnamed farmer <a class="set-name-link" routerLink="/kb/set-friendly-leaderboard-name">Learn how to set a name &#10142;</a>
+        </ng-template>
+      </h4>
+
+      <app-farmer-details [farmer]="result.farmer"></app-farmer-details>
+
+      <h5>Last payouts</h5>
+
+      <ng-container *ngIf="!result.payouts?.length; else payoutsTable">
+        This farmer has no payouts.
+      </ng-container>
+      <ng-template #payoutsTable>
+        <table>
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Transaction</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let payout of result.payouts">
+            <td>{{ payout.payout.datetime | date: 'short' }}</td>
+            <td>{{ payout.amount | xch }}</td>
+            <td>{{ payout.transaction }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </ng-template>
+
+      <h5>Partials Last 24h</h5>
+
+      <ng-container *ngIf="!result.partials?.length; else partialsInfo">
+        This farmer has no partials.
+      </ng-container>
+      <ng-template #partialsInfo>
+        <app-partials-chart [partials]="result.partials"></app-partials-chart>
+
+        <ng-container *appLet="filterErrors(result.partials) as errors">
+          <h4>Errors</h4>
+          <ng-container *ngIf="!errors.length; else errorTable">
+            No errors last 24 hours.
+          </ng-container>
+
+          <ng-template #errorTable>
+            <table>
+              <thead>
+              <tr>
+                <th>Date</th>
+                <th>Error</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let partial of errors">
+                <td>{{ partial.timestamp * 1000 | date: 'M/d/yy, h:mm:ss a' }}</td>
+                <td>{{ partial.error || '-' }} </td>
+              </tr>
+              </tbody>
+            </table>
+          </ng-template>
+        </ng-container>
+      </ng-template>
+    </div>
+  </ng-template>
 </app-content-loader>
