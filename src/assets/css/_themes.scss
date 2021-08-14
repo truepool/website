@@ -15,6 +15,8 @@ $background-color: "background-color";
 $background-color-dark: "background-color-dark";
 $background-color-light: "background-color-light";
 $white: "white";
+$dark: "dark";
+$light: "light";
 $gray: "gray";
 $gray-dark: "gray-dark";
 $gray-light: "gray-light";
@@ -44,6 +46,8 @@ $themes: (
       $background-color-dark: #eeeeee,
       $background-color-light: #ffffff,
       $white: #ffffff,
+      $light: #eeeeee,
+      $dark: #1d1d1d,
       $gray: #bbbbbb,
       $gray-dark: #aaaaaa,
       $gray-light: #e6e6e6,
@@ -71,6 +75,8 @@ $themes: (
       $background-color-dark: #0d0d0d,
       $background-color-light: #2e2e2e,
       $white: #ffffff,
+      $light: #eeeeee,
+      $dark: #1d1d1d,
       $gray: #bbbbbb,
       $gray-dark: #d4d4d4,
       $gray-light: #333333,
