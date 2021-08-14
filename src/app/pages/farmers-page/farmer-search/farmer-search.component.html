@@ -14,23 +14,8 @@
           Unnamed farmer <a class="set-name-link" routerLink="/kb/set-friendly-leaderboard-name">Learn how to set a name &#10142;</a>
         </ng-template>
       </h4>
-      <table class="details-view details-view-blue table-striped">
-        <tr>
-          <th>Launcher ID</th>
-          <td>{{ result.farmer.launcher_id }}</td>
-        </tr>
-        <tr>
-          <th>Points</th>
-          <td>
-            {{ result.farmer.points | number }}
-            ({{ result.farmer.points_percentage / 100 | percent: '1.0-4' }})
-          </td>
-        </tr>
-        <tr>
-          <th>Difficulty</th>
-          <td>{{ result.farmer.difficulty | number }}</td>
-        </tr>
-      </table>
+
+      <app-farmer-details [farmer]="result.farmer"></app-farmer-details>
 
       <h5>Last payouts</h5>
 

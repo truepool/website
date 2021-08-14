@@ -22,11 +22,22 @@ As a further service to our community and TrueNAS users, we also publish a [True
 
 ### Joining HOWTO
 
-First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the official [Chia Faucet](https://faucet.chia.net/ "Chia Faucet"). With some Mojo in place, you can run the following from the command-line:
+First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the official [Chia Faucet](https://faucet.chia.net/ "Chia Faucet"). 
+
+If you are joining a pool for the first time, you can run the following from the command-line to create your first pool token:
 
 ```bash
 chia plotnft create -u https://pool.truepool.io -s pool
 ```
+
+OR
+
+If you are moving existing plots from another pool to TruePool, you can do so with the join command:
+
+```bash
+# chia plotnft join -i <wallet-ID> -u https://pool.truepool.io
+```
+
 
 Review the pool information and press "y" to accept. Then wait for confirmation.
 

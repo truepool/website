@@ -1,8 +1,8 @@
 import { compareDesc, parse } from 'date-fns';
-import { ContentItem } from 'src/app/interfaces/content-item.interface';
+import { NewsItem } from 'src/app/interfaces/news-item.interface';
 import { newsItems } from 'src/content/news/news-directory';
 
-export function getOrderedNews(): ContentItem[] {
+export function getOrderedNews(): NewsItem[] {
   return newsItems.sort((a, b) => {
     const aDate = parse(a.date, 'L/d/yyyy', new Date());
     const bDate = parse(b.date, 'L/d/yyyy', new Date());
