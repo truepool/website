@@ -1,0 +1,32 @@
+@import '../../../assets/css/variables';
+
+.also-available {
+  background-color: lighten($color-gray-light, 7%);
+  padding: 15px 17px 14px;
+  border-left: 4px solid $color-blue-dark;
+  border-radius: 3px;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: inline;
+  }
+
+  li {
+    list-style-type: none;
+    display: inline;
+  }
+}
+
+.language {
+  &:last-child::after {
+    display: inline;
+    content: '.';
+  }
+
+  &::after {
+    display: inline;
+    content: ',';
+    margin-right: 4px;
+  }
+}

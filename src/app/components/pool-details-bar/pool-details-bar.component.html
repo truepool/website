@@ -5,7 +5,7 @@
   </div>
   <div class="wrapper-detail">
     <span>Pool size:</span>
-    <p>{{ size$ | async | filesize }}</p>
+    <p>{{ size$ | async | filesize: { standard: 'iec' } }}</p>
   </div>
   <div class="wrapper-detail">
     <span>XCH:</span>
