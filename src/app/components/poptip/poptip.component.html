@@ -1,0 +1,11 @@
+<popper-content #poptip>
+    <p>{{msg}}</p>
+</popper-content>
+<div class="info-icon"  [popper]="poptip"
+                        [popperTrigger]="'hover'"
+                        [popperHideOnClickOutside]="true"
+                        [popperHideOnScroll]="true"
+                        [popperPlacement]="'right'"
+                        [popperApplyClass]="'test-class'">
+    <span class="material-icons-outlined">info</span>
+</div>

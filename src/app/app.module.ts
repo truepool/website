@@ -26,6 +26,7 @@ import { ContributionPromptComponent } from './components/contribution-prompt/co
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PoolSizeChartComponent } from './components/pool-size-chart/pool-size-chart.component';
+import { PoptipComponent } from './components/poptip/poptip.component';
 import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
@@ -65,6 +66,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     ContributionPromptComponent,
     PartialsChartComponent,
     MarkdownArticleComponent,
+    PoptipComponent,
 
     // Pages
     StatsPageComponent,
