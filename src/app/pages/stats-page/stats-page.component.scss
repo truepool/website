@@ -69,6 +69,11 @@
 }
 
 .stats-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  margin-top: 40px;
+  
   td {
     word-break: break-all;
   }
