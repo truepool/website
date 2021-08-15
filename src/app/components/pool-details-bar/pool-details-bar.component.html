@@ -1,4 +1,4 @@
-<section class="wrapper-details">
+<section *ngIf="info$ | async" class="wrapper-details">
   <div class="wrapper-detail">
     <span>Farmers:</span>
     <p>{{ farmers$ | async }}</p>
