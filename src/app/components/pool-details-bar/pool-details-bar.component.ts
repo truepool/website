@@ -13,7 +13,7 @@ export class PoolDetailsBarComponent implements OnInit {
   xchValue$ = this.info$.pipe(map((state) => state.info.xch_usd_price));
   size$ = this.info$.pipe(map((state) => state.info.total_size));
   uptime$ = this.info$.pipe(
-    map((state) => state.uptimeReport.statistics.uptime.l90.ratio),
+    map((state) => state.uptimeReport.statistics.uptime.l90.ratio.split('.')[0]),
   );
 
   constructor(private info: InfoStore) {}
