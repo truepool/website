@@ -8,6 +8,10 @@
     <p>{{ size$ | async | filesize: { standard: 'iec' } }}</p>
   </div>
   <div class="wrapper-detail">
+    <span>Uptime 90d:</span>
+    <p>{{ uptime$ | async }}</p>
+  </div>
+  <div class="wrapper-detail">
     <span>XCH:</span>
     <p>${{ xchValue$ | async }}</p>
   </div>

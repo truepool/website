@@ -12,6 +12,9 @@ export class PoolDetailsBarComponent implements OnInit {
   farmers$ = this.info$.pipe(map((state) => state.info.total_farmers));
   xchValue$ = this.info$.pipe(map((state) => state.info.xch_usd_price));
   size$ = this.info$.pipe(map((state) => state.info.total_size));
+  uptime$ = this.info$.pipe(
+    map((state) => state.uptimeReport.statistics.uptime.l90.ratio),
+  );
 
   constructor(private info: InfoStore) {}
 

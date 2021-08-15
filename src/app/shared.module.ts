@@ -11,9 +11,9 @@ import { XchPipe } from './pipes/xch.pipe';
 const modules = [CommonModule, NgxFilesizeModule, ReactiveFormsModule];
 const components = [
   ContentLoaderComponent,
+  FarmerDetailsComponent,
   PagerComponent,
   PoolDetailsBarComponent,
-  FarmerDetailsComponent,
 ];
 const pipes = [XchPipe];
 
