@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-// import { PoolSizeChartTheme } from '../../components/pool-size-chart/pool-size-chart-theme.enum';
+import { ColorSchemeTheme } from 'src/app/services/api/color-scheme.enum';
 import { statsPageEntered } from '../../stores/pool-sizes/pool-sizes.actions';
 import { PoolSizeState } from '../../stores/pool-sizes/pool-sizes.reducer';
 import {
@@ -11,7 +11,6 @@ import {
 import { CoinRecordsStore } from './coin-records.store';
 import { PayoutsStore } from '../payout-page/payouts.store';
 import { InfoStore } from './info.store';
-import { LeaderboardStore } from '../farmers-page/leaderboard/leaderboard.store';
 
 @Component({
   templateUrl: 'stats-page.component.html',
@@ -25,16 +24,14 @@ export class StatsPageComponent implements OnInit {
   payoutsState$ = this.payoutsStore.state$;
   growthLast24h$ = this.mainStore.select(selectGrowthLast24h);
   somePoolSizes$ = this.mainStore.select(selectSomePoolSizes);
-  leaderboardState$ = this.leaderboardStore.state$;
 
-  // readonly PoolSizeChartTheme = PoolSizeChartTheme;
+  readonly PoolSizeChartTheme = ColorSchemeTheme;
 
   constructor(
     private mainStore: Store<PoolSizeState>,
     private infoStore: InfoStore,
     private coinRecordsStore: CoinRecordsStore,
     private payoutsStore: PayoutsStore,
-    private leaderboardStore: LeaderboardStore,
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +39,5 @@ export class StatsPageComponent implements OnInit {
     this.infoStore.loadInfo();
     this.coinRecordsStore.loadCoinRecords();
     this.payoutsStore.loadPayouts();
-    this.leaderboardStore.loadFarmers(0);
   }
 }
