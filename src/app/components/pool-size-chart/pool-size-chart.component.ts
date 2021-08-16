@@ -4,9 +4,10 @@ import {
 import { format } from 'date-fns';
 import { debounce } from 'lodash';
 import { FileSizePipe } from 'ngx-filesize';
+import { ColorSchemeTheme } from 'src/app/services/api/color-scheme.enum';
 import { PoolSize } from '../../interfaces/pool-size.interface';
 import { PoolSizeChartPalette, poolSizeChartPalette } from './pool-size-chart-palette';
-import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
+import { ColorSchemeService } from '../../services/api/color-scheme.service';
 
 @Component({
   selector: 'app-pool-size-chart',
@@ -16,7 +17,7 @@ import { PoolSizeChartTheme } from './pool-size-chart-theme.enum';
 })
 export class PoolSizeChartComponent implements OnInit {
   @Input() sizes: PoolSize[];
-  @Input() theme: PoolSizeChartTheme = PoolSizeChartTheme.Dark;
+  @Input() theme: ColorSchemeTheme = null;
   @ViewChild('chart') chartElement: ElementRef;
   @ViewChild('linearScaleButton') linearScaleButtonElement: ElementRef;
   @ViewChild('logScaleButton') logScaleButtonElement: ElementRef;
@@ -26,12 +27,20 @@ export class PoolSizeChartComponent implements OnInit {
   readonly chartBaseUnit = 1024 ** 4; // TB
 
   get palette(): PoolSizeChartPalette {
+    if (this.theme === null) {
+      if (this.colorSchemeService.currentActive() === ColorSchemeTheme.Dark) {
+        this.theme = ColorSchemeTheme.Dark;
+      } else {
+        this.theme = ColorSchemeTheme.Light;
+      }
+    }
     return poolSizeChartPalette[this.theme];
   }
 
-  constructor(
-    private filesize: FileSizePipe,
-  ) {}
+  constructor(private filesize: FileSizePipe, private colorSchemeService: ColorSchemeService) {
+    // Load Color Scheme
+    this.colorSchemeService.load();
+  }
 
   ngOnInit(): void {
     this.config = {
@@ -90,7 +99,7 @@ export class PoolSizeChartComponent implements OnInit {
       const series = this.sizes.map(({ datetime, size }) => {
         const sizeInUnits = size / this.chartBaseUnit;
         const formattedDate = format(datetime, 'LLL, do h:mm aaa');
-        const formattedSize = this.filesize.transform(size) as string;
+        const formattedSize = this.filesize.transform(size, { standard: 'iec' }) as string;
         return [
           datetime,
           sizeInUnits,

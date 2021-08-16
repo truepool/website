@@ -1,6 +1,8 @@
 @import "../../../../assets/css/variables";
 
 main {
+  background-color: #252525;
+  color: #eee;
   min-height: calc(100vh - #{$header-height} - 10px);
   display: flex;
   flex-direction: column;
@@ -155,6 +157,7 @@ main {
   }
 
   .action-buttons {
+    
     margin-top: 61px;
     display: flex;
     flex-direction: row;

@@ -1,7 +1,12 @@
 export interface ContentItem {
   category?: string;
-  url?: string;
+  path: string;
+  url: string;
   title: string;
-  date?: string,
-  summary?: string;
+  extraLanguages: ContentLanguage[];
+}
+
+export interface ContentLanguage {
+  language: string;
+  title: string;
 }

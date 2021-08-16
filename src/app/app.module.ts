@@ -10,6 +10,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxPopperModule } from 'ngx-popper';
+import { FarmerDetailsComponent } from 'src/app/components/farmer-details/farmer-details.component';
+import {
+  AvailableInOtherLanguagesComponent,
+} from 'src/app/components/available-in-other-languages/available-in-other-languages.component';
 import { MarkdownArticleComponent } from 'src/app/components/markdown-article/markdown-article.component';
 import {
   FarmerSearchPromptComponent,
@@ -67,6 +71,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     PartialsChartComponent,
     MarkdownArticleComponent,
     PoptipComponent,
+    AvailableInOtherLanguagesComponent,
 
     // Pages
     StatsPageComponent,
@@ -111,5 +116,8 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
   ],
   providers: [FileSizePipe, DecimalPipe],
   bootstrap: [AppComponent],
+  exports: [
+    FarmerDetailsComponent,
+  ],
 })
 export class AppModule {}

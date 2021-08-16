@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { contentDirectory } from '../../../content/content-directory';
+import { Observable } from 'rxjs';
+import { ContentService } from 'src/app/services/content.service';
 import { ContentItem } from '../../interfaces/content-item.interface';
 
 @Component({
@@ -9,30 +10,20 @@ import { ContentItem } from '../../interfaces/content-item.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class KnowledgeBaseArticleComponent implements OnInit {
-  // TODO: Move this here and in listing file somewhere else.
-  readonly knowledgeBasePrefix = 'kb/';
-
   article: ContentItem;
+  markdownSrc$: Observable<string>;
+  title$: Observable<string>;
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-  ) {}
-
-  get markdownSrc(): string {
-    return `/content/${this.article.url}.md`;
+    private contentService: ContentService,
+  ) {
+    this.article = this.activatedRoute.snapshot.data.article as ContentItem;
   }
 
-  // TODO: Job for resolver
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params.id as string;
-    const article = contentDirectory.find((item) => item.url === `${this.knowledgeBasePrefix}${id}`);
-
-    if (!article) {
-      void this.router.navigate(['/404']);
-      return;
-    }
-
-    this.article = article;
+    this.markdownSrc$ = this.contentService.getMarkdownSrc(this.article);
+    this.title$ = this.contentService.getContentTitle(this.article);
   }
 }

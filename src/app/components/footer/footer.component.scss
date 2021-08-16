@@ -1,5 +1,10 @@
+@import "../../../assets/css/mixins";
+
 :host {
   // TODO: Check on large screens
   // TODO: Extract 12% to variables
   padding: 30px 12% 20px;
+  @include theme('background-color', 'banner-color');
+  @include theme('color', 'banner-font-color');
+  @include theme('border-top', 'header-border', true, '1px solid');
 }

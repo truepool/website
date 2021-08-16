@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewsArticleComponent } from 'src/app/pages/news-article/news-article.component';
 import { NewsListingComponent } from 'src/app/pages/news-listing/news-listing.component';
+import { ContentItemResolver } from 'src/app/resolvers/content-item.resolver';
 import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
 import { FrontPageComponent } from './pages/front-page/front-page.component';
@@ -37,6 +38,7 @@ const routes: Routes = [
   {
     path: 'kb/:id',
     component: KnowledgeBaseArticleComponent,
+    resolve: { article: ContentItemResolver },
   },
   {
     path: 'set-name',
@@ -59,6 +61,7 @@ const routes: Routes = [
   {
     path: 'pages/:id',
     component: GenericArticleComponent,
+    resolve: { article: ContentItemResolver },
   },
   { path: '404', component: NotFoundPageComponent },
   { path: '**', redirectTo: '/404' },

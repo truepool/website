@@ -4,9 +4,7 @@
 
 <section *appLet="poolSizes$ | async as poolSizes" class="section-news">
   <div *ngIf="poolSizes?.length" class="chart-column">
-    <app-pool-size-chart
-      [sizes]="poolSizes"
-    ></app-pool-size-chart>
+    <app-pool-size-chart [sizes]="poolSizes$ | async" [theme]="PoolSizeChartTheme.Dark"></app-pool-size-chart>
   </div>
   <app-news></app-news>
 </section>
