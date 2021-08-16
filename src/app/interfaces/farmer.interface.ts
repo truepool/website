@@ -17,4 +17,5 @@ export type FarmersQueryParams = {
   difficulty?: number;
   launcher_id?: number;
   ordering?: string;
+  points_pplns__gt?: number;
 } & PaginatedQueryParams;
