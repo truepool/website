@@ -4,6 +4,9 @@ import {
 import { format, fromUnixTime, isSameHour } from 'date-fns';
 import { debounce } from 'lodash';
 import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';
+import { ColorSchemeTheme } from 'src/app/services/api/color-scheme.enum';
+import { PartialsChartPalette, partialsChartPalette } from './partials-chart-palette';
+import { ColorSchemeService } from '../../../services/api/color-scheme.service';
 
 @Component({
   selector: 'app-partials-chart',
@@ -12,15 +15,70 @@ import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PartialsChartComponent implements OnChanges {
+  @Input() theme: ColorSchemeTheme = null;
   @Input() partials: FarmerPartial[];
-
   @ViewChild('chart') chartElement: ElementRef;
-
+  config: google.visualization.ColumnChartOptions;
   chartData: (number | string)[][] = [];
+
+  get palette(): PartialsChartPalette {
+    if (this.theme === null) {
+      if (this.colorSchemeService.currentActive() === ColorSchemeTheme.Dark) {
+        this.theme = ColorSchemeTheme.Dark;
+      } else {
+        this.theme = ColorSchemeTheme.Light;
+      }
+    }
+    return partialsChartPalette[this.theme];
+  }
 
   ngOnChanges(): void {
     this.prepareData();
-    this.setupChart();
+    this.setupChart(this.getConfig());
+  }
+
+  private getConfig() : google.visualization.ColumnChartOptions {
+    this.config = {
+      backgroundColor: 'transparent',
+      isStacked: true,
+      colors: this.palette.series,
+      chartArea: {
+        width: '90%',
+      },
+      legend: {
+        position: 'top',
+        textStyle: {
+          color: this.palette.text,
+          fontSize: 11,
+        },
+      },
+      hAxis: {
+        textStyle: {
+          color: this.palette.text,
+          fontSize: 11,
+        },
+      },
+      vAxis: {
+        textStyle: {
+          color: this.palette.text,
+          fontSize: 11,
+        },
+        gridlines: {
+          color: this.palette.gridlines,
+        },
+      },
+    };
+    return this.config;
+  }
+
+  ngOnInit(): void {
+    this.prepareData();
+    this.setupChart(this.getConfig());
+  }
+
+  constructor(private colorSchemeService: ColorSchemeService) {
+    // Load Color Scheme
+    this.colorSchemeService.load();
   }
 
   /**
@@ -50,7 +108,7 @@ export class PartialsChartComponent implements OnChanges {
     this.chartData = chartData.reverse();
   }
 
-  private setupChart(): void {
+  private setupChart(config: google.visualization.ColumnChartOptions): void {
     const drawChart = () => {
       const dataTable = google.visualization.arrayToDataTable([
         ['Hour', 'Invalid', 'Valid'],
@@ -58,20 +116,7 @@ export class PartialsChartComponent implements OnChanges {
       ]);
       const chart = new google.visualization.ColumnChart(this.chartElement.nativeElement);
 
-      chart.draw(dataTable, {
-        legend: { position: 'top' },
-        backgroundColor: 'transparent',
-        isStacked: true,
-        colors: ['#e62e2e', '#00af52'],
-        chartArea: {
-          width: '90%',
-        },
-        hAxis: {
-          textStyle: {
-            fontSize: 11,
-          },
-        },
-      });
+      chart.draw(dataTable, config);
     };
 
     void google.charts.load('current', { packages: ['corechart'] });

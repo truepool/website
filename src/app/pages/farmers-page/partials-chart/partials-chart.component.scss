@@ -1,0 +1,7 @@
+@import "../../../../assets/css/variables";
+@import "../../../../assets/css/mixins";
+
+.partials-chart {
+    @include theme('background-color', 'background-color-light');
+    @include theme('color', 'font-color');
+}
