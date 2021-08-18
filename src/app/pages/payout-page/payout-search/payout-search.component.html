@@ -27,7 +27,7 @@
               <td>
                 {{ coin.timestamp * 1000 | date: 'short' }}
               </td>
-              <td><app-ce-block [blockId]="coin.confirmed_block_index"></app-ce-block></td>
+              <td>{{ coin.confirmed_block_index }}</td>
               <td>
                 <a
                   class="details-link"
