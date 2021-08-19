@@ -1,3 +1,13 @@
-<ng-container *ngIf="farmer$ | async as farmer">
-    <app-farmer-details [farmer]="farmer"></app-farmer-details>
+<app-pool-details-bar></app-pool-details-bar>
+
+<ng-container *ngIf="state$ | async as state">
+  <div class="page-content">
+    <div class="page-title">{{ state.farmer.display_name || 'Unnamed Farmer' }}</div>
+    <app-content-loader
+      [isLoading]="state.isLoading"
+      [error]="state.error"
+    >
+      <app-farmer-details [farmer]="state.farmer"></app-farmer-details>
+    </app-content-loader>
+  </div>
 </ng-container>
