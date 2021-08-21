@@ -7,6 +7,7 @@ import { ContentLoaderComponent } from './components/content-loader/content-load
 import { PagerComponent } from './components/pager/pager.component';
 import { PoolDetailsBarComponent } from './components/pool-details-bar/pool-details-bar.component';
 import { XchPipe } from './pipes/xch.pipe';
+import { CeBlockComponent } from './components/ce-block/ce-block.component';
 
 const modules = [CommonModule, NgxFilesizeModule, ReactiveFormsModule];
 const components = [
@@ -14,6 +15,7 @@ const components = [
   PagerComponent,
   PoolDetailsBarComponent,
   FarmerDetailsComponent,
+  CeBlockComponent,
 ];
 const pipes = [XchPipe];
 
