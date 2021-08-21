@@ -1,6 +1,9 @@
 @import "../../../assets/css/variables";
+@import "../../../assets/css/mixins";
 
 .section-news {
+  background-color: #252525;
+  color: #eee;
   display: flex;
   padding: 80px 12%;
 
@@ -31,6 +34,7 @@
 }
 
 .section-operators {
+  @include theme('color', 'white');
   background-color: $color-blue-dark;
   padding: 80px 12% 55px;
 
