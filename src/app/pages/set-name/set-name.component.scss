@@ -1,4 +1,5 @@
 @import "../../../assets/css/variables";
+@import "/src/assets/css/mixins";
 
 :host {
   flex-grow: 1;
@@ -6,7 +7,8 @@
   flex-direction: column;
   justify-content: center;
   padding: 20px;
-  color: black;
+  @include theme('background-color', 'dark');
+  @include theme('color', 'dark');
   align-items: center;
   box-sizing: border-box;
 
@@ -19,7 +21,7 @@
 .set-name-block {
   display: flex;
   min-height: 360px;
-  background-color: white;
+  @include theme('background-color', 'light');
   border-radius: 10px;
   align-items: center;
   margin-bottom: 20vh;
@@ -70,7 +72,7 @@ $robot-container-width: 230px;
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: rgba($color-green-dark, 0.85);
+    @include theme('background-color', 'accent-color-dark');
     box-shadow: 0 0 10px 3px $color-green-dark;
     opacity: 0;
   }
@@ -97,7 +99,7 @@ $robot-container-width: 230px;
 }
 
 .status-error {
-  border-left: 4px solid $color-red-light;
+  @include theme('border-left', 'color-error', true, '4px solid'); 
   padding: 7px 12px 4px;
 }
 
@@ -115,7 +117,7 @@ $robot-container-width: 230px;
   }
 
   input {
-    border: 1px solid $color-gray-dark;
+    @include theme('border', 'gray', true, '1px solid'); 
     padding: 8px 17px;
     min-width: 300px;
   }
@@ -126,7 +128,7 @@ $robot-container-width: 230px;
 }
 
 .success-message {
-  border-left: 4px solid $color-green-dark;
+  @include theme('border-left', 'accent-color-light', true, '4px solid'); 
   padding: 6px 17px 4px;
   margin-left: 5px;
 

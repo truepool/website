@@ -46,6 +46,7 @@ export class LeaderboardStore extends ComponentStore<LeaderboardState> {
           limit: this.leaderboardPageSize,
           offset: page * this.leaderboardPageSize,
           ordering: '-points',
+          points_pplns__gt: 0,
         }).pipe(
           tap((farmers) => {
             this.patchState({

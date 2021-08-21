@@ -12,9 +12,14 @@
 .big-numbers {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content:space-evenly;
   margin-top: 28px;
   margin-bottom: 20px;
+
+  .empty-block{
+    width: 285px;
+    visibility: hidden;
+  }
 }
 
 .break {

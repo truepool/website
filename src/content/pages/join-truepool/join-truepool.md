@@ -16,9 +16,10 @@ As a further service to our community and TrueNAS users, we also publish a [True
 
 ### Connection Information
 
-| URL  | Network | Status |
-| ------------ | ------------ | ------------ |
-| https://pool.truepool.io | mainnet | Online |
+| URL  | Network | Location | Status |
+| ------------ | ------------ | ------------ | ------------ |
+| https://pool.truepool.io | mainnet | USA | Online |
+| https://pool-uk.truepool.io | mainnet | UK | Online |
 
 ### Joining HOWTO
 

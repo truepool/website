@@ -1,9 +1,9 @@
-@import '../../../assets/css/variables';
+@import '../../../assets/css/mixins';
 
 .also-available {
-  background-color: lighten($color-gray-light, 7%);
+  @include theme('background-color', 'gray-light');
   padding: 15px 17px 14px;
-  border-left: 4px solid $color-blue-dark;
+  @include theme('border-left', 'primary-color', true, '4px solid');
   border-radius: 3px;
 
   ul {

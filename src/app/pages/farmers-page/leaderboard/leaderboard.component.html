@@ -5,7 +5,7 @@
         <thead>
         <tr>
           <th>Rank</th>
-          <th>Points</th>
+          <th>Points (24 hours)</th>
           <th>Overall points share</th>
           <th class="estimated-size-column">Estimated Size</th>
           <th>Launcher ID</th>
@@ -18,10 +18,10 @@
 
         <ng-template #farmers>
           <ng-container *ngFor="let farmer of state.topFarmers.results; let i = index;">
-            <tr [class.no-points]="!farmer.points">
+            <tr [class.no-points]="!farmer.points_pplns">
               <td># {{ state.currentPage * pageSize + i + 1 }}</td>
-              <td>{{ farmer.points | number }}</td>
-              <td>{{ farmer.points_percentage / 100 | percent: '1.0-4' }}</td>
+              <td>{{ farmer.points_pplns | number }}</td>
+              <td>{{ farmer.share_pplns | percent: '1.0-4' }}</td>
               <td class="estimated-size-column">
                 {{ farmer.farm_estimated_size ? (farmer.farm_estimated_size | filesize: { standard: 'iec' }) : '?' }}
               </td>
@@ -43,7 +43,13 @@
       </table>
 
       <div class="pager-container">
+        <div class="leaderboard-explanation">
+          Leaderboard resets once token is won.<br>
+          Farmers with 0 points are not listed, but can be found in search.
+        </div>
+
         <app-pager
+          *ngIf="state.topFarmers.count > pageSize"
           [currentPage]="state.currentPage"
           [pageSize]="pageSize"
           [totalItems]="state.topFarmers.count"

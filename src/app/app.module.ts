@@ -8,7 +8,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
-import { FarmerDetailsComponent } from 'src/app/components/farmer-details/farmer-details.component';
 import {
   AvailableInOtherLanguagesComponent,
 } from 'src/app/components/available-in-other-languages/available-in-other-languages.component';
@@ -110,8 +109,5 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
   ],
   providers: [FileSizePipe, DecimalPipe],
   bootstrap: [AppComponent],
-  exports: [
-    FarmerDetailsComponent,
-  ],
 })
 export class AppModule {}

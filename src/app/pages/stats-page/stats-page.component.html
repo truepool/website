@@ -52,7 +52,7 @@
   >
     <div *ngIf="poolSizesState.sizes.length" class="pool-size-chart-container">
       <h2 class="pool-space-header">Pool Space</h2>
-      <app-pool-size-chart class="chart" [sizes]="somePoolSizes$ | async" [theme]="PoolSizeChartTheme.Light"></app-pool-size-chart>
+      <app-pool-size-chart class="chart" [sizes]="somePoolSizes$ | async"></app-pool-size-chart>
     </div>
   </app-content-loader>
 
