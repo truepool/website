@@ -1,9 +1,9 @@
 #### Last updated: 08-21-2021
 
----
 
-While the TruePool.io website is [open source](https://github.com/truepool/website), the backend component is not.
+While the TruePool.io website is [open source](https://github.com/truepool/website), its backend component is not.
 This roadmap should provide transparency about upcoming features.
+
 
 ## Current priorities
 
@@ -11,7 +11,7 @@ This roadmap should provide transparency about upcoming features.
 * **Minimum payout**
 * **Node caching**
 
-## Next in queue
+### Next in queue
 
 * Coinrecord model updates
 * Farmer achievement system
