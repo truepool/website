@@ -1,0 +1,30 @@
+<h2>Payouts</h2>
+<app-content-loader
+  *appLet="payoutsState$ | async as payoutsState"
+  [isLoading]="payoutsState.isLoading"
+  [error]="payoutsState.error"
+>
+<ng-container *ngIf="!payoutsState.payouts?.length; else payoutsTable">
+    No payouts.
+</ng-container>
+<ng-template #payoutsTable>
+  <table class="stats-table">
+    <thead>
+      <tr>
+        <th> </th>
+        <th>Date</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let payout of payoutsState.payouts">
+        <tr>
+          <td><a class="details-link" [routerLink]="['/payout', payout.id]">#{{ payout.id }}</a></td>
+          <td>{{ payout.datetime | date: 'short' }}</td>
+          <td>{{ payout.amount | xch }}</td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</ng-template>
+</app-content-loader>
