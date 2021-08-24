@@ -1,24 +1,12 @@
 <div *appLet="infoState$ | async as infoState" class="page-content">
   <div class="page-title">Stats</div>
-
+  <!-- TODO: Add Material Icons to Info Boxes -->
   <app-content-loader [isLoading]="infoState.isLoading" [error]="infoState.error">
     <div *ngIf="infoState.info as info" class="big-numbers">
       <div class="big-number">
         <div class="big-number-value shorter-value">{{ info.total_farmers | number }}</div>
         <div class="big-number-title">Pool Members</div>
       </div>
-      <div class="big-number">
-        <div class="big-number-value longer-value">{{ info.reward_last_date | date }}</div>
-        <div class="big-number-title">Last Reward</div>
-      </div>
-      <div class="big-number">
-        <div class="big-number-value">{{ info.blockchain_totalspace | filesize: { standard: 'iec' } }}</div>
-        <div class="big-number-title">
-          Total Network Space
-          <poptip msg="The combined estimated size of all storage used on the Chia Network"></poptip>
-        </div>
-      </div>
-      <div class="break"></div>
       <div class="big-number">
         <div class="big-number-value">{{ info.total_size | filesize: { standard: 'iec' } }}</div>
         <div class="big-number-title">
@@ -33,13 +21,14 @@
         </div>
       </div>
       <div class="big-number">
-        <div class="big-number-value">{{ growthLast24h$ | async | filesize: { standard: 'iec' } }}</div>
-        <div class="big-number-title">
-          Added Last 24h
-          <poptip msg="The disk space added (or removed) to TruePool in the last 24 hours"></poptip>
-        </div>
+        <div class="big-number-value">{{ info.blockchain_totalspace | filesize: { standard: 'iec' } }}</div>
+        <div class="big-number-title">Total Network Space</div>
       </div>
       <div class="break"></div>
+      <div class="big-number">
+        <div class="big-number-value longer-value">{{ info.reward_last_date | date }}</div>
+        <div class="big-number-title">Last Reward</div>
+      </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.minutes_to_win | minutes }}</div>
         <div class="big-number-title">
@@ -75,65 +64,13 @@
     </div>
   </app-content-loader>
 
-  <!-- TODO: Separate component -->
   <!-- TODO: Pagination -->
-  <h2>Coins Won</h2>
-  <app-content-loader
-    *appLet="coinRecordsState$ | async as coinRecordsState"
-    [isLoading]="coinRecordsState.isLoading"
-    [error]="coinRecordsState.error"
-  >
-    <ng-container *ngIf="!coinRecordsState.coinRecords?.length; else coinRecordsTable">
-      No coins won.
-    </ng-container>
-    <ng-template #coinRecordsTable>
-      <table class="stats-table">
-        <thead>
-        <tr>
-          <th>Date</th>
-          <th>Block Index</th>
-          <th>Farmed By</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let record of coinRecordsState.coinRecords">
-          <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
-          <td>{{ record.confirmed_block_index }}</td>
-          <td>{{ record.farmed_by.display_name || 'Unnamed Farmer' }}</td>
-        </tr>
-        </tbody>
-      </table>
-    </ng-template>
-  </app-content-loader>
-
-  <h2>Payouts</h2>
-  <app-content-loader
-    *appLet="payoutsState$ | async as payoutsState"
-    [isLoading]="payoutsState.isLoading"
-    [error]="payoutsState.error"
-  >
-    <ng-container *ngIf="!payoutsState.payouts?.length; else payoutsTable">
-      No payouts.
-    </ng-container>
-    <ng-template #payoutsTable>
-      <table class="stats-table">
-        <thead>
-        <tr>
-          <th> </th>
-          <th>Date</th>
-          <th>Amount</th>
-        </tr>
-        </thead>
-        <tbody>
-          <ng-container *ngFor="let payout of payoutsState.payouts">
-            <tr>
-              <td><a class="details-link" [routerLink]="['/payout', payout.id]">#{{ payout.id }}</a></td>
-              <td>{{ payout.datetime | date: 'short' }}</td>
-              <td>{{ payout.amount | xch }}</td>
-            </tr>
-          </ng-container>
-        </tbody>
-      </table>
-    </ng-template>
-  </app-content-loader>
+  <div class="stats-table">
+    <div class="table-wrapper">
+      <app-coin-table></app-coin-table>
+    </div>
+    <div class="table-wrapper">
+      <app-payout-table></app-payout-table>
+    </div>
+  </div>
 </div>

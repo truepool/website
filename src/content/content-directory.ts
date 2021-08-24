@@ -23,6 +23,13 @@ export const contentDirectory: ContentItem[] = [
     path: 'kb/set-friendly-leaderboard-name/set-friendly-leaderboard-name',
     extraLanguages: [],
   },
+  {
+    category: 'Website',
+    title: 'Feature Roadmap',
+    url: 'kb/feature-roadmap',
+    path: 'kb/feature-roadmap/feature-roadmap',
+    extraLanguages: [],
+  },
 
   // Other pages
   {

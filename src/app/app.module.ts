@@ -52,6 +52,8 @@ import { SharedModule } from './shared.module';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
+import { CoinTableComponent } from './pages/stats-page/coin-table/coin-table.component';
+import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-table.component';
 
 @NgModule({
   declarations: [
@@ -84,6 +86,8 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     SetNameComponent,
     NewsListingComponent,
     NewsArticleComponent,
+    CoinTableComponent,
+    PayoutTableComponent,
 
     // Directives
     SmoothlyScrollToDirective,

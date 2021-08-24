@@ -1,0 +1,28 @@
+<h2>Coins Won</h2>
+<app-content-loader
+  *appLet="coinRecordsState$ | async as coinRecordsState"
+  [isLoading]="coinRecordsState.isLoading"
+  [error]="coinRecordsState.error"
+>
+  <ng-container *ngIf="!coinRecordsState.coinRecords?.length; else coinRecordsTable">
+    No coins won.
+  </ng-container>
+  <ng-template #coinRecordsTable>
+    <table class="stats-table">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Block Index</th>
+        <th>Farmed By</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let record of coinRecordsState.coinRecords">
+        <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
+        <td>{{ record.confirmed_block_index }}</td>
+        <td>{{ record.farmed_by.display_name || 'Unnamed Farmer' }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </ng-template>
+</app-content-loader>
