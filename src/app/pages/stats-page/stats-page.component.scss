@@ -76,10 +76,14 @@
 .stats-table {
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-between;
+  justify-content: left;
   margin-top: 40px;
   
   td {
     word-break: break-all;
   }
+}
+
+.table-wrapper {
+  margin-right: 14px;
 }
