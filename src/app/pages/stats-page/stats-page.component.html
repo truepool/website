@@ -9,11 +9,16 @@
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.total_size | filesize: { standard: 'iec' } }}</div>
-        <div class="big-number-title">Truepool Space</div>
+        <div class="big-number-title">
+          Truepool Space
+          <poptip msg="The total estimated disk space managed by TruePool"></poptip></div>
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.total_size / info.blockchain_totalspace | percent: '1.0-5' }}</div>
-        <div class="big-number-title">Truepool Network Share</div>
+        <div class="big-number-title">
+          Truepool Network Share
+          <poptip msg="The percentage of space TruePool has of the entire Chia Network"></poptip>
+        </div>
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.blockchain_totalspace | filesize: { standard: 'iec' } }}</div>
@@ -26,19 +31,27 @@
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.minutes_to_win | minutes }}</div>
-        <div class="big-number-title">Estimated Time To Win</div>
+        <div class="big-number-title">
+          Estimated Time To Win
+          <poptip msg="The estimated time it will take TruePool to farm a block since the last block was found"></poptip>
+        </div>
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ info.seconds_since_last_win / 60 | minutes }}</div>
-        <div class="big-number-title">Time Since Last Win</div>
+        <div class="big-number-title">
+          Time Since Last Win
+          <poptip msg="The time elapsed since the last block that TruePool found"></poptip>
+        </div>
       </div>
       <div class="big-number">
         <div class="big-number-value">{{ (info.seconds_since_last_win / 60) / info.minutes_to_win | percent }}</div>
-        <div class="big-number-title" title="TruePool's luck metric - when our farmers find a block while luck is under 100% it is considered lucky.">Luck</div>
+        <div class="big-number-title">
+          Luck
+          <poptip msg="When TruePool farmers find a block while Luck is under 100% it is considered lucky"></poptip>
+        </div>
       </div>
     </div>
   </app-content-loader>
-
 
   <app-content-loader
     *appLet="poolSizesState$ | async as poolSizesState"
