@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Updated Docker Clients, Feature Roadmaps and More!',
+    summary: `
+      <p>A quick update as we wrap-up a busy month of plotting and farming on TruePool!</p>
+    `,
+    date: '8/27/2021',
+    url: 'news/update-2021-08-27',
+  },
+  {
     title: 'Payout Reports, Exchange Information and other updates!',
     summary: `
       <p>The TruePool team has been active the past couple weeks, and we've added more
