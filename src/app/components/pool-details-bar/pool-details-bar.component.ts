@@ -14,7 +14,7 @@ export class PoolDetailsBarComponent implements OnInit {
   size$ = this.info$.pipe(map((state) => state.info.total_size));
   uptime$ = this.info$.pipe(
     map((state) => {
-      const ratio = state.uptimeReport?.statistics.uptime.l90.ratio;
+      const ratio = state.uptimeReport?.statistics?.uptime.l90.ratio;
       if (!ratio) {
         return '';
       }
