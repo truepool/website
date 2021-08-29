@@ -33,6 +33,11 @@
   }
 }
 
+.section-discord {
+  height: 400px;
+
+}
+
 .section-operators {
   @include theme('color', 'white');
   background-color: $color-blue-dark;
