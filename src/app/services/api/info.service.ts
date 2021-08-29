@@ -7,9 +7,10 @@ import { PoolInfo } from '../../interfaces/pool-info.interface';
 
 @Injectable({ providedIn: 'root' })
 export class InfoService {
-  private static readonly uptimeUrl = 'https://stats.uptimerobot.com/api/getMonitorList/ZGgMZuMkwx';
   // This is a readonly key which can be shared publicly.
   private static readonly uptimeApiKey = 'm788877488-73e56b85f40cc9d01205170f';
+  private static readonly uptimeUrl = 'https://api.uptimerobot.com/v2/getMonitors';
+  private static readonly uptimeMonitorId = 'ZGgMZuMkwx';
 
   constructor(private http: HttpClient) {}
 
@@ -18,8 +19,8 @@ export class InfoService {
   }
 
   getUptime(): Observable<UptimeRobotResponse> {
-    return this.http.get<UptimeRobotResponse>(
-      `${InfoService.uptimeUrl}?api_key=${InfoService.uptimeApiKey}`,
-    );
+    return this.http.post<UptimeRobotResponse>(InfoService.uptimeUrl, {
+      api_key: InfoService.uptimeApiKey,
+    });
   }
 }
