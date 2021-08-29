@@ -34,8 +34,14 @@
 }
 
 .section-discord {
-  height: 400px;
+  background-color: #252525;
+  padding-bottom: 25px;
+  display: flex;
+  justify-content: center;
 
+  iframe {
+    border: 1px solid black;
+  }
 }
 
 .section-operators {
