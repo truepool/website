@@ -7,9 +7,9 @@
     <span>Pool size:</span>
     <p>{{ size$ | async | filesize: { standard: 'iec' } }}</p>
   </div>
-  <div class="wrapper-detail">
+  <div *ngIf="uptime$ | async as uptime" class="wrapper-detail">
     <span>Uptime 90d:</span>
-    <p>{{ uptime$ | async }}%</p>
+    <p>{{ uptime }}%</p>
   </div>
   <div class="wrapper-detail usd">
     <span>XCH:</span>
