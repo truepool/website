@@ -14,14 +14,20 @@ export class PoolDetailsBarComponent implements OnInit {
   size$ = this.info$.pipe(map((state) => state.info.total_size));
   uptime$ = this.info$.pipe(
     map((state) => {
-      const ratio = state.uptimeReport.statistics.uptime.l90.ratio;
-      const ratioFloat = parseFloat(ratio);
+      const ratio = state.uptimeReport?.statistics?.uptime.l90.ratio;
+      if (!ratio) {
+        return '';
+      }
 
+      const ratioFloat = parseFloat(ratio);
       if (ratioFloat === 100) {
         return '100';
       }
 
-      return ratioFloat.toFixed(2);
+      // For better rounding of cases like "99.985"
+      const roundedRatio = Math.round((ratioFloat + Number.EPSILON) * 100) / 100;
+
+      return roundedRatio.toString();
     }),
   );
 
