@@ -45,7 +45,7 @@ export class LeaderboardStore extends ComponentStore<LeaderboardState> {
         return this.farmerService.getFarmers({
           limit: this.leaderboardPageSize,
           offset: page * this.leaderboardPageSize,
-          ordering: '-points',
+          ordering: '-points_pplns',
           points_pplns__gt: 0,
         }).pipe(
           tap((farmers) => {

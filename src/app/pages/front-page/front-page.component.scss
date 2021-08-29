@@ -33,6 +33,18 @@
   }
 }
 
+.section-discord {
+  background-color: #252525;
+  display: flex;
+  justify-content: center;
+  padding: 0 12% 25px;
+
+  iframe {
+    border: 1px solid black;
+    width: 100%;
+  }
+}
+
 .section-operators {
   @include theme('color', 'white');
   background-color: $color-blue-dark;
