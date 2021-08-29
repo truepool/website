@@ -12,6 +12,7 @@ import {
   AvailableInOtherLanguagesComponent,
 } from 'src/app/components/available-in-other-languages/available-in-other-languages.component';
 import { MarkdownArticleComponent } from 'src/app/components/markdown-article/markdown-article.component';
+import { DiscordModule } from 'src/app/modules/discord/discord.module';
 import {
   FarmerSearchPromptComponent,
 } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
@@ -106,6 +107,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     }),
     BrowserAnimationsModule,
     PayoutPageModule,
+    DiscordModule,
   ],
   providers: [FileSizePipe, DecimalPipe],
   bootstrap: [AppComponent],
