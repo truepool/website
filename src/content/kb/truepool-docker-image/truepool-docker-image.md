@@ -41,7 +41,7 @@ Once the container is running the commands used most often will be:
 
 ## Starting the Image
 
-The docker image can easily be deployed on any system with docker installed using the following example commands. Be sure to replace <pathtochiadata> and <pathtoplots> with your locations on disk to where you wish to store chia config and plots.
+The docker image can easily be deployed on any system with docker installed using the following example commands. Be sure to replace `<pathtochiadata>` and `<pathtoplots>` with your locations on disk to where you wish to store chia config and plots.
 
 ```
 # docker pull ixsystems/chia-docker:latest
