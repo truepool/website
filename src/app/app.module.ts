@@ -10,7 +10,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxPopperModule } from 'ngx-popper';
-import { FarmerDetailsComponent } from 'src/app/components/farmer-details/farmer-details.component';
 import {
   AvailableInOtherLanguagesComponent,
 } from 'src/app/components/available-in-other-languages/available-in-other-languages.component';
@@ -120,8 +119,5 @@ import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-tab
   ],
   providers: [FileSizePipe, DecimalPipe],
   bootstrap: [AppComponent],
-  exports: [
-    FarmerDetailsComponent,
-  ],
 })
 export class AppModule {}

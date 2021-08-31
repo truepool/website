@@ -4,10 +4,10 @@
     <td>{{ farmer.launcher_id }}</td>
   </tr>
   <tr>
-    <th>Points</th>
+    <th>Points (24 hours)</th>
     <td>
-      {{ farmer.points | number }}
-      ({{ farmer.points_percentage / 100 | percent: '1.0-4' }})
+      {{ farmer.points_pplns | number }}
+      ({{ farmer.share_pplns | percent: '1.0-4' }})
     </td>
   </tr>
   <tr>
