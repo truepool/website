@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'TruePool Featured on TheChiaPlot.net and August Wrap-up!',
+    summary: `
+      <p>Fantastic Article featuring TruePool.io on TheChiaPlot.net and a wild end to August!</p>
+    `,
+    date: '9/1/2021',
+    url: 'news/update-2021-09-01',
+  },
+  {
     title: 'Updated Docker Clients, Feature Roadmaps and More!',
     summary: `
       <p>A quick update as we wrap-up a busy month of plotting and farming on TruePool!</p>
