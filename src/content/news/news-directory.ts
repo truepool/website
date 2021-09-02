@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'TruePool now using PPLNS',
+    summary: `
+      <p>Thanks to everybody for helping us with feedback, we are pleased to announce that TruePool has fully moved over to a PPLNS payment system.</p>
+    `,
+    date: '9/2/2021',
+    url: 'news/update-2021-09-02',
+  },
+  {
     title: 'TruePool Featured on TheChiaPlot.net and August Wrap-up!',
     summary: `
       <p>Fantastic Article featuring TruePool.io on TheChiaPlot.net and a wild end to August!</p>
