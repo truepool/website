@@ -31,13 +31,13 @@ For the purposes of this guide we will be mainly focusing on the CLI/Docker meth
 
 The first time you launch the Chia service from Docker, you will need to perform some initial setup to prepare your node, create a wallet (keys) and then join a pool or create plots.
 
-![Chia2](/kb/img/chia1.png)
+![Chia1](/content/kb/img/chia1.png)
 
 ### Checking Blockchain Status
 
 When you start a Chia Farmer, the first thing Chia will attempt to do is sync with the blockchain. This is a long process and can take many hours to complete. You can check the status of this proces by running the command `chia show -s -c`
 
-![Chia2](/kb/img/chia2.png)
+![Chia2](/content/kb/img/chia2.png)
 
 In the example above, you can see a blockchain beginning to sync, along with a list of peers that we are currently connected to.
 
@@ -51,7 +51,7 @@ While your blockchain has begun to sync in the background, it's often best to ne
 
 To display the key information, run `chia keys show --show-mnemonic-seed`
 
-![Chia3](/kb/img/chia3.png)
+![Chia3](/content/kb/img/chia3.png)
 
 If you have installed Chia using another method which does not automatically create a new wallet at launch, you can do so by running `chia keys generate`
 
@@ -66,11 +66,11 @@ To get started with a pool, you first need to request a small amount of XCH call
 
 Now, with your Mojo in hand, you are ready to join a pool. You can start this process by running `chia plotnft create -u https://pool.truepool.io -s pool`
 
-![Chia4](/kb/img/chia4.png)
+![Chia4](/content/kb/img/chia4.png)
 
 Select "Y" to continue, and a transaction will be created to generate your NFT token used for pooled plotting. Using this token it is possible to switch between pools, or even convert to solo farming at any time down the road. After a few moments, you can run `chia plotnft show` to check the status of your token, and make a copy of your "Pool Contract Address". Save this address, it will be used for plotting in the next steps.
 
-![Chia5](/kb/img/chia5.png)
+![Chia5](/content/kb/img/chia5.png)
 
 ### Creating Plots
  
