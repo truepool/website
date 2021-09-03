@@ -1,5 +1,3 @@
-![Robot](/assets/img/robots/robot3.png)
-
 # Table of contents
 
 - [What is Chia?](/kb/beginners-guide-to-chia/#what-is-chia)
