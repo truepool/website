@@ -3,6 +3,13 @@ import { ContentItem } from '../app/interfaces/content-item.interface';
 export const contentDirectory: ContentItem[] = [
   // Knowledge Base
   {
+    category: 'Beginners',
+    title: 'Beginners Guide to Chia Farming',
+    url: 'kb/beginners-guide-to-chia',
+    path: 'kb/beginners-guide-to-chia/beginners-guide-to-chia',
+    extraLanguages: [],
+  },
+  {
     category: 'TrueNAS',
     title: 'How to use Chia on TrueNAS',
     url: 'kb/how-to-use-chia-on-truenas',
