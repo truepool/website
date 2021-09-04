@@ -11,13 +11,17 @@ exports.render = (data) => `
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${data.title}</title>
 
+    <link rel="stylesheet" href="/_assets/markdown-theme.css">
     <link rel="stylesheet" href="/_assets/ix-tp-kb.css">
   </head>
   <body>
-    <ul>
-      ${data.global.articles.map((a) => `<li>${a}</li>`).join('\n')}    
-    </ul>
-    ${data.content}
+    <header>
+
+    </header>
+    
+    <section class="content">
+      ${data.content}
+    </section>
   </body>
 </html>
 `;

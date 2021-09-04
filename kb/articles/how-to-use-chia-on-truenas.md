@@ -59,7 +59,7 @@ The preferred method of running Chia on TrueNAS is to use the containerized appl
 
 Chia is available as an app in the official TrueNAS SCALE Applications repository
 
-![](/content/kb/img/how-to-use-chia-on-truenas.gif)
+![](/_assets/img/how-to-use-chia-on-truenas.gif)
 
 Setup of Chia on TrueNAS scale is very straight-forward.
 
