@@ -1,8 +1,10 @@
 ---
 layout: layout.11ty.js
-title: TruePool Knowledge Base
+title: Welcome to TruePool
 ---
 
-# TruePool Knowledge Base
+# Welcome to TruePool
 
-## Welcome!
+## What is TruePool?
+
+lorem ipsum

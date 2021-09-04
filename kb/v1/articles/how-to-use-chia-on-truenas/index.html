@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&family=Satisfy&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&family=Satisfy&display=swap">
+    </noscript>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Use Chia on TrueNAS</title>
+
+    <link rel="stylesheet" href="/_assets/ix-tp-kb.css">
+  </head>
+  <body>
+    <ul>
+      <li>Welcome to TruePool</li>
+<li>How to Use Chia on TrueNAS</li>    
+    </ul>
+    <h1>How to Use Chia on TrueNAS</h1>
+<h2>Table of contents</h2>
+<img style="float: right;" height="200px" src="/_assets/img/robots/robot2.png">
+<ul>
+<li><a href="#table-of-contents">Table of contents</a>
+<ul>
+<li><a href="#what-is-truenas">What is TrueNAS?</a></li>
+<li><a href="#what-is-truenas-scale">What is TrueNAS SCALE?</a></li>
+<li><a href="#why-truenas-for-chia">Why TrueNAS for Chia?</a>
+<ul>
+<li><a href="#truenas-plotting-best-practices">TrueNAS Plotting Best Practices</a></li>
+<li><a href="#truenas-farming-best-practices">TrueNAS Farming Best Practices</a></li>
+</ul>
+</li>
+<li><a href="#can-i-use-truenas-coreenterprise-to-farm">Can I use TrueNAS CORE/Enterprise to Farm?</a></li>
+<li><a href="#installing-chia-on-truenas-scale">Installing Chia on TrueNAS SCALE</a></li>
+<li><a href="#installing-chia-on-truenas-coreenterprise">Installing Chia on TrueNAS CORE/Enterprise</a>
+<ul>
+<li><a href="#notes">NOTES</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2><a name="what-is-truenas">What is TrueNAS?</a></h2>
+<p><a href="https://www.truenas.com">TrueNAS</a> is the worlds most popular software defined storage, used everywhere from small 2-drive home NAS deployments, up to to the largest Enterprises with often hundreds of disks and multiple PiB's on a single system. TrueNAS is 100% Open Source and available freely to download and run on home-brew hardware, while supported hardware platforms can be purchased directly from <a href="https://www.ixsystems.com">iXsystems Inc.</a>.</p>
+<h2><a name="what-is-truenas-scale">What is TrueNAS SCALE?</a></h2>
+<p>TrueNAS SCALE is the next-generation iteration of the rock solid TrueNAS software, based upon <a href="https://www.debian.org/">Debian Linux</a>, and bringing with it scale-out capabilities, as well as Docker/K8's and KVM hypervisor support as some of its major highlights. It is the preferred method for TruePool Chia Farming, due to its Linux container capabilities that allows easy, rapid deployment and updating of the TruePool-Sponsored, <a href="https://truepool.io/kb/truepool-docker-image">TrueNAS Official Chia App</a>.</p>
+<h2><a name="why-truenas-for-chia">Why TrueNAS for Chia?</a></h2>
+<p>TrueNAS (Especially TrueNAS SCALE) can be particularly well-suited to be used as the base operating system of a Chia Farm when tuned for this use-case.
+Its included ZFS filesystem includes some unique characteristics for monitoring the health of your individual farming disks, while also providing some options for RAID / Stripe layouts that can enhance your plotting performance. Below is a collection of tips and best practices that your fellow Chia Farmers have been using on TrueNAS for farming / plotting.</p>
+<h3><a name="truenas-plotting-best-practices">TrueNAS Plotting Best Practices</a></h3>
+<ol>
+<li>
+<p>Use a SSD or group of HDD’s / SSD’s as scratch space. In the TrueNAS pool creation, you can create a dedicated pool for scratch space. To gain more write performance, you can stripe 2-3 drives or more with no redundancy, giving you the speed of multiple drives simultaneously. This is one method to give you near SSD speeds with multiple spinning disks acting in concert. The pool will be mounted at /mnt/<poolname> automatically, and you can attach that to your Chia container for plotting using the MadMax plotter.</p>
+</li>
+<li>
+<p>Move your plots! It’s best to keep your scratch pool empty, be sure to move your plots to a final farming location as soon as they are created.</p>
+</li>
+</ol>
+<h3><a name="truenas-farming-best-practices">TrueNAS Farming Best Practices</a></h3>
+<ol>
+<li>
+<p>Since no Chia plots are more likely to win than any other, it's often not worth the cost of redundancy for your plot drives. Create a ZFS pool for each drive and fill them to 99% or more of their available space. Once the pool is filled, it can be left alone until the drive dies, at which point you can replace it and re-plot to fill the new disk. I.E. “ch100, ch101, ch102, ch103, …”</p>
+</li>
+<li>
+<p>ZFS’s ARC / L2ARC will be helpful to keep recent plot reads in RAM, helping reduce overall lookup times as challenges are issued. This works out of the box, and the more RAM / L2ARC space available will help this run more efficiently.</p>
+</li>
+<li>
+<p>It’s often best to not plot and run your master farm / blockchain node on the same system. Plotting is resource intensive and if not done carefully can starve your Farmer node for resources, causing the blockchain to get out of sync, and your Farmer to miss out on challenges.</p>
+</li>
+<li>
+<p>ZFS allocates some &quot;slop&quot; space by default that can be re-claimed to use for storing plots. On SCALE this can be done by running <code>echo 9 &gt; /sys/module/zfs/parameters/spa_slop_shift</code></p>
+</li>
+</ol>
+<h2><a name="can-i-use-truenas-coreenterprise-to-farm">Can I use TrueNAS CORE/Enterprise to Farm?</a></h2>
+<p>Absolutely! There is a Chia application in the &quot;Community Plugin&quot; repository of TrueNAS CORE, which contains only the Chia base software.</p>
+<h2><a name="installing-chia-on-truenas-scale">Installing Chia on TrueNAS SCALE</a></h2>
+<p>The preferred method of running Chia on TrueNAS is to use the containerized application on <a href="https://www.truenas.com/truenas-scale/">TrueNAS SCALE 21.06</a> and later.</p>
+<p>Chia is available as an app in the official TrueNAS SCALE Applications repository</p>
+<p><img src="/content/kb/img/how-to-use-chia-on-truenas.gif" alt=""></p>
+<p>Setup of Chia on TrueNAS scale is very straight-forward.</p>
+<ol>
+<li>Navigate to the &quot;Apps&quot; section</li>
+<li>Locate Chia and click <em>install</em></li>
+<li>Give the application a name, I.E. chia1</li>
+<li>Review the other pages, and click &quot;Submit&quot; when finished.</li>
+</ol>
+<p>To use Chia, you can click the installed App, and select the &quot;Shell&quot; option from the TrueNAS UI.</p>
+<p>TIP - You can also access the Shell via SSH using the following:</p>
+<ol>
+<li>View container namespaces: <code>k3s kubectl get namespaces.</code></li>
+<li>View pods by namespace: <code>k3s kubectl get -n &lt;NAMESPACE&gt; pods.</code></li>
+<li>Access container shell: <code>k3s kubectl exec -n &lt;NAMESPACE&gt; --stdin --tty &lt;POD&gt; -- /bin/bash.</code></li>
+</ol>
+<h2><a name="installing-chia-on-truenas-coreenterprise">Installing Chia on TrueNAS CORE/Enterprise</a></h2>
+<p>Browse to the Plugins section of the TrueNAS UI, and select the drop-down to change to viewing the Community Repository. Chia will show up in the default list when switched, and can be installed via the normal plugin mechanisms.</p>
+<h4><a name="notes">NOTES</a></h4>
+<p>You'll want to make sure you setup proper port forwarding for port 8444 so that your Chia node can be reached by other clients on the network.</p>
+<p>New users to Chia will want to get started reading some of the <a href="https://github.com/Chia-Network/chia-blockchain/wiki">official Chia wiki documentation</a>.</p>
+
+  </body>
+</html>
