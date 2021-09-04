@@ -5,7 +5,9 @@
     --border-color: #ffffff2e;
     --color-primary: #0096d5;
     --color-secondary: #00af52;
+    --content-width: 767px;
     --font-color: silver;
+    --header-width: 960px;
     --space-sm: 12px;
     --space-md: 24px;
     --space-lg: 36px;
@@ -32,6 +34,7 @@ h2 {
 
 a {
     color: var(--color-primary);
+    display: inline-block;
 }
 
 a[name] {
@@ -42,12 +45,28 @@ header {
     background: var(--bg-dark);
     border-bottom: 1px solid var(--border-color);
     height: 80px;
+    padding: 0 var(--space-lg);
+}
+
+header section {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    margin: 0 auto;
+    max-width: var(--header-width);
 }
 
 section.content {
-    padding: var(--space-sm) var(--space-lg) 88px var(--space-lg);
+    margin: 0 auto;
+    max-width: var(--content-width);
+    padding: var(--space-lg) var(--space-lg) 88px var(--space-lg);
 }
 
 ul {
     margin: var(--space-sm) 0;
+}
+
+img.logo {
+    height: 32px;
+    margin-top: 6px;
 }

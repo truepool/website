@@ -16,10 +16,15 @@ exports.render = (data) => `
   </head>
   <body>
     <header>
-
+      <section>
+        <a href="https://truepool.io" target="_blank" height="32px">
+          <img class="logo" src="/_assets/img/logo-with-text.png">
+        </a>
+      </section>
     </header>
-    
+
     <section class="content">
+      <a href="/" style="margin-bottom: var(--space-md)">KNOWLEDGE BASE</a>
       ${data.content}
     </section>
   </body>
