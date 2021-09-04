@@ -17,11 +17,34 @@ exports.render = (data) => `
   <body>
     <header>
       <section>
-        <a href="https://truepool.io" target="_blank" height="32px">
-          <img class="logo" src="/_assets/img/logo-with-text.png">
+        <a
+            href="https://truepool.io"
+            target="_blank"
+            height="32px"
+        >
+            <img
+                class="logo"
+                src="/_assets/img/logo-with-text.png"
+            >
         </a>
-      </section>
-    </header>
+
+
+        <div class="header-links">
+            <a class="header-link" href="https://truepool.io/news">News</p>
+            <a class="header-link" href="https://truepool.io/stats">Stats</p>
+            <a class="header-link" href="https://truepool.io/farmers">Farmers</p>
+            <a class="header-link" href="https://truepool.io/kb/v1/">Knowledge Base</p>
+            <button class="join">
+                <a
+                    href="https://truepool.io/pages/join-truepool"
+                    target="_blank"
+                >
+                    Join
+                </a>
+            </button>
+        </div>
+    </section>
+  </header>
 
     <section class="content">
       <a href="/" style="margin-bottom: var(--space-md)">KNOWLEDGE BASE</a>
