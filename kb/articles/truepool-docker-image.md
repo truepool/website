@@ -1,10 +1,17 @@
-![Robot](/assets/img/robots/robot1.png)
+---
+layout: layout.11ty.js
+title: TruePool Docker Image
+---
+
+# TruePool Docker Image
 
 ## What is it?
 
 To assist our Chia farmers, TruePool.io is pleased to make available a customized docker image which includes the *official* chia client, as well as a handful of helpful tools for serious farmers.
 
 This image is used as the basis of the official [TrueNAS Plugin](https://www.truenas.com) for TrueNAS SCALE, but can be used by anybody with the ability to run containers.
+
+<img style="float: right;" height="200px" src="/_assets/img/robots/robot1.png">
 
 The image includes the following:
 
@@ -17,7 +24,7 @@ The image includes the following:
 
 ## How do I get it?
 
-TrueNAS users are encouraged to use the [Official TrueNAS App store](/kb/how-to-use-chia-on-truenas/), which will be kept up to date with the latest releases automatically.
+TrueNAS users are encouraged to use the [Official TrueNAS App store](/articles/how-to-use-chia-on-truenas), which will be kept up to date with the latest releases automatically.
 
 Users wishing to run the container manually can do so by fetching it from [Docker Hub](https://hub.docker.com/repository/docker/ixsystems/chia-docker).
 

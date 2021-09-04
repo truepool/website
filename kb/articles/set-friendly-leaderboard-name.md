@@ -1,10 +1,15 @@
-![Robot](/assets/img/robots/robot1.png)
+---
+layout: layout.11ty.js
+title: Setting Your TruePool Leaderboard Name
+---
 
-## How to create a friendly name for your launcher id on the Leaderboard?
+# Setting your TruePool leaderboard name
 
 The [Farmers leaderboard](https://truepool.io/farmers) is a great place to compare your status and resources with other members of TruePool.
 
 Unfortunately, it only contains your launcher ID and is hard to identify whom is who.
+
+<img style="float: right;" height="200px" src="/_assets/img/robots/robot1.png">
 
 We now have a tool that will allow you to set a *friendly* name for your ID.
 

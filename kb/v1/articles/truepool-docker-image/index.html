@@ -1,0 +1,85 @@
+
+<!doctype html>
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&family=Satisfy&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600&family=Satisfy&display=swap">
+    </noscript>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruePool Docker Image</title>
+
+    <link rel="stylesheet" href="/_assets/markdown-theme.css">
+    <link rel="stylesheet" href="/_assets/ix-tp-kb.css">
+  </head>
+  <body>
+    <header>
+      <section>
+        <a href="https://truepool.io" target="_blank" height="32px">
+          <img class="logo" src="/_assets/img/logo-with-text.png">
+        </a>
+      </section>
+    </header>
+
+    <section class="content">
+      <a href="/" style="margin-bottom: var(--space-md)">KNOWLEDGE BASE</a>
+      <h1>TruePool Docker Image</h1>
+<h2>What is it?</h2>
+<p>To assist our Chia farmers, TruePool.io is pleased to make available a customized docker image which includes the <em>official</em> chia client, as well as a handful of helpful tools for serious farmers.</p>
+<p>This image is used as the basis of the official <a href="https://www.truenas.com">TrueNAS Plugin</a> for TrueNAS SCALE, but can be used by anybody with the ability to run containers.</p>
+<img style="float: right;" height="200px" src="/_assets/img/robots/robot1.png">
+<p>The image includes the following:</p>
+<ul>
+<li><a href="https://github.com/Chia-Network/chia-blockchain">Chia Blockchain</a></li>
+<li><a href="https://github.com/madMAx43v3r/chia-plotter">MadMax Plotter</a></li>
+<li><a href="https://github.com/joaquimguimaraes/farmr">Farmr Client</a></li>
+<li><a href="https://github.com/ericaltendorf/plotman">Plotman</a></li>
+<li><a href="https://github.com/harold-b/bladebit/">BladeBit</a></li>
+<li><a href="https://github.com/maded2/plotng">PlotNG</a></li>
+</ul>
+<h2>How do I get it?</h2>
+<p>TrueNAS users are encouraged to use the <a href="/articles/how-to-use-chia-on-truenas">Official TrueNAS App store</a>, which will be kept up to date with the latest releases automatically.</p>
+<p>Users wishing to run the container manually can do so by fetching it from <a href="https://hub.docker.com/repository/docker/ixsystems/chia-docker">Docker Hub</a>.</p>
+<h2>Can I build my own?</h2>
+<p>Absolutely!</p>
+<p>You can view and build from source on our <a href="https://github.com/truepool/chia-docker">GitHub repository</a>.</p>
+<h2>What commands can be used from this docker image?</h2>
+<p>Once the container is running the commands used most often will be:</p>
+<ul>
+<li>chia - The main Chia program</li>
+<li>chia_plot - The MadMax Plotter</li>
+<li>bladebit - The BladeBit RAM Plotter</li>
+<li>plotman - The tool for enabling plotman monitoring / plotting</li>
+<li>/farmr - Location for the farmr chia monitoring bot/service.</li>
+</ul>
+<h2>Starting the Image</h2>
+<p>The docker image can easily be deployed on any system with docker installed using the following example commands. Be sure to replace <code>&lt;pathtochiadata&gt;</code> and <code>&lt;pathtoplots&gt;</code> with your locations on disk to where you wish to store chia config and plots.</p>
+<pre><code># docker pull ixsystems/chia-docker:latest
+# docker run --name chia-farmer1 --restart unless-stopped -d --network host \
+        -v &lt;pathtochiadata&gt;:/data \
+        -v &lt;pathtoplots&gt;:/plots \
+        ixsystems/chia-docker:latest
+</code></pre>
+<h2>Runtime options</h2>
+<p>Apart from the usual chia-docker options, this container adds the following:</p>
+<pre><code>-e farmr=&quot;farmer&quot;
+</code></pre>
+<pre><code>-e farmr=&quot;harvester&quot;
+</code></pre>
+<p>Specifying these options will auto-start the farmr bot at container initialization. You can view your farmr.net ID by running <code>tail /farmr/log.txt</code> inside the running container.</p>
+<h2>Updating the Docker Image</h2>
+<p>In order to minimize farmer downtime, users can quickly update the docker image using the following example commands:</p>
+<pre><code># docker pull ixsystems/chia-docker:latest
+# docker stop chia-farmer1 &amp;&amp; docker rm chia-farmer1 
+# docker run --name chia-farmer1 --restart unless-stopped -d --network host \
+        -v &lt;pathtochiadata&gt;:/data \
+        -v &lt;pathtoplots&gt;:/plots \
+        ixsystems/chia-docker:latest
+</code></pre>
+<p>Using this method it is possible to usually do an update within seconds, and not miss a network challenge.</p>
+
+    </section>
+  </body>
+</html>

@@ -252,8 +252,9 @@ body {
     background: transparent; }
  
  .highlight pre {
-    background-color: #f8f8f8;
-    border: 1px solid #cccccc;
+    background-color: var(--bg-lighter);
+    border: 1px solid var(--border-color);
+    color: var(--font-color);
     font-size: 13px;
     line-height: 19px;
     overflow: auto;
@@ -261,10 +262,10 @@ body {
     border-radius: 3px; }
  
  pre {
-    background-color: #f8f8f8;
-    border: 1px solid #cccccc;
-    font-size: 13px;
-    line-height: 19px;
+    background-color: var(--bg-lighter);
+    border: 1px solid var(--border-color);
+    font-size: var(--space-sm);
+    line-height: var(--space-md);
     overflow: auto;
     padding: 6px 10px;
     border-radius: 3px; }
