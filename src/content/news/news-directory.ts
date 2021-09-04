@@ -2,6 +2,33 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'TruePool now using PPLNS',
+    summary: `
+      <p>
+        Thanks to everybody for helping us with feedback, we are pleased to announce that TruePool
+        has fully moved over to a PPLNS payment system.
+      </p>
+    `,
+    date: '9/2/2021',
+    url: 'news/update-2021-09-02',
+  },
+  {
+    title: 'TruePool Featured on TheChiaPlot.net and August Wrap-up!',
+    summary: `
+      <p>Fantastic Article featuring TruePool.io on TheChiaPlot.net and a wild end to August!</p>
+    `,
+    date: '9/1/2021',
+    url: 'news/update-2021-09-01',
+  },
+  {
+    title: 'Updated Docker Clients, Feature Roadmaps and More!',
+    summary: `
+      <p>A quick update as we wrap-up a busy month of plotting and farming on TruePool!</p>
+    `,
+    date: '8/27/2021',
+    url: 'news/update-2021-08-27',
+  },
+  {
     title: 'Payout Reports, Exchange Information and other updates!',
     summary: `
       <p>The TruePool team has been active the past couple weeks, and we've added more

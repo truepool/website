@@ -3,6 +3,13 @@ import { ContentItem } from '../app/interfaces/content-item.interface';
 export const contentDirectory: ContentItem[] = [
   // Knowledge Base
   {
+    category: 'Beginners',
+    title: 'Beginners Guide to Chia Farming',
+    url: 'kb/beginners-guide-to-chia',
+    path: 'kb/beginners-guide-to-chia/beginners-guide-to-chia',
+    extraLanguages: [],
+  },
+  {
     category: 'TrueNAS',
     title: 'How to use Chia on TrueNAS',
     url: 'kb/how-to-use-chia-on-truenas',
@@ -21,6 +28,13 @@ export const contentDirectory: ContentItem[] = [
     title: 'How to Set Leaderboard Name',
     url: 'kb/set-friendly-leaderboard-name',
     path: 'kb/set-friendly-leaderboard-name/set-friendly-leaderboard-name',
+    extraLanguages: [],
+  },
+  {
+    category: 'Website',
+    title: 'Feature Roadmap',
+    url: 'kb/feature-roadmap',
+    path: 'kb/feature-roadmap/feature-roadmap',
     extraLanguages: [],
   },
 
