@@ -38,6 +38,20 @@ Once the container is running the commands used most often will be:
 - plotman - The tool for enabling plotman monitoring / plotting
 - /farmr - Location for the farmr chia monitoring bot/service.
 
+
+## Starting the Image
+
+The docker image can easily be deployed on any system with docker installed using the following example commands. Be sure to replace `<pathtochiadata>` and `<pathtoplots>` with your locations on disk to where you wish to store chia config and plots.
+
+```
+# docker pull ixsystems/chia-docker:latest
+# docker run --name chia-farmer1 --restart unless-stopped -d --network host \
+        -v <pathtochiadata>:/data \
+        -v <pathtoplots>:/plots \
+        ixsystems/chia-docker:latest
+```
+
+
 ## Runtime options
 
 Apart from the usual chia-docker options, this container adds the following:
@@ -52,3 +66,17 @@ Apart from the usual chia-docker options, this container adds the following:
 
 Specifying these options will auto-start the farmr bot at container initialization. You can view your farmr.net ID by running ```tail /farmr/log.txt``` inside the running container. 
 
+## Updating the Docker Image
+
+In order to minimize farmer downtime, users can quickly update the docker image using the following example commands:
+
+```
+# docker pull ixsystems/chia-docker:latest
+# docker stop chia-farmer1 && docker rm chia-farmer1 
+# docker run --name chia-farmer1 --restart unless-stopped -d --network host \
+        -v <pathtochiadata>:/data \
+        -v <pathtoplots>:/plots \
+        ixsystems/chia-docker:latest
+```
+
+Using this method it is possible to usually do an update within seconds, and not miss a network challenge.

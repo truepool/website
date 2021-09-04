@@ -1,6 +1,7 @@
 import { DecimalPipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule, SecurityContext } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
@@ -8,6 +9,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FileSizePipe } from 'ngx-filesize';
 import { MarkdownModule } from 'ngx-markdown';
+import { NgxPopperModule } from 'ngx-popper';
 import {
   AvailableInOtherLanguagesComponent,
 } from 'src/app/components/available-in-other-languages/available-in-other-languages.component';
@@ -28,6 +30,7 @@ import { ContributionPromptComponent } from './components/contribution-prompt/co
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { PoolSizeChartComponent } from './components/pool-size-chart/pool-size-chart.component';
+import { PoptipComponent } from './components/poptip/poptip.component';
 import { LetDirective } from './directives/let.directive';
 import { SmoothlyScrollToDirective } from './directives/smoothly-scroll-to.directive';
 import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
@@ -49,6 +52,8 @@ import { SharedModule } from './shared.module';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
+import { CoinTableComponent } from './pages/stats-page/coin-table/coin-table.component';
+import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-table.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +72,7 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     ContributionPromptComponent,
     PartialsChartComponent,
     MarkdownArticleComponent,
+    PoptipComponent,
     AvailableInOtherLanguagesComponent,
 
     // Pages
@@ -80,6 +86,8 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     SetNameComponent,
     NewsListingComponent,
     NewsArticleComponent,
+    CoinTableComponent,
+    PayoutTableComponent,
 
     // Directives
     SmoothlyScrollToDirective,
@@ -108,6 +116,8 @@ import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
     BrowserAnimationsModule,
     PayoutPageModule,
     DiscordModule,
+    FormsModule,
+    NgxPopperModule.forRoot({}),
   ],
   providers: [FileSizePipe, DecimalPipe],
   bootstrap: [AppComponent],

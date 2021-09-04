@@ -9,6 +9,10 @@
                                            _|                                
 ```
 
+<p align="center">
+ <a href="https://discord.com/invite/hWwAfGFyBz"><img alt="Chat Now" src="https://badgen.net/discord/members/Q3St5fPETd/?icon=discord&label=Join%20the%20TruePool%20Community" /></a>
+</p>
+
 # Setup
 - Have node setup, for example with https://github.com/nvm-sh/nvm.
 - `npm i`
