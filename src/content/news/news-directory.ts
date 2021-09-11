@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Faucet and Contest Prize!',
+    summary: `
+      <p>We're pleased to make available our Official TruePool Mojo Faucet today, and name the first 1XCH winner of the Block Bounty Contest.</p>
+    `,
+    date: '9/11/2021',
+    url: 'news/update-2021-09-11',
+  },
+  {
     title: 'TruePool now using PPLNS',
     summary: `
       <p>Thanks to everybody for helping us with feedback, we are pleased to announce that TruePool has fully moved over to a PPLNS payment system.</p>
