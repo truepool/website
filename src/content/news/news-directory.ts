@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'ChiaDog has Arrived!',
+    summary: `
+      <p>We are happy to announce that the ChiaDog tool has made its way into our official Docker Image.</p>
+    `,
+    date: '9/14/2021',
+    url: 'news/update-2021-09-14',
+  },
+  {
     title: 'Faucet and Contest Prize!',
     summary: `
       <p>We're pleased to make available our Official TruePool Mojo Faucet today, and name the first 1XCH winner of the Block Bounty Contest.</p>
