@@ -77,7 +77,8 @@ header section {
     display: flex;
     height: 100%;
     justify-content: space-between;
-    padding: 0 12%;
+    margin: 0 auto;
+    max-width: 1024px;
 }
 
 header section div.header-links {
@@ -89,6 +90,10 @@ header section div.header-links {
 
 header section div.header-links .link {
     cursor: pointer;
+}    
+
+.mobile-menu-toggle {
+    display: none;
 }
 
 section.content {
@@ -104,4 +109,94 @@ ul {
 img.logo {
     height: 32px;
     margin-top: 6px;
+}
+
+#menuPanel {
+    display: none;
+}
+
+.farmer-mobile {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    img.logo {
+        height: 20px;
+        margin-top: 9px;
+    }
+
+    .header-link {
+        display: none;
+    }
+
+    .mobile-menu-toggle {
+        cursor: pointer;
+        display: block;
+        min-width: 24px;
+        padding: 4px;
+    }
+
+    .mobile-menu-toggle:active {
+        opacity: 0.5;
+    }
+
+    .mobile-menu-toggle div {
+        background: white;
+        border-radius: 5px;
+        height: 4px;
+        margin-bottom: 4px;
+    }
+
+    .mobile-menu-toggle div:last-child {
+        margin-bottom: 0;
+    }
+
+    .mobile-menu-toggle.open div:first-child,
+    .mobile-menu-toggle.open div:last-child {
+        background: transparent;
+    }
+
+    #menuPanel {
+        background: var(--bg-light);
+        display: block;
+        height: 100vh;
+        left: -100%;
+        position: fixed;
+        top: 81px;
+        width: 100%;
+    }
+
+    #menuPanel.open {
+        left: 0;
+    }
+
+    .menu-link {
+        border-bottom: 1px solid var(--border-color);
+        color: white;
+        display: block;
+        line-height: var(--space-md);
+        padding: var(--space-sm) var(--space-lg);
+        text-decoration: none;
+    }
+
+    .farmer {
+        display: none;
+    }
+
+    .farmer-mobile {
+        display: block;
+    }
+
+    header {
+        background: var(--bg-dark);
+        border-bottom: 1px solid var(--border-color);
+        height: 80px;
+        padding: 0 var(--space-md) 0 var(--space-sm);
+    }
+    
+    section.content {
+        margin: 0 auto;
+        max-width: var(--content-width);
+        padding: var(--space-lg) var(--space-sm) 88px var(--space-sm);
+    }
 }

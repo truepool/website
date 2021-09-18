@@ -11,41 +11,53 @@ exports.render = (data) => `
     <link rel="stylesheet" href="/_assets/ix-tp-kb.css">
   </head>
   <body>
-    <header>
-      <section>
-        <a
-            href="https://truepool.io"
-            target="_blank"
-            height="32px"
-        >
-            <img
-                class="logo"
-                src="/_assets/img/logo-with-text.png"
+      <header>
+          <section>
+            <a
+                href="https://truepool.io"
+                target="_blank"
+                height="32px"
             >
-        </a>
-
-
-        <div class="header-links">
-            <a class="header-link" href="https://truepool.io/news">News</p>
-            <a class="header-link" href="https://truepool.io/stats">Stats</p>
-            <a class="header-link" href="https://truepool.io/farmers">Farmers</p>
-            <a class="header-link" href="https://truepool.io/kb/v1/">Knowledge Base</p>
-            <button class="join">
-                <a
-                    href="https://truepool.io/pages/join-truepool"
-                    target="_blank"
-                >
-                    Join
-                </a>
-            </button>
-        </div>
-    </section>
-  </header>
+                <img class="logo" src="/_assets/img/logo-with-text.png">
+            </a>
+    
+            <div class="header-links">
+                <a class="header-link" href="https://truepool.io/news" target="_blank">News</a>
+                <a class="header-link" href="https://truepool.io/stats" target="_blank">Stats</a>
+                <a class="header-link" href="https://truepool.io/farmers" target="_blank">Farmers</a>
+                <a class="header-link" href="https://truepool.io/kb" target="_blank">Knowledge Base</a>
+                <button class="join">
+                    <a href="https://truepool.io/pages/join-truepool" target="_blank">Join</a>
+                </button>
+                <div class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMenu()">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+            </div>
+        </section>
+    </header>
 
     <section class="content">
       <a href="/" style="margin-bottom: var(--space-md)">KNOWLEDGE BASE</a>
       ${data.content}
     </section>
+
+    <section id="menuPanel">                  
+        <a class="menu-link" href="https://truepool.io/news">News</a>
+        <a class="menu-link" href="https://truepool.io/stats">Stats</a>
+        <a class="menu-link" href="https://truepool.io/farmers">Farmers</a>
+        <a class="menu-link" href="https://truepool.io/kb/v1/">Knowledge Base</a>
+        <button class="join header-link">
+            <a href="https://truepool.io/pages/join-truepool" target="_blank">Join</a>
+        </button>
+    </section>
+    <script>
+        function toggleMenu() {
+            document.getElementById('menuPanel').classList.toggle('open');
+            document.getElementById('mobileMenuToggle').classList.toggle('open')
+        }
+    </script>
   </body>
 </html>
 `;

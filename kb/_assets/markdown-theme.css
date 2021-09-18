@@ -54,14 +54,16 @@ body {
     font-size: inherit; }
  
  h1 {
-    font-size: var(--space-lg);
     color: var(--font-color); 
+    font-size: var(--space-lg);
+    line-height: var(--space-lg);
     margin-bottom: var(--space-lg);
 }
  
  h2 {
-    font-size: var(--space-md);
     color: var(--font-color); 
+    font-size: var(--space-md);
+    line-height: var(--space-md);
     margin-bottom: var(--space-md);
 }
  
@@ -239,7 +241,6 @@ body {
  code, tt {
     margin: 0 2px;
     padding: 0 5px;
-    white-space: nowrap;
     border: 1px solid var(--border-color);
     background-color: var(--bg-lighter);
     border-radius: 3px; }

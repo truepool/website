@@ -19,26 +19,22 @@
                   target="_blank"
                   height="32px"
               >
-                  <img
-                      class="logo"
-                      src="/_assets/img/logo-with-text.png"
-                  >
+                  <img class="logo" src="/_assets/img/logo-with-text.png">
               </a>
       
-      
               <div class="header-links">
-                  <a class="header-link" href="https://truepool.io/news">News</p>
-                  <a class="header-link" href="https://truepool.io/stats">Stats</p>
-                  <a class="header-link" href="https://truepool.io/farmers">Farmers</p>
-                  <a class="header-link" href="https://truepool.io/kb/v1/">Knowledge Base</p>
+                  <a class="header-link" href="https://truepool.io/news" target="_blank">News</a>
+                  <a class="header-link" href="https://truepool.io/stats" target="_blank">Stats</a>
+                  <a class="header-link" href="https://truepool.io/farmers" target="_blank">Farmers</a>
+                  <a class="header-link" href="https://truepool.io/kb" target="_blank">Knowledge Base</a>
                   <button class="join">
-                      <a
-                          href="https://truepool.io/pages/join-truepool"
-                          target="_blank"
-                      >
-                          Join
-                      </a>
+                      <a href="https://truepool.io/pages/join-truepool" target="_blank">Join</a>
                   </button>
+                  <div class="mobile-menu-toggle" id="mobileMenuToggle" onclick="toggleMenu()">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                  </div>
               </div>
           </section>
         </header>
@@ -46,8 +42,9 @@
         <section class="content">
             <h1>TruePool Knowledge Base</h1>
 
+            <img class="farmer-mobile" height="156px" src="/_assets/img/robots/robot1.png">
             <h3>Beginners</h3>
-            <img style="float: right;" height="200px" src="/_assets/img/robots/robot1.png">
+            <img class="farmer" style="float: right;" height="200px" src="/_assets/img/robots/robot1.png">
             <ul>
                 <li>
                     <a href="articles/welcome-to-true-pool">Welcome to TruePool!</a>
@@ -77,5 +74,22 @@
                 </li>
             </ul>
         </section>
+
+
+        <section id="menuPanel">                  
+            <a class="menu-link" href="https://truepool.io/news" target="_blank">News</a>
+            <a class="menu-link" href="https://truepool.io/stats" target="_blank">Stats</a>
+            <a class="menu-link" href="https://truepool.io/farmers" target="_blank">Farmers</a>
+            <a class="menu-link" href="https://truepool.io/kb/v1/" target="_blank">Knowledge Base</a>
+            <button class="join header-link">
+                <a href="https://truepool.io/pages/join-truepool" target="_blank">Join</a>
+            </button>
+        </section>
+        <script>
+            function toggleMenu() {
+                document.getElementById('menuPanel').classList.toggle('open');
+                document.getElementById('mobileMenuToggle').classList.toggle('open')
+            }
+        </script>
     </body>
 </html>
