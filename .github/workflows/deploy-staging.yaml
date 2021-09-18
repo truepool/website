@@ -14,11 +14,11 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '14.x'
-      - name: Install npm dependencies
+      - name: Install website npm dependencies
         run: npm install
-      - name: Run build task
+      - name: Run website build task
         run: npm run build -- --configuration=staging
-      - name: Deploy to Server
+      - name: Deploy website to Server
         uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
@@ -27,3 +27,20 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
           TARGET: "/var/www/truepool.io/dev"
+      - name: Install KB npm dependencies
+        working-directory: ./kb
+        run: npm install
+      - name: Run KB build task
+        working-directory: ./kb
+        run: npm run build
+      - name: Deploy KB to Server
+        uses: easingthemes/ssh-deploy@main
+        working-directory: ./kb
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SOURCE: "_dist/"
+          REMOTE_HOST: "dev.truepool.io"
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          TARGET: "/var/www/truepool.io/dev/kb"
+      
