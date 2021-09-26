@@ -14,7 +14,6 @@ import {
   AvailableInOtherLanguagesComponent,
 } from 'src/app/components/available-in-other-languages/available-in-other-languages.component';
 import { MarkdownArticleComponent } from 'src/app/components/markdown-article/markdown-article.component';
-import { DiscordModule } from 'src/app/modules/discord/discord.module';
 import {
   FarmerSearchPromptComponent,
 } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
@@ -115,7 +114,6 @@ import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-tab
     }),
     BrowserAnimationsModule,
     PayoutPageModule,
-    DiscordModule,
     FormsModule,
     NgxPopperModule.forRoot({}),
   ],

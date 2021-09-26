@@ -23,7 +23,7 @@ As a further service to our community and TrueNAS users, we also publish a [True
 
 ### Joining HOWTO
 
-First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the official [Chia Faucet](https://faucet.chia.net/ "Chia Faucet"). 
+First, you will need to make sure your wallet has a small amount of Chia (Mojo) to join a pool. Mojo can be obtained daily from the TruePool Faucet on our [Discord Server](https://discord.com/invite/hWwAfGFyBz) in the #faucet channel, or from the [Chia Faucet](https://faucet.chia.net/ "Chia Faucet").
 
 If you are joining a pool for the first time, you can run the following from the command-line to create your first pool token:
 

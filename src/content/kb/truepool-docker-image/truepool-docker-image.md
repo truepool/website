@@ -14,6 +14,7 @@ The image includes the following:
 - [Plotman](https://github.com/ericaltendorf/plotman)
 - [BladeBit](https://github.com/harold-b/bladebit/)
 - [PlotNG](https://github.com/maded2/plotng)
+- [ChiaDog](https://github.com/martomi/chiadog/)
 
 ## How do I get it?
 
