@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
+import { FarmerUpdate } from 'src/app/interfaces/farmer.interface';
 import { LoginParams } from '../../interfaces/login-params.interface';
 import { setNameAnimations } from './set-name-animations';
 import { SetNameStatus, SetNameStore } from './set-name.store';
@@ -18,6 +19,7 @@ export class SetNameComponent implements OnInit {
   setNameForm = this.formBuilder.group({
     display_name: ['', Validators.required],
     email: ['', Validators.email],
+    notify_missing_partials_hours: ['', Validators.min(1)],
   });
 
   status$: Observable<SetNameStatus> = this.setNameStore.selectStatus$;
@@ -49,13 +51,23 @@ export class SetNameComponent implements OnInit {
       });
     });
 
+    this.setNameForm.get('email').valueChanges.pipe(untilDestroyed(this)).subscribe((value) => {
+      if (value) {
+        this.setNameForm.get('notify_missing_partials_hours').enable();
+      } else {
+        this.setNameForm.get('notify_missing_partials_hours').disable();
+        this.setNameForm.get('notify_missing_partials_hours').setValue('');
+      }
+    });
+
     this.setNameStore.login(queryParams as LoginParams);
   }
 
   onFormSubmitted(event: Event): void {
-    const formValue = this.setNameForm.value as { display_name: string; email?: string };
+    const formValue = this.setNameForm.value as FarmerUpdate;
     if (!formValue.email) {
       delete formValue.email;
+      delete formValue.notify_missing_partials_hours;
     }
 
     this.setNameStore.setName(formValue);
