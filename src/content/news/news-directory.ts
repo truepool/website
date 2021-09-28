@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Block Bounty Rewards and Grand Prize!',
+    summary: `
+      <p>TruePool.io, in Partnership with our space leader Princess Crooked Paws, is pleased to announce our next Block Bounty Contest!</p>
+    `,
+    date: '9/28/2021',
+    url: 'news/update-2021-09-28',
+  },
+  {
     title: 'ChiaDog has Arrived!',
     summary: `
       <p>We are happy to announce that the ChiaDog tool has made its way into our official Docker Image.</p>
