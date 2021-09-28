@@ -1,16 +1,22 @@
+export interface LastRewards {
+  date: string;
+  height: number;
+}
+
+export interface XchPrice {
+  usd: number;
+}
+
 export interface PoolInfo {
   blockchain_height: number;
-  blockchain_totalspace: number;
-  blockchain_synced: boolean;
-  fee: string;
-  minimum_difficulty: number;
-  minutes_to_win: number;
-  total_rewards_amount: string;
-  total_rewards_heights: number;
-  total_size: number;
-  total_farmers: number;
-  reward_last_date: string;
-  reward_last_height: number;
+  blockchain_space: number;
+  fee: number;
+  estimate_win: number;
+  rewards_amount: number;
+  rewards_blocks: number;
+  pool_space: number;
+  farmers: number;
+  last_rewards: LastRewards;
   seconds_since_last_win: number;
-  xch_usd_price: number;
+  xch_current_price: XchPrice;
 }

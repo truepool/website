@@ -13,13 +13,6 @@
             </span>
 
           <ul class="reasons">
-            <li *ngIf="latestPoolSize$ | async as latestPoolSize">
-              <a
-                class="same-page-link"
-                href="#stats"
-                appSmoothlyScrollTo="#stats"
-              >{{ latestPoolSize | filesize: { standard: 'iec' } }}</a> under management.
-            </li>
             <li>From
               <a
                 class="same-page-link"
