@@ -53,4 +53,9 @@ input {
   padding: 0 1em;
   text-decoration: none;
   box-sizing: border-box;
+
+  &[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 }

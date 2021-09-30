@@ -4,7 +4,7 @@ import { EMPTY, forkJoin, Observable } from 'rxjs';
 import {
   catchError, switchMap, takeUntil, tap,
 } from 'rxjs/operators';
-import { Farmer } from '../../interfaces/farmer.interface';
+import { Farmer, FarmerUpdate } from '../../interfaces/farmer.interface';
 import { LoginParams } from '../../interfaces/login-params.interface';
 import { FarmerService } from '../../services/api/farmer.service';
 import { UserService } from '../../services/api/user.service';
@@ -79,7 +79,7 @@ export class SetNameStore extends ComponentStore<SetNameState> {
     );
   });
 
-  readonly setName = this.effect((nameInfo$: Observable<{ display_name: string, email?: string }>) => {
+  readonly setName = this.effect((nameInfo$: Observable<FarmerUpdate>) => {
     return nameInfo$.pipe(
       tap(() => {
         this.patchState({
