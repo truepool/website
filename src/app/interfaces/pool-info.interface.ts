@@ -17,6 +17,6 @@ export interface PoolInfo {
   pool_space: number;
   farmers: number;
   last_rewards: LastRewards;
-  seconds_since_last_win: number;
+  time_since_last_win: number;
   xch_current_price: XchPrice;
 }
