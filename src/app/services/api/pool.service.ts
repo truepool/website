@@ -11,13 +11,13 @@ export class PoolService {
   constructor(private http: HttpClient) {}
 
   getSize(days: number): Observable<PoolSize[]> {
-    return this.http.get<Record<string, unknown>[]>(`${environment.apiRoot}/size`, {
+    return this.http.get<Record<string, unknown>[]>(`${environment.apiRoot}/space`, {
       params: { days },
     }).pipe(
       map((sizes) => {
         return sizes.map((size) => ({
           ...size,
-          datetime: parseISO(size.datetime as string),
+          datetime: parseISO(size.date as string),
         } as PoolSize));
       }),
     );

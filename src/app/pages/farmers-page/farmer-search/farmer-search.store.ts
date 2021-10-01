@@ -58,9 +58,9 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
             const startTimestamp = Math.floor(subHours(new Date(), this.partialsForLastHours).getTime() / 1000);
             const payoutRequests = farmers.results.map((farmer) => {
               return forkJoin([
-                this.payoutService.getPayoutAddresses({ farmer: farmer.launcher_id }),
+                this.payoutService.getPayoutAddresses({ launcher: farmer.launcher_id }),
                 this.farmerPartialService.getPartials({
-                  launcher_id: farmer.launcher_id,
+                  launcher: farmer.launcher_id,
                   limit: 500, // Assumes that we will not get more than 500 partials a day.
                 }).pipe(
                   map((page) => {

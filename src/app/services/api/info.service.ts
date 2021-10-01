@@ -14,7 +14,7 @@ export class InfoService {
   constructor(private http: HttpClient) {}
 
   getInfo(): Observable<PoolInfo> {
-    return this.http.get<PoolInfo>(`${environment.apiRoot}/info`);
+    return this.http.get<PoolInfo>(`${environment.apiRoot}/stats`);
   }
 
   getUptime(): Observable<UptimeRobotResponse> {

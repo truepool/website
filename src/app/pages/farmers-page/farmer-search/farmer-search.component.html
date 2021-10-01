@@ -9,7 +9,7 @@
   <ng-template #showResults>
     <div *ngFor="let result of state.results" class="search-result">
       <h4>
-        <ng-container *ngIf="result.farmer.display_name; else noName">{{ result.farmer.display_name }}</ng-container>
+        <ng-container *ngIf="result.farmer.name; else noName">{{ result.farmer.name }}</ng-container>
         <ng-template #noName>
           Unnamed farmer <a class="set-name-link" routerLink="/kb/set-friendly-leaderboard-name">Learn how to set a name &#10142;</a>
         </ng-template>
@@ -33,7 +33,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let payout of result.payouts">
-            <td>{{ payout.payout.datetime | date: 'short' }}</td>
+            <td>{{ payout.datetime }}</td>
             <td>{{ payout.amount | xch }}</td>
             <td>{{ payout.transaction }}</td>
           </tr>
