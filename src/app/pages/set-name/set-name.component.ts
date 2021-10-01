@@ -19,7 +19,7 @@ export class SetNameComponent implements OnInit {
   setNameForm = this.formBuilder.group({
     display_name: ['', Validators.required],
     email: ['', Validators.email],
-    notify_missing_partials_hours: ['', Validators.min(1)],
+    notify_missing_partials_hours: [''],
   });
 
   status$: Observable<SetNameStatus> = this.setNameStore.selectStatus$;
@@ -68,6 +68,10 @@ export class SetNameComponent implements OnInit {
     if (!formValue.email) {
       delete formValue.email;
       delete formValue.notify_missing_partials_hours;
+    }
+
+    if (formValue.notify_missing_partials_hours) {
+      formValue.notify_missing_partials_hours = 1;
     }
 
     this.setNameStore.setName(formValue);
