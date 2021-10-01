@@ -24,6 +24,6 @@ export type FarmersQueryParams = {
 
 export interface FarmerUpdate {
   display_name: string;
-  notify_missing_partials_hours?: string;
+  notify_missing_partials_hours?: number;
   email?: string;
 }
