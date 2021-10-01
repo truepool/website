@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Block Bounty Rewards and Grand Prize!',
+    summary: `
+      <p>TruePool.io, in Partnership with Princess Crooked Paws, is pleased to announce a Block Bounty Contest!</p>
+    `,
+    date: '9/28/2021',
+    url: 'news/update-2021-09-28',
+  },
+  {
     title: 'ChiaDog has Arrived!',
     summary: `
       <p>We are happy to announce that the ChiaDog tool has made its way into our official Docker Image.</p>
@@ -12,8 +20,7 @@ export const newsItems: NewsItem[] = [
   {
     title: 'Faucet and Contest Prize!',
     summary: `
-      <p>We're pleased to make available our Official TruePool Mojo Faucet today,
-      and name the first 1XCH winner of the Block Bounty Contest.</p>
+      <p>Announcing Official TruePool Mojo Faucet today, and name the first winner of the Block Bounty Contest.</p>
     `,
     date: '9/11/2021',
     url: 'news/update-2021-09-11',
@@ -21,8 +28,7 @@ export const newsItems: NewsItem[] = [
   {
     title: 'TruePool now using PPLNS',
     summary: `
-      <p>Thanks to everybody for helping us with feedback,
-      we are pleased to announce that TruePool has fully moved over to a PPLNS payment system.</p>
+      <p>We are pleased to announce that TruePool has fully moved over to a PPLNS payment system.</p>
     `,
     date: '9/2/2021',
     url: 'news/update-2021-09-02',
