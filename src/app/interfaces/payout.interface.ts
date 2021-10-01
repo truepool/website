@@ -16,7 +16,7 @@ export interface PayoutAddress {
   transaction: string;
   confirmed_height: number;
   payout: Payout;
-  farmer: Farmer;
+  launcher: Farmer;
 }
 
 export type PayoutAddressQueryParams = {

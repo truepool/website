@@ -80,15 +80,15 @@
                 <td>
                   <a
                     class="details-link"
-                    (click)="onFarmerSelection(address.farmer)"
+                    (click)="onFarmerSelection(address.launcher)"
                   >
-                    {{ address.farmer?.name || 'Unnamed farmer' }}
+                    {{ address.launcher?.name || 'Unnamed farmer' }}
                   </a>
                 </td>
                 <td>{{ address.amount | xch }}</td>
               </tr>
               <tr
-                *ngIf="farmer && farmer?.launcher_id === address.farmer?.launcher_id"
+                *ngIf="farmer && farmer?.launcher_id === address.launcher?.launcher_id"
                 class="details"
               >
                 <td colspan="5">

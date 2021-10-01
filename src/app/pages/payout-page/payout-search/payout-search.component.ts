@@ -29,22 +29,22 @@ export class PayoutSearchComponent {
       .subscribe((payoutId) => this.store.searchPayout({ payoutId, page: 0 }));
   }
 
-  onFarmerSelection(farmer: Farmer): void {
-    if (this.farmer && this.farmer.launcher_id === farmer.launcher_id) {
+  onFarmerSelection(launcher: Farmer): void {
+    if (this.farmer && this.farmer.launcher_id === launcher.launcher_id) {
       this.farmer = null;
       return;
     }
 
-    this.farmer = farmer;
+    this.farmer = launcher;
   }
 
-  onCoinFarmerSelection(farmer: Farmer): void {
-    if (this.coinFarmer && this.coinFarmer.launcher_id === farmer.launcher_id) {
+  onCoinFarmerSelection(launcher: Farmer): void {
+    if (this.coinFarmer && this.coinFarmer.launcher_id === launcher.launcher_id) {
       this.coinFarmer = null;
       return;
     }
 
-    this.coinFarmer = farmer;
+    this.coinFarmer = launcher;
   }
 
   async onPageChanged(page: number): Promise<void> {
