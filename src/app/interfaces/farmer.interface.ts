@@ -11,7 +11,7 @@ export interface Farmer {
   share_pplns: number;
   difficulty: number;
   is_pool_member: number;
-  farm_estimated_size: number;
+  estimated_size: number;
 }
 
 export type FarmersQueryParams = {
