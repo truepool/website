@@ -2,7 +2,7 @@ import { PaginatedQueryParams } from './paginated-response.interface';
 
 export interface Farmer {
   launcher_id: string;
-  display_name: string;
+  name: string;
   email: string;
   p2_singleton_puzzle_hash: string;
   points: number;
