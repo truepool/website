@@ -33,7 +33,7 @@
                   class="details-link"
                   (click)="onCoinFarmerSelection(coin.farmed_by)"
                 >
-                  {{ coin.farmed_by.display_name || 'Unnamed Farmer' }}
+                  {{ coin.farmed_by.name || 'Unnamed Farmer' }}
                 </a>
               </td>
             </tr>
@@ -43,7 +43,7 @@
             >
               <td colspan="5">
                 <h4>
-                  <ng-container *ngIf="coinFarmer.display_name; else noName">{{ coinFarmer.display_name }}</ng-container>
+                  <ng-container *ngIf="coinFarmer.name; else noName">{{ coinFarmer.name }}</ng-container>
                   <ng-template #noName>
                     Unnamed farmer
                     <a
@@ -80,20 +80,20 @@
                 <td>
                   <a
                     class="details-link"
-                    (click)="onFarmerSelection(address.farmer)"
+                    (click)="onFarmerSelection(address.launcher)"
                   >
-                    {{ address.farmer?.display_name || 'Unnamed farmer' }}
+                    {{ address.launcher?.name || 'Unnamed farmer' }}
                   </a>
                 </td>
                 <td>{{ address.amount | xch }}</td>
               </tr>
               <tr
-                *ngIf="farmer && farmer?.launcher_id === address.farmer?.launcher_id"
+                *ngIf="farmer && farmer?.launcher_id === address.launcher?.launcher_id"
                 class="details"
               >
                 <td colspan="5">
                   <h4>
-                    <ng-container *ngIf="farmer.display_name; else noName">{{ farmer.display_name }}</ng-container>
+                    <ng-container *ngIf="farmer.name; else noName">{{ farmer.name }}</ng-container>
                     <ng-template #noName>
                       Unnamed farmer
                       <a

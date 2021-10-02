@@ -16,13 +16,13 @@ export interface PayoutAddress {
   transaction: string;
   confirmed_height: number;
   payout: Payout;
-  farmer: Farmer;
+  launcher: Farmer;
 }
 
 export type PayoutAddressQueryParams = {
   payout?: string;
   puzzle_hash?: string;
-  farmer?: string;
+  launcher?: string;
   ordering?: string;
   count?: number;
 } & PaginatedQueryParams;

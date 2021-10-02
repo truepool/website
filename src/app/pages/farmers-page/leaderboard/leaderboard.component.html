@@ -23,11 +23,11 @@
               <td>{{ farmer.points_pplns | number }}</td>
               <td>{{ farmer.share_pplns | percent: '1.0-4' }}</td>
               <td class="estimated-size-column">
-                {{ farmer.farm_estimated_size ? (farmer.farm_estimated_size | filesize: { standard: 'iec' }) : '?' }}
+                {{ farmer.estimated_size ? (farmer.estimated_size | filesize: { standard: 'iec' }) : '?' }}
               </td>
               <td class="launcher-id">
                 <a (click)="onFarmerNameClicked(farmer.launcher_id)" class="details-link">
-                  {{ farmer.display_name || farmer.launcher_id }}
+                  {{ farmer.name || farmer.launcher_id }}
                 </a>
               </td>
             </tr>

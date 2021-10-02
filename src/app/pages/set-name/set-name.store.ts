@@ -79,7 +79,7 @@ export class SetNameStore extends ComponentStore<SetNameState> {
     );
   });
 
-  readonly setName = this.effect((nameInfo$: Observable<{ display_name: string, email?: string }>) => {
+  readonly setName = this.effect((nameInfo$: Observable<{ name: string, email?: string }>) => {
     return nameInfo$.pipe(
       tap(() => {
         this.patchState({

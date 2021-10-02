@@ -10,14 +10,14 @@ export class FarmerService {
   constructor(private http: HttpClient) {}
 
   getFarmers(params: FarmersQueryParams): Observable<PaginatedResponse<Farmer>> {
-    return this.http.get<PaginatedResponse<Farmer>>(`${environment.apiRoot}/farmer/`, { params });
+    return this.http.get<PaginatedResponse<Farmer>>(`${environment.apiRoot}/launcher/`, { params });
   }
 
   getFarmer(launcherId: string): Observable<Farmer> {
-    return this.http.get<Farmer>(`${environment.apiRoot}/farmer/${launcherId}/`);
+    return this.http.get<Farmer>(`${environment.apiRoot}/launcher/${launcherId}/`);
   }
 
   updateFarmer(launcherId: string, patch: Partial<Farmer>): Observable<void> {
-    return this.http.put<void>(`${environment.apiRoot}/farmer/${launcherId}/`, patch);
+    return this.http.put<void>(`${environment.apiRoot}/launcher/${launcherId}/`, patch);
   }
 }
