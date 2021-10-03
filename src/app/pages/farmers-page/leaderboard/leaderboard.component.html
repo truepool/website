@@ -1,6 +1,17 @@
 <ng-container *appLet="state$ | async as state">
   <app-content-loader [isLoading]="state.isLoading" [error]="state.error">
     <ng-container *ngIf="state.topFarmers?.results">
+
+      <div class="pager-container">
+        <app-pager
+          *ngIf="state.topFarmers.count > pageSize"
+          [currentPage]="state.currentPage"
+          [pageSize]="pageSize"
+          [totalItems]="state.topFarmers.count"
+          (pageChange)="onPageChanged($event)"
+        ></app-pager>
+      </div>
+      <p></p>
       <table class="leaderboard">
         <thead>
         <tr>
