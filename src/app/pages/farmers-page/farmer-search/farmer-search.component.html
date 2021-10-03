@@ -17,7 +17,7 @@
 
       <app-farmer-details [farmer]="result.farmer"></app-farmer-details>
 
-      <h5>Last payouts</h5>
+      <h5>Last 50 payouts</h5>
 
       <ng-container *ngIf="!result.payouts?.length; else payoutsTable">
         This farmer has no payouts.

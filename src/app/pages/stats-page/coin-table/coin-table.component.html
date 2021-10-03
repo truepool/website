@@ -1,4 +1,4 @@
-<h2>Coins Won</h2>
+<h2>Last 50 Coins Won</h2>
 <app-content-loader
   *appLet="coinRecordsState$ | async as coinRecordsState"
   [isLoading]="coinRecordsState.isLoading"
@@ -19,7 +19,7 @@
       <tbody>
       <tr *ngFor="let record of coinRecordsState.coinRecords">
         <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
-        <td>{{ record.confirmed_block_index }}</td>
+	<td>#{{ record.confirmed_block_index }}</td>
         <td>{{ record.farmed_by.name || 'Unnamed Farmer' }}</td>
       </tr>
       </tbody>

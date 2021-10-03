@@ -33,6 +33,7 @@ const initialState: FarmerSearchState = {
 @Injectable({ providedIn: 'root' })
 export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
   readonly maxSearchResults = 5;
+  readonly maxPayoutResults = 50;
   readonly partialsForLastHours = 24;
 
   constructor(
@@ -58,7 +59,7 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
             const startTimestamp = Math.floor(subHours(new Date(), this.partialsForLastHours).getTime() / 1000);
             const payoutRequests = farmers.results.map((farmer) => {
               return forkJoin([
-                this.payoutService.getPayoutAddresses({ launcher: farmer.launcher_id }),
+                this.payoutService.getPayoutAddresses({ launcher: farmer.launcher_id, limit: this.maxPayoutResults }),
                 this.farmerPartialService.getPartials({
                   launcher: farmer.launcher_id,
                   limit: 500, // Assumes that we will not get more than 500 partials a day.
