@@ -33,7 +33,7 @@
           </thead>
           <tbody>
           <tr *ngFor="let payout of result.payouts">
-            <td>{{ payout.datetime }}</td>
+            <td>{{ payout.payout.datetime | date: 'short' }}</td>
             <td>{{ payout.amount | xch }}</td>
             <td>{{ payout.transaction }}</td>
           </tr>
