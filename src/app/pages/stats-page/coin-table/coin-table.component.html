@@ -13,6 +13,7 @@
       <tr>
         <th>Date</th>
         <th>Block Index</th>
+        <th>Effort</th>
         <th>Farmed By</th>
       </tr>
       </thead>
@@ -20,6 +21,7 @@
       <tr *ngFor="let record of coinRecordsState.coinRecords">
         <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
 	<td>#{{ record.confirmed_block_index }}</td>
+        <td>{{ record.luck }}</td>
         <td>{{ record.farmed_by.name || 'Unnamed Farmer' }}</td>
       </tr>
       </tbody>

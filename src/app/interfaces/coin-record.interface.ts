@@ -10,6 +10,7 @@ export interface CoinRecord {
   amount: number;
   farmed_by: Farmer;
   payout: string;
+  luck: number;
   farmer_display_name: string;
 }
 
