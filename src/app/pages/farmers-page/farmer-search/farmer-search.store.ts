@@ -62,7 +62,7 @@ export class FarmerSearchStore extends ComponentStore<FarmerSearchState> {
                 this.payoutService.getPayoutAddresses({ launcher: farmer.launcher_id, limit: this.maxPayoutResults }),
                 this.farmerPartialService.getPartials({
                   launcher: farmer.launcher_id,
-                  limit: 500, // Assumes that we will not get more than 500 partials a day.
+                  limit: 900, // Assumes that we will not get more than 900 partials a day.
                 }).pipe(
                   map((page) => {
                     return page.results.filter((partial) => partial.timestamp >= startTimestamp);
