@@ -99,7 +99,7 @@ $robot-container-width: 230px;
 }
 
 .status-error {
-  @include theme('border-left', 'color-error', true, '4px solid'); 
+  @include theme('border-left', 'color-error', true, '4px solid');
   padding: 7px 12px 4px;
 }
 
@@ -117,18 +117,26 @@ $robot-container-width: 230px;
   }
 
   input {
-    @include theme('border', 'gray', true, '1px solid'); 
+    @include theme('border', 'gray', true, '1px solid');
     padding: 8px 17px;
     min-width: 300px;
+
+    &[type="checkbox"] {
+      min-width: 0;
+    }
   }
 
   .form-group {
     margin-bottom: 20px;
   }
+
+  .form-group-disabled {
+    opacity: 0.4;
+  }
 }
 
 .success-message {
-  @include theme('border-left', 'accent-color-light', true, '4px solid'); 
+  @include theme('border-left', 'accent-color-light', true, '4px solid');
   padding: 6px 17px 4px;
   margin-left: 5px;
 

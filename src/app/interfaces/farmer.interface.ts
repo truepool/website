@@ -21,3 +21,9 @@ export type FarmersQueryParams = {
   ordering?: string;
   points_pplns__gt?: number;
 } & PaginatedQueryParams;
+
+export interface FarmerUpdate {
+  name: string;
+  notify_missing_partials_hours?: number;
+  email?: string;
+}
