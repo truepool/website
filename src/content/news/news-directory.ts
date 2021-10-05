@@ -2,6 +2,14 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Farmer Monitoring Enabled and Block Bounty Updates!',
+    summary: `
+      <p>TruePool.io is pleased to enable Farmer Monitoring and provide a Block Bounty Update!</p>
+    `,
+    date: '9/28/2021',
+    url: 'news/update-2021-10-05',
+  },
+  {
     title: 'Block Bounty Rewards and Grand Prize!',
     summary: `
       <p>TruePool.io, in Partnership with Princess Crooked Paws, is pleased to announce a Block Bounty Contest!</p>
