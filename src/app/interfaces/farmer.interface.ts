@@ -23,7 +23,7 @@ export type FarmersQueryParams = {
 } & PaginatedQueryParams;
 
 export interface FarmerUpdate {
-  display_name: string;
+  name: string;
   notify_missing_partials_hours?: number;
   email?: string;
 }
