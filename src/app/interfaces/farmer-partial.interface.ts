@@ -9,6 +9,6 @@ export interface FarmerPartial {
 }
 
 export type FarmerPartialQueryParams = {
-  launcher_id: string;
-  start_timestamp?: number;
+  launcher: string;
+  min_timestamp?: number;
 } & PaginatedQueryParams;

@@ -72,7 +72,7 @@ export class PayoutSearchStore extends ComponentStore<PayoutSearchState> {
             tap((addresses) => {
               this.patchState({
                 addresses: addresses.results.filter(
-                  (address) => address.farmer !== null,
+                  (address) => address.launcher !== null,
                 ),
                 addressesCount: addresses.count,
               });

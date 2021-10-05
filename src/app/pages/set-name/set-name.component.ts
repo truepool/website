@@ -17,7 +17,7 @@ import { SetNameStatus, SetNameStore } from './set-name.store';
 })
 export class SetNameComponent implements OnInit {
   setNameForm = this.formBuilder.group({
-    display_name: ['', Validators.required],
+    name: ['', Validators.required],
     email: ['', Validators.email],
     notify_missing_partials_hours: [''],
   });
@@ -47,7 +47,7 @@ export class SetNameComponent implements OnInit {
     ).subscribe((farmer) => {
       this.setNameForm.patchValue({
         email: farmer?.email,
-        display_name: farmer?.display_name,
+        name: farmer?.name,
       });
     });
 
