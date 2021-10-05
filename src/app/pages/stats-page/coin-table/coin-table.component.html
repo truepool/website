@@ -21,7 +21,7 @@
       <tr *ngFor="let record of coinRecordsState.coinRecords">
         <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
 	<td>#{{ record.confirmed_block_index }}</td>
-        <td>{{ record.luck }}</td>
+	<td>{{ record.luck }}% - {{ (record.luck <= 100 ) ? "Lucky" : "Unlucky" }}</td>
         <td>{{ record.farmed_by.name || 'Unnamed Farmer' }}</td>
       </tr>
       </tbody>
