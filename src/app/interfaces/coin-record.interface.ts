@@ -6,6 +6,7 @@ export interface CoinRecord {
   name: string;
   timestamp: number;
   confirmed_block_index: number;
+  farmed_height: number;
   puzzle_hash: string;
   amount: number;
   farmed_by: Farmer;
