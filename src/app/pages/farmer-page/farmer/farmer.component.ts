@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { filter, map, take } from 'rxjs/operators';
-import { FarmerStore } from '../farmer.store';
+import { map, take } from 'rxjs/operators';
+import { FarmerPartial } from 'src/app/interfaces/farmer-partial.interface';
+import { FarmerSearchStore } from '../../farmers-page/farmer-search/farmer-search.store';
 
 @UntilDestroy(this)
 @Component({
@@ -10,18 +11,26 @@ import { FarmerStore } from '../farmer.store';
   styleUrls: ['./farmer.component.scss'],
   templateUrl: './farmer.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [FarmerSearchStore],
 })
 export class FarmerComponent {
-  launcherId$ = this.ar.paramMap.pipe(map((pMap) => pMap.get('launcherId')));
-  state$ = this.farmerStore.state$;
-  farmer$ = this.state$.pipe(
-    filter((state) => !state.isLoading),
-    map((state) => state.farmer),
+  state$ = this.store.state$;
+  result$ = this.state$.pipe(
+    map((state) => (Array.isArray(state.results) && state.results.length > 0
+      ? state.results[0]
+      : null)),
   );
 
-  constructor(private ar: ActivatedRoute, private farmerStore: FarmerStore) {}
+  constructor(private ar: ActivatedRoute, private store: FarmerSearchStore) {}
 
   ngOnInit(): void {
-    this.launcherId$.pipe(take(1)).subscribe(this.farmerStore.loadFarmer);
+    this.ar.paramMap
+      .pipe(map((pMap) => pMap.get('launcherId')))
+      .pipe(take(1))
+      .subscribe(this.store.searchFarmer);
+  }
+
+  filterErrors(partials: FarmerPartial[]): FarmerPartial[] {
+    return partials.filter((partial) => partial.error);
   }
 }
