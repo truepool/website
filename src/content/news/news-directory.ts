@@ -2,6 +2,62 @@ import { NewsItem } from 'src/app/interfaces/news-item.interface';
 
 export const newsItems: NewsItem[] = [
   {
+    title: 'Farmer Monitoring Enabled and Block Bounty Updates!',
+    summary: `
+      <p>TruePool.io is pleased to enable Farmer Monitoring and provide a Block Bounty Update!</p>
+    `,
+    date: '9/28/2021',
+    url: 'news/update-2021-10-05',
+  },
+  {
+    title: 'Block Bounty Rewards and Grand Prize!',
+    summary: `
+      <p>TruePool.io, in Partnership with Princess Crooked Paws, is pleased to announce a Block Bounty Contest!</p>
+    `,
+    date: '9/28/2021',
+    url: 'news/update-2021-09-28',
+  },
+  {
+    title: 'ChiaDog has Arrived!',
+    summary: `
+      <p>We are happy to announce that the ChiaDog tool has made its way into our official Docker Image.</p>
+    `,
+    date: '9/14/2021',
+    url: 'news/update-2021-09-14',
+  },
+  {
+    title: 'Faucet and Contest Prize!',
+    summary: `
+      <p>Announcing Official TruePool Mojo Faucet today, and name the first winner of the Block Bounty Contest.</p>
+    `,
+    date: '9/11/2021',
+    url: 'news/update-2021-09-11',
+  },
+  {
+    title: 'TruePool now using PPLNS',
+    summary: `
+      <p>We are pleased to announce that TruePool has fully moved over to a PPLNS payment system.</p>
+    `,
+    date: '9/2/2021',
+    url: 'news/update-2021-09-02',
+  },
+  {
+    title: 'TruePool Featured on TheChiaPlot.net and August Wrap-up!',
+    summary: `
+      <p>Fantastic Article featuring TruePool.io on TheChiaPlot.net and a wild end to August!</p>
+    `,
+    date: '9/1/2021',
+    url: 'news/update-2021-09-01',
+  },
+  {
+    title: 'Updated Docker Clients, Feature Roadmaps and More!',
+    summary: `
+      <p>A quick update as we wrap-up a busy month of plotting and farming on TruePool!</p>
+    `,
+    date: '8/27/2021',
+    url: 'news/update-2021-08-27',
+  },
+  {
     title: 'Payout Reports, Exchange Information and other updates!',
     summary: `
       <p>The TruePool team has been active the past couple weeks, and we've added more

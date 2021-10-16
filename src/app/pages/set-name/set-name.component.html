@@ -27,12 +27,18 @@
 
       <div class="form-group">
         <label for="name">Name</label>
-        <input id="name" formControlName="display_name">
+        <input id="name" formControlName="name">
       </div>
-<!--      <div class="form-group">-->
-<!--        <label for="email">Email (optional)</label>-->
-<!--        <input id="email" formControlName="email">-->
-<!--      </div>-->
+      <div class="form-group">
+        <label for="email">Email (optional)</label>
+        <input id="email" formControlName="email">
+      </div>
+      <div class="form-group" [class.form-group-disabled]="setNameForm.get('notify_missing_partials_hours').disabled">
+        <label>
+          <input type="checkbox" formControlName="notify_missing_partials_hours">
+          Notify me if partials are missing
+        </label>
+      </div>
 
       <button
         type="submit"

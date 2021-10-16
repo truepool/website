@@ -6,23 +6,24 @@ export interface Payout {
   url: string;
   datetime: string;
   amount: number;
-  pool_fee: number;
+  fee: number;
 }
 
 export interface PayoutAddress {
   url: string;
   puzzle_hash: string;
   amount: number;
+  datetime: string;
   transaction: string;
-  confirmed_height: number;
+  confirmed_block_index: number;
   payout: Payout;
-  farmer: Farmer;
+  launcher: Farmer;
 }
 
 export type PayoutAddressQueryParams = {
   payout?: string;
   puzzle_hash?: string;
-  farmer?: string;
+  launcher?: string;
   ordering?: string;
   count?: number;
 } & PaginatedQueryParams;

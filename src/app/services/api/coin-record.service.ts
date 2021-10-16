@@ -10,6 +10,6 @@ export class CoinRecordService {
   constructor(private http: HttpClient) {}
 
   getCoinRecords(params: CoinRecordQueryParams): Observable<PaginatedResponse<CoinRecord>> {
-    return this.http.get<PaginatedResponse<CoinRecord>>(`${environment.apiRoot}/coinrecord/`, { params });
+    return this.http.get<PaginatedResponse<CoinRecord>>(`${environment.apiRoot}/block/`, { params });
   }
 }

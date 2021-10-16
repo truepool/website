@@ -2,7 +2,7 @@ import { PaginatedQueryParams } from './paginated-response.interface';
 
 export interface Farmer {
   launcher_id: string;
-  display_name: string;
+  name: string;
   email: string;
   p2_singleton_puzzle_hash: string;
   points: number;
@@ -11,7 +11,7 @@ export interface Farmer {
   share_pplns: number;
   difficulty: number;
   is_pool_member: number;
-  farm_estimated_size: number;
+  estimated_size: number;
 }
 
 export type FarmersQueryParams = {
@@ -21,3 +21,9 @@ export type FarmersQueryParams = {
   ordering?: string;
   points_pplns__gt?: number;
 } & PaginatedQueryParams;
+
+export interface FarmerUpdate {
+  name: string;
+  notify_missing_partials_hours?: number;
+  email?: string;
+}

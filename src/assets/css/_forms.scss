@@ -42,7 +42,7 @@ $control-bg: rgba(255, 255, 255, 0.05);
   }
 }
 
-input {
+input:not([type="checkbox"]) {
   appearance: none;
   background: $control-bg;
   border-radius: 0.25em;
@@ -53,4 +53,14 @@ input {
   padding: 0 1em;
   text-decoration: none;
   box-sizing: border-box;
+
+  &[disabled] {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+input[type="checkbox"] {
+  vertical-align: -1px;
+  margin-right: 1px;
 }

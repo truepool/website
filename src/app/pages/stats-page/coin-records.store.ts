@@ -25,6 +25,8 @@ export class CoinRecordsStore extends ComponentStore<CoinRecordsState> {
     super(initialState);
   }
 
+  readonly maxCoinRecords = 50;
+
   readonly loadCoinRecords = this.effect((trigger$: Observable<void>) => {
     return trigger$.pipe(
       tap(() => {
@@ -34,7 +36,7 @@ export class CoinRecordsStore extends ComponentStore<CoinRecordsState> {
         });
       }),
       switchMap(() => {
-        return this.coinRecordsService.getCoinRecords({}).pipe(
+        return this.coinRecordsService.getCoinRecords({ limit: this.maxCoinRecords }).pipe(
           tap((page) => {
             this.patchState({
               coinRecords: page.results,

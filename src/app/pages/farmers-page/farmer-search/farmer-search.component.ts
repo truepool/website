@@ -15,7 +15,12 @@ export class FarmerSearchComponent {
   /**
    * Launcher id or search query.
    */
-  @Input() set query(value: string) {
+  @Input() set query(rawValue: string) {
+    let value = rawValue;
+    if (value.startsWith('0x')) {
+      value = value.substring(2);
+    }
+
     this.store.searchFarmer(value);
   }
 
