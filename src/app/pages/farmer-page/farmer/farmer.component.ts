@@ -29,8 +29,10 @@ export class FarmerComponent {
 
   ngOnInit(): void {
     this.ar.paramMap
-      .pipe(map((pMap) => pMap.get('launcherId')))
-      .pipe(take(1))
+      .pipe(
+        take(1),
+        map((pMap) => pMap.get('launcherId')),
+      )
       .subscribe(this.store.searchFarmer);
 
     this.state$.subscribe((state) => {
