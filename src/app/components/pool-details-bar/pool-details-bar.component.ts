@@ -9,9 +9,9 @@ import { InfoStore } from 'src/app/pages/stats-page/info.store';
 })
 export class PoolDetailsBarComponent implements OnInit {
   info$ = this.info.state$.pipe(filter((state) => !!state && !!state.info));
-  farmers$ = this.info$.pipe(map((state) => state.info.total_farmers));
-  xchValue$ = this.info$.pipe(map((state) => state.info.xch_usd_price));
-  size$ = this.info$.pipe(map((state) => state.info.total_size));
+  farmers$ = this.info$.pipe(map((state) => state.info.farmers));
+  xchValue$ = this.info$.pipe(map((state) => state.info.xch_current_price.usd));
+  size$ = this.info$.pipe(map((state) => state.info.pool_space));
   uptime$ = this.info$.pipe(
     map((state) => {
       const ratio = state?.uptimeReport?.monitors[0].all_time_uptime_ratio;

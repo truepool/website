@@ -27,6 +27,8 @@ export class PayoutsStore extends ComponentStore<PayoutsState> {
     super(initialState);
   }
 
+  readonly maxPayoutResults = 50;
+
   readonly loadPayouts = this.effect((trigger$: Observable<void>) => {
     return trigger$.pipe(
       tap(() => {
@@ -36,7 +38,7 @@ export class PayoutsStore extends ComponentStore<PayoutsState> {
         });
       }),
       switchMap(() => {
-        return this.payoutService.getPayouts({}).pipe(
+        return this.payoutService.getPayouts({ limit: this.maxPayoutResults }).pipe(
           tap((page) => {
             this.patchState({
               payouts: page.results,
