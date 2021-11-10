@@ -46,7 +46,7 @@
       <div class="big-number">
         <div class="big-number-value">{{ (info.time_since_last_win / 60) / info.estimate_win | percent }}</div>
         <div class="big-number-title">
-          Effort 
+          Effort
           <poptip msg="When TruePool farmers find a block while Effort is under 100% it is considered lucky"></poptip>
         </div>
       </div>
@@ -59,7 +59,7 @@
     [error]="poolSizesState.error"
   >
     <div *ngIf="poolSizesState.sizes.length" class="pool-size-chart-container">
-      <h2 class="pool-space-header">Pool Space</h2>
+      <h2 class="pool-space-header">Pool Space (last {{poolSizeChartDays}} days)</h2>
       <app-pool-size-chart class="chart" [sizes]="somePoolSizes$ | async"></app-pool-size-chart>
     </div>
   </app-content-loader>
