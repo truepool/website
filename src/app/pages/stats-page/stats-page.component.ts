@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ColorSchemeTheme } from 'src/app/services/api/color-scheme.enum';
+import { environment } from 'src/environments/environment';
 import { statsPageEntered } from '../../stores/pool-sizes/pool-sizes.actions';
 import { PoolSizeState } from '../../stores/pool-sizes/pool-sizes.reducer';
 import {
@@ -21,7 +21,7 @@ export class StatsPageComponent implements OnInit {
   growthLast24h$ = this.mainStore.select(selectGrowthLast24h);
   somePoolSizes$ = this.mainStore.select(selectSomePoolSizes);
 
-  readonly PoolSizeChartTheme = ColorSchemeTheme;
+  readonly poolSizeChartDays = environment.daysForChart;
 
   constructor(
     private mainStore: Store<PoolSizeState>,
