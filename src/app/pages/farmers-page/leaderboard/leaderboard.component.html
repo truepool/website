@@ -37,7 +37,7 @@
                 {{ farmer.estimated_size ? (farmer.estimated_size | filesize: { standard: 'iec' }) : '?' }}
               </td>
               <td class="launcher-id">
-                <a (click)="onFarmerNameClicked(farmer.launcher_id)" class="details-link">
+                <a [routerLink]="'/farmer/' + farmer.launcher_id" class="details-link">
                   {{ farmer.name || farmer.launcher_id }}
                 </a>
               </td>

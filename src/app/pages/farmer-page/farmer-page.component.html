@@ -1,1 +1,72 @@
-<router-outlet></router-outlet>
+<app-pool-details-bar></app-pool-details-bar>
+
+<div class="page-content">
+  <app-content-loader
+    [isLoading]="(state$ | async).isLoading"
+    [error]="(state$ | async).error"
+  >
+    <ng-container *ngIf="result$ | async as result">
+      <div class="page-title">{{ result.farmer.name || 'Unnamed Farmer' }}</div>
+      
+      <app-farmer-details [farmer]="result.farmer"></app-farmer-details>
+
+      <h5>Partials Last 24h</h5>
+
+      <ng-container *ngIf="!result.partials?.length; else partialsInfo">
+        This farmer has no partials.
+      </ng-container>
+      <ng-template #partialsInfo>
+        <app-partials-chart [partials]="result.partials"></app-partials-chart>
+
+        <ng-container *ngIf="filterErrors(result.partials) as errors">
+          <h4>Errors</h4>
+          <ng-container *ngIf="!errors.length; else errorTable">
+            No errors last 24 hours.
+          </ng-container>
+
+          <ng-template #errorTable>
+            <table>
+              <thead>
+              <tr>
+                <th>Date</th>
+                <th>Error</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let partial of errors">
+                <td>{{ partial.timestamp * 1000 | date: 'M/d/yy, h:mm:ss a' }}</td>
+                <td>{{ partial.error || '-' }} </td>
+              </tr>
+              </tbody>
+            </table>
+          </ng-template>
+        </ng-container>
+      </ng-template>
+
+      <h5>Last 50 payouts</h5>
+
+      <ng-container *ngIf="!result.payouts?.length; else payoutsTable">
+        This farmer has no payouts.
+      </ng-container>
+      <ng-template #payoutsTable>
+        <table>
+          <thead>
+          <tr>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Transaction</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let payout of result.payouts">
+            <td>{{ payout.payout.datetime | date: 'short' }}</td>
+            <td>{{ payout.amount | xch }}</td>
+            <td>{{ payout.transaction }}</td>
+          </tr>
+          </tbody>
+        </table>
+      </ng-template>
+    </ng-container>
+  </app-content-loader>
+</div>
+

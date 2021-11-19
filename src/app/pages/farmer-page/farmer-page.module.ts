@@ -2,18 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared.module';
 import { FarmerPageComponent } from './farmer-page.component';
-import { FarmerComponent } from './farmer/farmer.component';
 
 const farmerRoutes: Routes = [
   {
-    path: '',
+    path: ':launcherId',
     component: FarmerPageComponent,
-    children: [{ path: ':launcherId', component: FarmerComponent }],
   },
 ];
 
 @NgModule({
-  declarations: [FarmerComponent, FarmerPageComponent],
+  declarations: [FarmerPageComponent],
   imports: [RouterModule.forChild(farmerRoutes), SharedModule],
 })
 export class FarmerPageModule {}
