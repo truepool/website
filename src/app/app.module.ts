@@ -18,7 +18,6 @@ import {
   FarmerSearchPromptComponent,
 } from 'src/app/pages/farmers-page/farmer-search-prompt/farmer-search-prompt.component';
 import { FarmerSearchComponent } from 'src/app/pages/farmers-page/farmer-search/farmer-search.component';
-import { PartialsChartComponent } from 'src/app/pages/farmers-page/partials-chart/partials-chart.component';
 import { NewsArticleComponent } from 'src/app/pages/news-article/news-article.component';
 import { NewsListingComponent } from 'src/app/pages/news-listing/news-listing.component';
 import { environment } from '../environments/environment';
@@ -45,14 +44,14 @@ import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/kn
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { PayoutPageModule } from './pages/payout-page/payout-page.module';
 import { SetNameComponent } from './pages/set-name/set-name.component';
+import { CoinTableComponent } from './pages/stats-page/coin-table/coin-table.component';
+import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-table.component';
 import { StatsPageComponent } from './pages/stats-page/stats-page.component';
 import { MinutesPipe } from './pipes/minutes.pipe';
 import { SharedModule } from './shared.module';
 import { PoolSizesEffects } from './stores/pool-sizes/pool-sizes.effects';
 import { poolSizesReducer } from './stores/pool-sizes/pool-sizes.reducer';
 import { poolSizeStateKey } from './stores/pool-sizes/pool-sizes.selectors';
-import { CoinTableComponent } from './pages/stats-page/coin-table/coin-table.component';
-import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-table.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +68,6 @@ import { PayoutTableComponent } from './pages/stats-page/payout-table/payout-tab
     FarmerSearchPromptComponent,
     FooterComponent,
     ContributionPromptComponent,
-    PartialsChartComponent,
     MarkdownArticleComponent,
     PoptipComponent,
     AvailableInOtherLanguagesComponent,

@@ -24,13 +24,4 @@ export class LeaderboardComponent implements OnInit {
     this.store.loadFarmers(page);
     this.showDetailsForLauncherId = null;
   }
-
-  onFarmerNameClicked(launcherId: string): void {
-    if (this.showDetailsForLauncherId === launcherId) {
-      this.showDetailsForLauncherId = null;
-      return;
-    }
-
-    this.showDetailsForLauncherId = launcherId;
-  }
 }

@@ -3,10 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewsArticleComponent } from 'src/app/pages/news-article/news-article.component';
 import { NewsListingComponent } from 'src/app/pages/news-listing/news-listing.component';
 import { ContentItemResolver } from 'src/app/resolvers/content-item.resolver';
+import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
+import { FrontPageComponent } from './pages/front-page/front-page.component';
 import { GenericArticleComponent } from './pages/generic-article/generic-article.component';
 import { KnowledgeBaseArticleComponent } from './pages/knowledge-base-article/knowledge-base-article.component';
-import { FrontPageComponent } from './pages/front-page/front-page.component';
-import { FarmersPageComponent } from './pages/farmers-page/farmers-page.component';
 import { KnowledgeBaseListingComponent } from './pages/knowledge-base-listing/knowledge-base-listing.component';
 import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { SetNameComponent } from './pages/set-name/set-name.component';
@@ -27,8 +27,16 @@ const routes: Routes = [
     component: FarmersPageComponent,
   },
   {
+    path: 'farmer',
+    loadChildren: () => import('./pages/farmer-page/farmer-page.module').then(
+      (m) => m.FarmerPageModule,
+    ),
+  },
+  {
     path: 'payout',
-    loadChildren: () => import('./pages/payout-page/payout-page.module').then((m) => m.PayoutPageModule),
+    loadChildren: () => import('./pages/payout-page/payout-page.module').then(
+      (m) => m.PayoutPageModule,
+    ),
   },
   {
     path: 'kb',
@@ -71,4 +79,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
