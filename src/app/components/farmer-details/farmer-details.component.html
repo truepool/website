@@ -1,7 +1,9 @@
 <table class="details-view details-view-blue table-striped">
   <tr>
     <th>Launcher ID</th>
-    <td>{{ farmer.launcher_id }}</td>
+    <td>
+      <a [routerLink]="'/farmer/' + farmer.launcher_id" class="details-link">{{ farmer.launcher_id }}</a>
+    </td>
   </tr>
   <tr>
     <th>Points (24 hours)</th>

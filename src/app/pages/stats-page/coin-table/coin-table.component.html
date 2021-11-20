@@ -22,7 +22,9 @@
         <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
         <td>#{{ record.farmed_height }}</td>
         <td>{{ record.luck }}% - {{ (record.luck <= 100 ) ? "Lucky" : "Unlucky" }}</td>
-        <td>{{ record.farmed_by.name || 'Unnamed Farmer' }}</td>
+        <td>
+          <a [routerLink]="['/farmer', record.farmed_by.launcher_id]">{{ record.farmed_by.name || 'Unnamed Farmer' }}</a>
+        </td>
       </tr>
       </tbody>
     </table>
