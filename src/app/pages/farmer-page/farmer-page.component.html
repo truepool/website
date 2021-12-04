@@ -7,7 +7,7 @@
   >
     <ng-container *ngIf="result$ | async as result">
       <div class="page-title">{{ result.farmer.name || 'Unnamed Farmer' }}</div>
-      
+
       <app-farmer-details [farmer]="result.farmer"></app-farmer-details>
 
       <h5>Partials Last 24h</h5>
@@ -49,7 +49,7 @@
         This farmer has no payouts.
       </ng-container>
       <ng-template #payoutsTable>
-        <table>
+        <table class="payouts-table">
           <thead>
           <tr>
             <th>Date</th>

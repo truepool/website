@@ -12,7 +12,7 @@
       <thead>
       <tr>
         <th>Date</th>
-        <th>Block Index</th>
+        <th class="index-column">Block Index</th>
         <th>Effort</th>
         <th>Farmed By</th>
       </tr>
@@ -20,7 +20,7 @@
       <tbody>
       <tr *ngFor="let record of coinRecordsState.coinRecords">
         <td>{{ record.timestamp * 1000 | date: 'short' }}</td>
-        <td>#{{ record.farmed_height }}</td>
+        <td class="index-column">#{{ record.farmed_height }}</td>
         <td>{{ record.luck }}% - {{ (record.luck <= 100 ) ? "Lucky" : "Unlucky" }}</td>
         <td>
           <a [routerLink]="['/farmer', record.farmed_by.launcher_id]">{{ record.farmed_by.name || 'Unnamed Farmer' }}</a>

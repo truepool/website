@@ -43,5 +43,6 @@ h2 {
 .details-link {
   border-bottom: 1px dotted $color-blue-light;
   cursor: pointer;
+  word-break: break-all;
 }
 

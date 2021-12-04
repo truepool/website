@@ -1,0 +1,7 @@
+@import "../../../../assets/css/variables";
+
+.index-column {
+  @media screen and (max-width: $breakpoint-sm) {
+    display: none;
+  }
+}
