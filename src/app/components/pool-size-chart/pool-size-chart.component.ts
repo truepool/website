@@ -24,7 +24,7 @@ export class PoolSizeChartComponent implements OnInit {
   config: google.visualization.LineChartOptions;
   logScale: boolean;
 
-  readonly chartBaseUnit = 1024 ** 4; // TB
+  readonly chartBaseUnit = 1024 ** 5; // PB
 
   get palette(): PoolSizeChartPalette {
     if (this.theme === null) {
@@ -71,7 +71,7 @@ export class PoolSizeChartComponent implements OnInit {
       vAxis: {
         logScale: false,
         viewWindowMode: 'maximized',
-        format: '#.#TB',
+        format: '#.#PB',
         textStyle: {
           color: this.palette.text,
         },
