@@ -53,17 +53,6 @@
     </div>
   </app-content-loader>
 
-  <app-content-loader
-    *appLet="poolSizesState$ | async as poolSizesState"
-    [isLoading]="poolSizesState.isLoading"
-    [error]="poolSizesState.error"
-  >
-    <div *ngIf="poolSizesState.sizes.length" class="pool-size-chart-container">
-      <h2 class="pool-space-header">Pool Space (last {{poolSizeChartDays}} days)</h2>
-      <app-pool-size-chart class="chart" [sizes]="somePoolSizes$ | async"></app-pool-size-chart>
-    </div>
-  </app-content-loader>
-
   <!-- TODO: Pagination -->
   <div class="stats-table">
     <div class="table-wrapper">
