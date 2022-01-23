@@ -9,12 +9,19 @@ export interface Payout {
   fee: number;
 }
 
+export interface Transaction {
+  url: string;
+  transaction: string;
+  xch_price?: number;
+  confirmed_block_index?: number;
+}
+
 export interface PayoutAddress {
   url: string;
   puzzle_hash: string;
   amount: number;
   datetime: string;
-  transaction: string;
+  transaction: Transaction;
   confirmed_block_index: number;
   payout: Payout;
   launcher: Farmer;
