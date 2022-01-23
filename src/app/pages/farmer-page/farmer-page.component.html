@@ -61,7 +61,7 @@
           <tr *ngFor="let payout of result.payouts">
             <td>{{ payout.payout.datetime | date: 'short' }}</td>
             <td>{{ payout.amount | xch }}</td>
-            <td>{{ payout.transaction }}</td>
+            <td>{{ payout.transaction.transaction }}</td>
           </tr>
           </tbody>
         </table>
