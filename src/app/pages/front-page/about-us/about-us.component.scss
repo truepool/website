@@ -4,7 +4,10 @@
   padding: 19px 30px;
   margin-bottom: 50px;
   font-size: 1.1em;
-  border-left: 5px solid $color-green;
+  border-left: 5px solid #e81e0e;
+  border-right: 5px solid #e81e0e;
+  border-top: 5px solid #e81e0e;
+  border-bottom: 5px solid #e81e0e;
 
   @media screen and (max-width: $breakpoint-sm) {
     padding-top: 0;
